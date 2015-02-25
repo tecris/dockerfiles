@@ -1,11 +1,6 @@
-#
-# example Dockerfile for http://docs.docker.com/examples/postgresql_service/
-#
 
-# Pull base image.
 FROM ubuntu/postgres93
 
-# Run the rest of the commands as the ``postgres`` user created by the ``postgres-9.3`` package when it was ``apt-get installed``
 USER postgres
 
 # Create a PostgreSQL role named ``docker`` with ``docker`` as the password and
