@@ -19,8 +19,10 @@ RUN chmod 755 /var/run/sshd && chmod  755 /var/run
 
 RUN mkdir /root/.ssh
 ADD files/id_rsa.pub /root/.ssh/authorized_keys
+
 # wget
-RUN apt-get install -y wget
+RUN apt-get update
+RUN apt-get install -y wget curl
 
 EXPOSE 22 
 
