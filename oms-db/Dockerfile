@@ -2,13 +2,16 @@ FROM ubuntu/postgres93
 
 USER postgres
 
+ADD ./sql /var/lib/postgresql/sql
+
 # Create a PostgreSQL role named ``docker`` with ``docker`` as the password and
 # then create a database `docker` owned by the ``docker`` role.
 # Note: here we use ``&&\`` to run commands one after the other - the ``\``
 #       allows the RUN command to span multiple lines.
 RUN    /etc/init.d/postgresql start &&\
 	psql --command "CREATE USER oms WITH CREATEDB;" &&\
-	createdb -U oms oms
+	createdb -U oms oms &&\
+        cat /var/lib/postgresql/sql/*.sql | psql -U oms oms
 
 USER root
 
