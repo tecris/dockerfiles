@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t ubuntu/mysql .
+docker build -t ubuntu/mysql57 .
