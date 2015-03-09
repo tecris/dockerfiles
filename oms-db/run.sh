@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run --name oms-db -d -p 23:22 -p 5432:5432 wood/db
+docker run --name oms-db -d -p 23:22 -p 5432:5432 omswood/postgres93
