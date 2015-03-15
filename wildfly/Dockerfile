@@ -25,7 +25,9 @@ ENV JBOSS_HOME /opt/jboss/wildfly
 
 USER root
 
+RUN /opt/jboss/wildfly/bin/add-user.sh admin 1admin! --silent
+
 RUN echo '' >> /etc/supervisor/conf.d/supervisord.conf
 RUN echo '[program:wildfly]' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'command=/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0' >> /etc/supervisor/conf.d/supervisord.conf
+RUN echo 'command=/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0' >> /etc/supervisor/conf.d/supervisord.conf
 RUN echo 'autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
