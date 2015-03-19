@@ -26,6 +26,7 @@ ENV JBOSS_HOME /opt/jboss/wildfly
 
 USER root
 
+# add management user (username: admin, passwd: 1admin!)
 RUN /opt/jboss/wildfly/bin/add-user.sh admin 1admin! --silent
 
 RUN echo '' >> /etc/supervisor/conf.d/supervisord.conf
