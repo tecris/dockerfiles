@@ -1,4 +1,5 @@
-# Use latest jboss/base-jdk:7 image as the base
+# based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
+
 FROM ubuntu/jdk8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
