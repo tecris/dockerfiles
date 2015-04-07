@@ -1,0 +1,5 @@
+#!/bin/bash
+
+chown -R openfire:openfire /etc/openfire /var/lib/openfire
+/usr/bin/supervisord -n
+
