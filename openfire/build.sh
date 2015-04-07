@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build -t jdk7/openfire .
+docker build --no-cache -t org.tecris.ubuntu1404.jdk7/openfire393 .
 
