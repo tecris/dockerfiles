@@ -3,7 +3,7 @@ FROM ubuntu/postgres93
 USER postgres
 
 # ADD ./sql /var/lib/postgresql/sql
-ADD ./oms.pg /var/lib/postgresql/oms.pg
+ADD ./oms-small-march-2015.pg /var/lib/postgresql/oms.pg
 
 RUN     /etc/init.d/postgresql start &&\
         psql --command "CREATE USER oms WITH CREATEDB;" &&\
