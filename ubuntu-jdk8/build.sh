@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t ubuntu/jdk8 .
+docker build -t org.tecris.ubuntu1404.util/jdk8 .

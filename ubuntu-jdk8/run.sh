@@ -1,4 +1,3 @@
 #!/bin/sh
 
-docker run -d -p 23:22 ubuntu/jdk8
-
+docker run -d -p 23:22 org.tecris.ubuntu1404.util/jdk8

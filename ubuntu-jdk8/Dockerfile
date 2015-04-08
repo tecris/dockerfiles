@@ -1,4 +1,4 @@
-FROM ubuntu/ssh
+FROM org.tecris.ubuntu1404/util
 
 # Install Java 8
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -q -y software-properties-common
