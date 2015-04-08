@@ -1,6 +1,6 @@
 # Dockerfile for Oracle Java 7
 
-FROM ubuntu/ssh
+FROM org.tecris.ubuntu1404/util
 
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 RUN apt-get update && apt-get install -y software-properties-common python-software-properties
