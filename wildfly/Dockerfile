@@ -1,6 +1,6 @@
 # based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
 
-FROM ubuntu/jdk8
+FROM org.tecris.ubuntu1404.util/jdk8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 
@@ -29,7 +29,4 @@ USER root
 # add management user (username: admin, passwd: 1admin!)
 RUN /opt/jboss/wildfly/bin/add-user.sh admin 1admin! --silent
 
-RUN echo '' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo '[program:wildfly]' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'command=/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
+ADD wildfly.supervisor.conf /etc/supervisor/conf.d/wildfly.conf

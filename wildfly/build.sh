@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t wildfly/base .
+docker build --no-cache -t org.tecris.ubuntu1404.wildfly/base .
