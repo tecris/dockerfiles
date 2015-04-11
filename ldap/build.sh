@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-docker build -t ubuntu/ldap .
+. ./imageName
 
+echo  building $IMAGE_NAME
+
+# docker build -t $IMAGE_NAME .
+docker build --no-cache -t $IMAGE_NAME .
