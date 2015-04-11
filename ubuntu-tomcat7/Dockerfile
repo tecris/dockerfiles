@@ -1,4 +1,4 @@
-FROM ubuntu/jdk8
+FROM org.tecris.ubuntu1404.util/jdk8
 
 # based on https://registry.hub.docker.com/_/tomcat/
 
@@ -33,9 +33,6 @@ RUN curl -SL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
     && rm bin/*.bat \
     && rm tomcat.tar.gz*
 
-EXPOSE 8080
+ADD tomcat.supervisor.conf /etc/supervisor/conf.d/tomcat.conf
 
-RUN echo '' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo '[program:tomcat7]' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'command=/usr/local/tomcat/bin/catalina.sh run' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
+EXPOSE 8080
