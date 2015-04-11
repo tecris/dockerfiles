@@ -1,3 +1,8 @@
 #!/bin/bash
-docker build --no-cache -t org.tecris.ubuntu1404.jdk7/openfire393 .
 
+. ./imageName
+
+echo  building $IMAGE_NAME
+
+# docker build -t $IMAGE_NAME .
+docker build --no-cache -t $IMAGE_NAME .
