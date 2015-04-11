@@ -1,3 +1,5 @@
 #!/bin/sh
 
-docker build --no-cache -t wildfly/mysql .
+. ./imageName
+
+docker build --no-cache -t $IMAGE_NAME .
