@@ -1,8 +1,7 @@
-FROM ubuntu/postgres93
+FROM org.tecris.ubuntu1404.postgres93/raw
 
 USER postgres
 
-# ADD ./sql /var/lib/postgresql/sql
 ADD ./oms-small-march-2015.pg /var/lib/postgresql/oms.pg
 
 RUN     /etc/init.d/postgresql start &&\
@@ -24,7 +23,4 @@ RUN adduser --no-create-home --disabled-password --gecos "" oms
 # testing user (not used currently)
 # RUN adduser --no-create-home --disabled-password --gecos "" oms-mvn
 
-RUN echo '[program:postgresql]' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'command=/usr/lib/postgresql/9.3/bin/postgres -D /var/lib/postgresql/9.3/main -c config_file=/etc/postgresql/9.3/main/postgresql.conf' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'user=postgres' >> /etc/supervisor/conf.d/supervisord.conf
-RUN echo 'autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
+ADD postgres.supervisor.conf /etc/supervisor/conf.d/postgres.conf
