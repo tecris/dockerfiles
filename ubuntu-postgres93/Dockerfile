@@ -1,9 +1,9 @@
-#
+
 # example Dockerfile for http://docs.docker.com/examples/postgresql_service/
 #
 
 # Pull base image.
-FROM ubuntu/ssh
+FROM org.tecris.ubuntu1404/util
 
 # to prevent 'perl: warning: Setting locale failed.'
 RUN locale-gen en_GB.UTF-8
