@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-docker build -t org.tecris.ubuntu1404/util .
-# docker build --no-cache -t org.tecris.ubuntu1404/util .
+. ./imageName
+
+echo  building $IMAGE_NAME
+
+# docker build -t $IMAGE_NAME .
+docker build --no-cache -t $IMAGE_NAME .

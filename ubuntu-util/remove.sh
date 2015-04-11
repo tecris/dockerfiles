@@ -1,4 +1,5 @@
 #!/bin/sh
 
-docker rmi ubuntu/ssh
+. ./imageName
 
+docker rmi $IMAGE_NAME
