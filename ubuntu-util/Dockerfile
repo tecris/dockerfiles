@@ -13,17 +13,13 @@ RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/
 
 # supervisor
 RUN mkdir -p /var/log/supervisor
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD ssh.supervisor.conf /etc/supervisor/conf.d/ssh.conf
 RUN chown root /var/run && chown root /var/run/sshd
 RUN chmod 755 /var/run/sshd && chmod  755 /var/run
 
 RUN mkdir /root/.ssh
 ADD files/id_rsa.pub /root/.ssh/authorized_keys
 
-
 EXPOSE 22 
 
-
 CMD ["/usr/bin/supervisord"]
-
-

@@ -2,5 +2,5 @@
 
 
 #boot2docker ip
-ssh -p 23 root@192.168.59.103
+ssh -p 23 root@localhost
 
