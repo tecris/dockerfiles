@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t ubuntu/mysql57 .
+docker build --no-cache -t org.tecris.ubuntu1404.util/mysql57 .
