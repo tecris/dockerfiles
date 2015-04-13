@@ -6,6 +6,17 @@
 
 ## Cheat Sheet
 
-### How to create image from container
- - docker export container_name > container_db.tar
- - cat container_db.tar |docker import - terra/container
+### Create image from container
+
+1. Export container as a tar file
+  - `$ docker export terra/container > container_db.tar`
+2. Import tar-ed container
+  - `$ cat container_db.tar |docker import - terra/container`
+
+ ### Backup/Restore image
+
+1. Export container as a tar
+  - `$ docker save container_name > container_file.tar`
+2. Import tar-ed container
+  - `$ docker load < container_file.tar` 
+ 
