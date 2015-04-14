@@ -1,12 +1,12 @@
-FROM ubuntu/tomcat7
+FROM org.tecris.ubuntu1404.jdk8/tomcat7
 
 RUN mkdir -p /opt/apps/nzwoms/jasperreports
 RUN mkdir -p /opt/apps/nzwoms/config
 
-ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
+ADD files/setenv.sh /usr/local/tomcat/bin/setenv.sh
 
-ADD nzwood-oms.war /usr/local/tomcat/webapps/nzwood-oms.war
-ADD oms.properties /opt/apps/nzwoms/config/oms.properties
+ADD files/nzwood-oms.war /usr/local/tomcat/webapps/nzwood-oms.war
+ADD files/oms.properties /opt/apps/nzwoms/config/oms.properties
 
 RUN sed -i '/reports.directory=..\/reports\/target\/jasperreports/c\reports.directory=\/opt\/apps\/nzwoms\/jasperreports' /opt/apps/nzwoms/config/oms.properties
 
