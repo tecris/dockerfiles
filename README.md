@@ -18,3 +18,10 @@
 2. Import tar-ed container
   - `$ docker load < container_file.tar` 
  
+### Docker registry
+ 1. [How to](https://github.com/docker/distribution/blob/master/docs/deploying.md)
+ 2. For the insecure part edit /etc/default/docker file and add the following line:
+  - `DOCKER_OPTS="--insecure-registry localhost:5000"`
+ 3. Restart docker
+  - `sudo service docker stop`
+
