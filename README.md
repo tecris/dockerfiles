@@ -23,5 +23,5 @@
  2. For the insecure part edit /etc/default/docker file and add the following line:
   - `DOCKER_OPTS="--insecure-registry localhost:5000"`
  3. Restart docker
-  - `sudo service docker stop`
+  - `sudo service docker restart`
 
