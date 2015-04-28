@@ -13,10 +13,10 @@
 
  ### Backup/Restore image
 
-1. Save container as a tar file
-  - `$ docker save container_name > container_file.tar`
-2. Import tar-ed container
-  - `$ docker load < container_file.tar` 
+1. Save image as a tar file
+  - `$ docker save image_name > image_file.tar`
+2. Import tar-ed image
+  - `$ docker load < image_file.tar` 
  
 ### Docker registry
  1. [How to](https://github.com/docker/distribution/blob/master/docs/deploying.md)
