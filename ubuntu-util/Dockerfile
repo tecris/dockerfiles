@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 RUN echo 'root:root' |chpasswd
 
 RUN apt-get -y update
-RUN apt-get install -y openssh-server supervisor wget curl telnet
+RUN apt-get install -y openssh-server supervisor wget curl telnet git
 
 # SSH
 RUN mkdir -p /var/run/sshd
