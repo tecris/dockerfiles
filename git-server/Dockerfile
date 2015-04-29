@@ -15,6 +15,8 @@ FROM org.tecris.ubuntu1404.util/ansible
 ADD ansible /srv/example/
 WORKDIR /srv/example
 
+# User creation not in ansible as ansible has no 
+# equivalent for --disabled-password
 ENV USER git
 RUN adduser --disabled-password --gecos "" $USER
 RUN adduser $USER sudo
