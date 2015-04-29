@@ -3,8 +3,11 @@
   vars:
     repo_path: /opt/git/hello-world.git
   tasks:
-    - name: Create git user
-      user: name=git generate_ssh_key=yes
+# User creation done in Docker until sort out why this user cannot use publickey to login
+#   - name: Create git user
+#     user: name=git groups=sudo
+    - name: Create .ssh directory
+      file: path=/home/git/.ssh owner=root group=root mode=0755 state=directory
     - name: Create repository directory
       file: path={{repo_path}} owner=git group=git mode=0775 state=directory
     - name: Create repositories
@@ -12,9 +15,15 @@
     - name: ensure repositories permisions
       file: path={{ repo_path }} owner=git group=git recurse=yes
     - name: Copy key
-      copy: src=files/authorized_keys dest=/home/git/.ssh/authorized_keys owner=git mode=0600
-    - name: Copy key
-      copy: src=files/authorized_keys dest=/root/.ssh/authorized_keys owner=root mode=0600
+      copy: src=files/authorized_keys dest=/home/git/.ssh/authorized_keys owner=git group=git mode=0700
+
+# RUN adduser --disabled-password --gecos "" $USER
+# RUN adduser $USER sudo
+# ADD authorized_keys /home/$USER/.ssh/authorized_keys
+# RUN chown $USER /home/$USER/.ssh/authorized_keys
+# RUN chown -R $USER:$USER /home/$USER/.ssh/authorized_keys
+# RUN chmod 700 /home/$USER/.ssh/authorized_keys
+
 
 #- name: ensure git user exists
 #  action: user name=git shell=/usr/bin/git-shell home=/home/git generate_ssh_key=yes

@@ -12,8 +12,21 @@ FROM org.tecris.ubuntu1404.util/ansible
 ADD ansible /srv/example/
 WORKDIR /srv/example
 
+ENV USER git
+RUN adduser --disabled-password --gecos "" $USER
+RUN adduser $USER sudo
+
+# ===== provisined by ansible START =====
+# RUN adduser --disabled-password --gecos "" $USER
+# RUN adduser $USER sudo
+# ADD authorized_keys /home/$USER/.ssh/authorized_keys
+# RUN chown $USER /home/$USER/.ssh/authorized_keys
+# RUN chown -R $USER:$USER /home/$USER/.ssh/authorized_keys
+# RUN chmod 700 /home/$USER/.ssh/authorized_keys
+# ===== provisined by ansible END =====
+
+
 # Run Ansible to configure the Docker image
 RUN ansible-playbook main.yml -c local
 
 EXPOSE 22 9148 80 443
-CMD ["/usr/bin/supervisord"]
