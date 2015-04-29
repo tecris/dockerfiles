@@ -14,7 +14,7 @@
     - name: Copy key
       copy: src=files/authorized_keys dest=/home/git/.ssh/authorized_keys owner=git mode=0600
     - name: Copy key
-      copy: src=files/authorized_keys dest=/root/.ssh/authorized_keys owner=git mode=0600
+      copy: src=files/authorized_keys dest=/root/.ssh/authorized_keys owner=root mode=0600
 
 #- name: ensure git user exists
 #  action: user name=git shell=/usr/bin/git-shell home=/home/git generate_ssh_key=yes
