@@ -6,7 +6,10 @@ FROM org.tecris.ubuntu1404.util/ansible
 # with Apt-Cacher-ng 
 # RUN  echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
 
-# based on https://github.com/ansible/ansible-docker-base/tree/master/examples/webserver-simple
+# inspiared from
+# https://github.com/EHER/ansible-git (for the ansible part)
+# https://github.com/ansible/ansible-docker-base/tree/master/examples/webserver-simple
+# http://superuser.com/questions/844101/docker-login-via-ssh-always-asks-for-password
 
 # Add playbooks to the Docker image
 ADD ansible /srv/example/
