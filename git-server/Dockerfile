@@ -23,5 +23,3 @@ RUN adduser $USER sudo
 
 # Run Ansible to configure the Docker image
 RUN ansible-playbook main.yml -c local
-
-EXPOSE 22 9148 80 443

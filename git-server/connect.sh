@@ -1,4 +1,4 @@
 #!/bin/sh
 
 #boot2docker ip
-ssh -p 24 root@localhost
+ssh -p 24 git@localhost
