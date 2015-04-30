@@ -1,6 +1,7 @@
 # Dockerize Git on a server
+============================================
 
-[Raw Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-a-Server)
+Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-a-Server)
 
 1. Generate keys
   * `$ ssh-keygen -t rsa -C "your_email@example.com"`
