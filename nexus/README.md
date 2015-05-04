@@ -6,7 +6,7 @@ user: admin
 password: admin123
 
 .) Project pom needs something like:
-
+```
   <distributionManagement>
         <repository>
             <id>deployment</id>
@@ -19,8 +19,9 @@ password: admin123
             <url>http://172.25.1.88:8081/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-.) cat ~/settings.xml 
+```
+.) cat ~/settings.xml
+```
 <?xml version="1.0"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
@@ -31,5 +32,5 @@ password: admin123
     </server>
   </servers>
 </settings>
-
+```
 
