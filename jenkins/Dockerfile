@@ -15,6 +15,7 @@ RUN mkdir /var/lib/jenkins/plugins
 RUN wget ${REPO_URL}/git-client.hpi -O /var/lib/jenkins/plugins/git-client.hpi
 RUN wget ${REPO_URL}/scm-api.hpi -O /var/lib/jenkins/plugins/scm-api.hpi
 RUN wget ${REPO_URL}/git.hpi -O /var/lib/jenkins/plugins/git.hpi
+RUN wget ${REPO_URL}/docker-build-step.hpi -O /var/lib/jenkins/plugins/docker-build-step.hpi
 ADD files/settings.xml /opt/settings.xml
 
 RUN wget -qO- https://get.docker.com/ | sh
