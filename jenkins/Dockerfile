@@ -20,6 +20,7 @@ ADD files/settings.xml /opt/settings.xml
 
 RUN wget -qO- https://get.docker.com/ | sh
 
+RUN echo 'DOCKER_OPTS="--insecure-registry 192.168.1.66:5000"' >> /etc/default/docker
 ADD jenkins.supervisor.conf /etc/supervisor/conf.d/jenkins.conf
 ADD docker.supervisor.conf /etc/supervisor/conf.d/docker.conf
 RUN mkdir ${MAVEN_HOME}
