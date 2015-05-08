@@ -1,6 +1,6 @@
 FROM org.tecris.ubuntu1404.util/jdk7
 
-ENV REPO_URL http://172.25.1.88/repo/packages
+ENV REPO_URL http://192.168.1.66/repo/packages
 ENV JENKINS_VERSION 1.612
 ENV MAVEN_HOME /opt/maven
 ENV MAVEN_VERSION 3.3.1
