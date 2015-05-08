@@ -4,7 +4,7 @@ FROM org.tecris.ubuntu1404.util/jdk7
 # based on https://github.com/sonatype/docker-nexus
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 
-ENV REPO_URL=http://172.25.1.88/repo/packages
+ENV REPO_URL=http://192.168.1.66/repo/packages
 
 ENV SONATYPE_WORK /sonatype-work
 ENV NEXUS_VERSION 2.11.2-06
