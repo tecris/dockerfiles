@@ -16,7 +16,8 @@ RUN wget ${REPO_URL}/git-client.hpi -O /var/lib/jenkins/plugins/git-client.hpi
 RUN wget ${REPO_URL}/scm-api.hpi -O /var/lib/jenkins/plugins/scm-api.hpi
 RUN wget ${REPO_URL}/git.hpi -O /var/lib/jenkins/plugins/git.hpi
 RUN wget ${REPO_URL}/docker-build-step.hpi -O /var/lib/jenkins/plugins/docker-build-step.hpi
-ADD files/settings.xml /opt/settings.xml
+# ADD files/settings.xml /opt/settings.xml
+ADD files/settings.xml /var/lib/jenkins/.m2/settings.xml
 
 RUN wget -qO- https://get.docker.com/ | sh
 
@@ -26,3 +27,8 @@ ADD docker.supervisor.conf /etc/supervisor/conf.d/docker.conf
 RUN mkdir ${MAVEN_HOME}
 RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins/plugins
 RUN usermod -aG docker jenkins
+
+
+# demo stuff
+RUN mkdir -p /var/lib/jenkins/workspace/Continuous_Delivery/docker
+ADD files/Dockerfile /var/lib/jenkins/workspace/Continuous_Delivery/docker/Dockerfile
