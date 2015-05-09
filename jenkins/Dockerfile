@@ -31,4 +31,4 @@ RUN usermod -aG docker jenkins
 
 # demo stuff
 RUN mkdir -p /var/lib/jenkins/workspace/Continuous_Delivery/docker
-ADD files/Dockerfile /var/lib/jenkins/workspace/Continuous_Delivery/docker/Dockerfile
+ADD demo/Dockerfile /var/lib/jenkins/workspace/Continuous_Delivery/docker/Dockerfile
