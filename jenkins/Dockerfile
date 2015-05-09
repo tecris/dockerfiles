@@ -19,7 +19,20 @@ RUN wget ${REPO_URL}/docker-build-step.hpi -O /var/lib/jenkins/plugins/docker-bu
 # ADD files/settings.xml /opt/settings.xml
 ADD files/settings.xml /var/lib/jenkins/.m2/settings.xml
 
-RUN wget -qO- https://get.docker.com/ | sh
+# Let's start with some basic stuff.
+RUN apt-get update -qq && apt-get install -qqy \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables
+    
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ubuntu/ | sh
+
+# Install the magic wrapper.
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+RUN chmod +x /usr/local/bin/wrapdocker
 
 RUN echo 'DOCKER_OPTS="--insecure-registry 192.168.1.66:5000"' >> /etc/default/docker
 ADD jenkins.supervisor.conf /etc/supervisor/conf.d/jenkins.conf
