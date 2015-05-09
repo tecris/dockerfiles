@@ -25,10 +25,10 @@ RUN echo 'DOCKER_OPTS="--insecure-registry 192.168.1.66:5000"' >> /etc/default/d
 ADD jenkins.supervisor.conf /etc/supervisor/conf.d/jenkins.conf
 ADD docker.supervisor.conf /etc/supervisor/conf.d/docker.conf
 RUN mkdir ${MAVEN_HOME}
-RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins/plugins
 RUN usermod -aG docker jenkins
 
 
 # demo stuff
 RUN mkdir -p /var/lib/jenkins/workspace/Continuous_Delivery/docker
 ADD demo/Dockerfile /var/lib/jenkins/workspace/Continuous_Delivery/docker/Dockerfile
+RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins
