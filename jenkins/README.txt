@@ -16,5 +16,12 @@
  .) Source Code Management
   .) Git: git@172.25.1.88:/opt/git/repositories/demo.git
 
+==== D E M O ====
+
 .) Build
  .) Goals and options: deploy -DskiptITs
+.) Post Build:
+ .) Shell
+  .) docker pull image_name
+ .) Docker build step
+  .) ...
