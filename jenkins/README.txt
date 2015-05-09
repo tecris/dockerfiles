@@ -5,10 +5,12 @@
       .) Deselect 'Install automatically', 
       .) Name: maven331
       .) MAVEN_HOME: /opt/apache-maven-3.3.1
-      .) 
-      Save
-.) Maven Configuration
-  .) Default settings provider: Select 'Settings file in filesystem', File path: /opt/settings.xml
+.) Docker builder
+ .) Docker URL: unix:///var/run/docker.sock
+
+
+
+==== D E M O ====
 
 .) Create new job
  .) Project name: Continuous Delivery
@@ -16,7 +18,6 @@
  .) Source Code Management
   .) Git: git@172.25.1.88:/opt/git/repositories/demo.git
 
-==== D E M O ====
 
 .) Build
  .) Goals and options: deploy -DskiptITs

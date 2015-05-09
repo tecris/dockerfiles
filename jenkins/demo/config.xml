@@ -61,7 +61,7 @@
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
     <hudson.tasks.Shell>
-      <command>docker build -t 192.168.1.66:5000/$BUILD_NUMBER /opt/demo/Continuous_Delivery/docker</command>
+      <command>cd /opt/demo/Continuous_Delivery/docker;docker build --no-cache -t 192.168.1.66:5000/$BUILD_NUMBER .</command>
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.24">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.PushImageCommand">
