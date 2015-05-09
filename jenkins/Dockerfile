@@ -29,6 +29,6 @@ RUN usermod -aG docker jenkins
 
 
 # demo stuff
-RUN mkdir -p /var/lib/jenkins/workspace/Continuous_Delivery/docker
-ADD demo/Dockerfile /var/lib/jenkins/workspace/Continuous_Delivery/docker/Dockerfile
-RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins
+RUN mkdir -p /opt/demo/Continuous_Delivery/docker
+ADD demo/Dockerfile /opt/demo/Continuous_Delivery/docker/Dockerfile
+RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins /opt/demo

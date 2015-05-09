@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <maven2-moduleset plugin="maven-plugin@2.7.1">
   <actions/>
   <description/>
@@ -61,7 +61,7 @@
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
     <hudson.tasks.Shell>
-      <command>docker build -t 192.168.1.66:5000/$BUILD_NUMBER /var/lib/jenkins/workspace/Continuous_Delivery/docker</command>
+      <command>docker build -t 192.168.1.66:5000/$BUILD_NUMBER /opt/demo/Continuous_Delivery/docker</command>
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.24">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.PushImageCommand">
