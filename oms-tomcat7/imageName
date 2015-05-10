@@ -1,1 +1,1 @@
-IMAGE_NAME=omswood/tomcat7
+IMAGE_NAME=omswood/tomcat7:1.33
