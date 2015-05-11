@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <maven2-moduleset plugin="maven-plugin@2.7.1">
   <actions/>
   <description/>
@@ -55,22 +55,18 @@
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.24">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
-        <dockerFolder>$WORKSPACE/docker</dockerFolder>
-        <imageTag>192.168.1.66:5000/$BUILD_NUMBER</imageTag>
+        <dockerFolder>/opt/demo/Continuous_Delivery/docker</dockerFolder>
+        <imageTag>192.168.1.66:5000/hl_demo:$BUILD_NUMBER</imageTag>
         <noCache>true</noCache>
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
-    <hudson.tasks.Shell>
-      <command>cd /opt/demo/Continuous_Delivery/docker;docker build --no-cache -t 192.168.1.66:5000/$BUILD_NUMBER .</command>
-    </hudson.tasks.Shell>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.24">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.PushImageCommand">
         <dockerCredentials>
-          <credentialsId>7e796c30-1fba-45ed-aa3f-094b5d303892</credentialsId>
           <serverAddress>http://192.168.1.66:5000</serverAddress>
         </dockerCredentials>
-        <image>$BUILD_NUMBER</image>
-        <tag/>
+        <image>hl_demo</image>
+        <tag>$BUILD_NUMBER</tag>
         <registry>192.168.1.66:5000</registry>
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
