@@ -32,5 +32,7 @@
 </settings>
 ```
 
-[Reference](https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus)
+[Configure-Maven-to-Deploy-to-Nexus](https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus)
+
+[Repository Management with Nexus](http://books.sonatype.com/nexus-book/reference/config-maven.html)
 
