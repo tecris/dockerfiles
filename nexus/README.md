@@ -5,7 +5,7 @@
  * `user/password: admin/admin123`
 2. Configure-Maven-to-Deploy-to-Nexus
  * Add in project pom:
-```
+ ```
   <distributionManagement>
         <repository>
             <id>deployment</id>
@@ -18,9 +18,9 @@
             <url>http://10.0.0.2:8081/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-```
+ ```
    * Add following snippet in ~/.m2/settings.xml
-```
+ ```
 <?xml version="1.0"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
@@ -31,7 +31,7 @@
     </server>
   </servers>
 </settings>
-```
+ ```
 3. Repository Management with Nexus
 ```
 <mirrors>
