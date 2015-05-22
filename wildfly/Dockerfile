@@ -13,7 +13,10 @@ USER jboss
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 8.2.0.Final
 
-RUN wget http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz
+# ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
+ENV DOWNLOAD_URL=http://172.25.1.88/repo/packages
+
+RUN wget ${DOWNLOAD_URL}/wildfly-$WILDFLY_VERSION.tar.gz
 # RUN wget  http://10.1.1.7/wildfly-8.2.0.Final.tar.gz
 RUN tar -xf wildfly-$WILDFLY_VERSION.tar.gz
 RUN rm wildfly-$WILDFLY_VERSION.tar.gz
