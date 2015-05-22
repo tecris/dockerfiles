@@ -3,7 +3,7 @@
 
 1. Nexus available at http://10.0.0.2:8081 
  * `user/password: admin/admin123`
-2. Configure-Maven-to-Deploy-to-Nexus
+2. [Configure-Maven-to-Deploy-to-Nexus][1]
  * Add in project pom:
  ```
   <distributionManagement>
@@ -30,7 +30,7 @@
   </servers>
 </settings>
  ```
-3. Repository Management with Nexus
+3. [Repository Management with Nexus][2]
 ```
 <mirrors>
     <mirror>
@@ -69,7 +69,7 @@
   </activeProfiles>
 ```
 
-[Configure-Maven-to-Deploy-to-Nexus](https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus)
+[1]:https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus
 
-[Repository Management with Nexus](http://books.sonatype.com/nexus-book/reference/config-maven.html)
+[2]:http://books.sonatype.com/nexus-book/reference/config-maven.html
 
