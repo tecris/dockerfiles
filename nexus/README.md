@@ -68,7 +68,13 @@
     <activeProfile>nexus</activeProfile>
   </activeProfiles>
 ```
-
+4. Add Proxy Repository
+  * Login admin/admin123
+  * Repositories
+  * Add > Proxy Repository
+    * repositoryid
+    * My Repository Name
+    * Save
 [1]:https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus
 
 [2]:http://books.sonatype.com/nexus-book/reference/config-maven.html
