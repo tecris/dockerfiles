@@ -6,7 +6,7 @@
 2. [Configure-Maven-to-Deploy-to-Nexus][1]
  * Add in project pom:
  ```
-  <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>deployment</id>
             <name>Internal Releases</name>
@@ -28,11 +28,10 @@
       <password>deployment123</password>
     </server>
   </servers>
-</settings>
  ```
 3. [Repository Management with Nexus][2]
 ```
-<mirrors>
+  <mirrors>
     <mirror>
       <id>local.mirror</id>
       <name>Nexus-Mirror</name>
@@ -43,8 +42,6 @@
   <profiles>
     <profile>
       <id>nexus</id>
-      <!--Enable snapshots for the built in central repo to direct -->
-      <!--all requests to nexus via the mirror -->
       <repositories>
         <repository>
           <id>central</id>
@@ -64,7 +61,6 @@
     </profile>
   </profiles>
   <activeProfiles>
-    <!--make the profile active all the time -->
     <activeProfile>nexus</activeProfile>
   </activeProfiles>
 ```
