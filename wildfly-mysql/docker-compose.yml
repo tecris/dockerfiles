@@ -1,0 +1,27 @@
+db:
+  image: 172.25.1.88:5000/mysql56
+  hostname: db
+  stdin_open: true
+  tty: true
+  restart: always
+  ports:
+  - ":22"
+  - "3306:3306"
+  environment:
+  - MYSQL_ROOT_PASSWORD=mysql
+  - MYSQL_USER=bookstore
+  - MYSQL_PASSWORD=1bookstore!
+  - MYSQL_DATABASE=bookstoredb
+
+web:
+  image: 172.25.1.88:5000/wildfly82mysql
+  hostname: web
+  stdin_open: true
+  tty: true
+  restart: always
+  ports:
+  - ":22"
+  - "8080:8080"
+  - "9990:9990"
+  links:
+  - db
