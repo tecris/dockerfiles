@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ssh -p 23 root@localhost
+ssh -p $1 root@localhost

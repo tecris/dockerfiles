@@ -2,4 +2,4 @@
 
 . ./imageName
 
-docker run -d -p 23:22 $IMAGE_NAME
+docker run -d -p :22 $IMAGE_NAME
