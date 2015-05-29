@@ -16,6 +16,7 @@ RUN wget ${REPO_URL}/git-client.hpi -O /var/lib/jenkins/plugins/git-client.hpi
 RUN wget ${REPO_URL}/scm-api.hpi -O /var/lib/jenkins/plugins/scm-api.hpi
 RUN wget ${REPO_URL}/git.hpi -O /var/lib/jenkins/plugins/git.hpi
 RUN wget ${REPO_URL}/docker-build-step.hpi -O /var/lib/jenkins/plugins/docker-build-step.hpi
+RUN wget ${REPO_URL}/sonar.hpi -O /var/lib/jenkins/plugins/sonar.hpi
 # ADD files/settings.xml /opt/settings.xml
 ADD files/settings.xml /var/lib/jenkins/.m2/settings.xml
 
