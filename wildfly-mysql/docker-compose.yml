@@ -1,11 +1,10 @@
 db:
-  image: 172.25.1.88:5000/mysql56
+  image: org.tecris/mysql56
   hostname: db
   stdin_open: true
   tty: true
   restart: always
   ports:
-  - ":22"
   - "3306:3306"
   environment:
   - MYSQL_ROOT_PASSWORD=mysql
@@ -14,13 +13,12 @@ db:
   - MYSQL_DATABASE=bookstoredb
 
 web:
-  image: 172.25.1.88:5000/wildfly82mysql
+  image: org.tecris/wildfly4mysql
   hostname: web
   stdin_open: true
   tty: true
   restart: always
   ports:
-  - ":22"
   - "8080:8080"
   - "9990:9990"
   links:
