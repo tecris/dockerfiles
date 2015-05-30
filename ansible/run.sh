@@ -2,4 +2,4 @@
 
 . ./imageName
 
-docker run -d -p :22 $IMAGE_NAME
+docker run --name ansible -it $IMAGE_NAME bash
