@@ -1,10 +1,28 @@
-FROM org.tecris.ubuntu1404.util/jdk7
+FROM org.tecris/jdk8
 
 ENV REPO_URL http://192.168.1.66/repo/packages
 ENV JENKINS_VERSION 1.612
 ENV MAVEN_HOME /opt/maven
 ENV MAVEN_VERSION 3.3.1
 
+RUN echo 'root:root' |chpasswd
+
+RUN apt-get -y update
+RUN apt-get install -y openssh-server supervisor wget curl telnet git
+
+# SSH
+RUN mkdir -p /var/run/sshd
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
+RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+
+# supervisor
+RUN mkdir -p /var/log/supervisor
+ADD ssh.supervisor.conf /etc/supervisor/conf.d/ssh.conf
+RUN chown root /var/run && chown root /var/run/sshd
+RUN chmod 755 /var/run/sshd && chmod  755 /var/run
+
+# maven
 RUN wget -qO- ${REPO_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xvz -C /opt
 
 RUN apt-get install -y daemon psmisc
@@ -42,7 +60,9 @@ RUN mkdir ${MAVEN_HOME}
 RUN usermod -aG docker jenkins
 
 
-# demo stuff
-RUN mkdir -p /opt/demo/Continuous_Delivery/docker
-ADD demo/Dockerfile /opt/demo/Continuous_Delivery/docker/Dockerfile
-RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins /opt/demo
+RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins
+
+EXPOSE 22 8080
+
+CMD ["/usr/bin/supervisord"]
+
