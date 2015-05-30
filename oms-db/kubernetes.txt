@@ -1,0 +1,6 @@
+
+# create pod
+osc create -f postgres.yaml
+
+# create service
+osc create -f postgres-service.yaml
