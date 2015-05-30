@@ -1,4 +1,4 @@
-FROM org.tecris.ubuntu1404/util
+FROM ubuntu:14.04
 
 RUN echo 'root:root' |chpasswd
 
@@ -19,12 +19,7 @@ RUN service slapd start ;\
 	ldapadd -x -D cn=admin,dc=atlas,dc=org -w password -c -f front.ldif &&\
 	ldapadd -x -D cn=admin,dc=atlas,dc=org -w password -c -f more.ldif
 
-ADD ldap.supervisord.conf /etc/supervisor/conf.d/ldap.conf
-
 
 EXPOSE 22 389
 
-
-CMD ["/usr/bin/supervisord"]
-
-
+CMD slapd -h 'ldap:/// ldapi:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
