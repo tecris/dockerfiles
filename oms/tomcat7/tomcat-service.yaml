@@ -1,9 +1,14 @@
-id: tomcat
-kind: Service
 apiVersion: v1beta3
-port: 8080
-containerPort: 8080
-selector:
+kind: Service
+metadata:
+  labels:
+    name: tomcat
   name: tomcat
-labels:
-  name: tomcat
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 8080
+  # label keys and values that must match in order to receive traffic for this service
+  selector:
+    name: tomcat
+
