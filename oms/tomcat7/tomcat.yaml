@@ -10,7 +10,7 @@ spec:
     - resources:
         limits :
           cpu: 1
-      image: tecris.org:5000/omstomcat
+      image: tecris.org:5000/omstomcat7
       name: tomcat
       ports:
         - containerPort: 8080
