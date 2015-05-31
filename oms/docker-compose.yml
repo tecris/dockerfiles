@@ -1,0 +1,10 @@
+web:
+  image: org.tecris/omstomcat7
+  links:
+   - db
+  ports:
+   - "8080:8080"
+db:
+  image: org.tecris/omsdb
+  ports:
+   - "5432:5432"
