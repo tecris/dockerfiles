@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"nzwoodomsdb",
-                  "image":"tecris.org:5000/omsdb",
+                  "image":"tecris.org:5000/oms-db",
                   "ports":[
                      {
                         "containerPort":5432,
