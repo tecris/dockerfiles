@@ -1,0 +1,9 @@
+id: tomcat
+kind: Service
+apiVersion: v1beta3
+port: 8080
+containerPort: 8080
+selector:
+  name: tomcat
+labels:
+  name: tomcat

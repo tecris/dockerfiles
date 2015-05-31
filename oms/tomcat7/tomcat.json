@@ -1,0 +1,27 @@
+{
+  "id": "tomcat",
+  "kind": "Pod",
+  "apiVersion": "v1beta3",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta3",
+      "id": "tomcat",
+      "containers": [{
+        "name": "tomcat",
+        "image": "tecris.org:5000/omstomcat7",
+        "cpu": 2,
+        "ports": [{
+          "containerPort": 8080,
+          "hostPort": 8080
+        },
+        {
+          "containerPort": 9090,
+          "hostPort": 9090
+        }]
+      }]
+    }
+  },
+  "labels": {
+    "name": "tomcat"
+  }
+}
