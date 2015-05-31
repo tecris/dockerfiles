@@ -23,8 +23,6 @@ RUN adduser --no-create-home --disabled-password --gecos "" oms
 # testing user (not used currently)
 # RUN adduser --no-create-home --disabled-password --gecos "" oms-mvn
 
-#ADD postgres.supervisor.conf /etc/supervisor/conf.d/postgres.conf
-
 USER postgres
 
 ENTRYPOINT ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
