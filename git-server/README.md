@@ -9,7 +9,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
   * `$ cat ~/.ssh/id_rsa.pub >> ansible/files/authorized_keys`
 3. Run docker git-server container
   * On docker host, if /opt/git directory does not exist will be created.
-  * `$ docker run --name git-server -d -p 24:22 -v /opt/git:/opt/git/repositories org.tecris.ubuntu1404.util/git-server`
+  * `$ docker run --name git-server -d -p 24:22 -v /opt/git:/opt/git/repositories org.tecris/git-server`
   * `$ sudo chmod -R o+w /opt/git`
 4. How to create new repository
   * `$ git init --bare name_of_repo.git`
