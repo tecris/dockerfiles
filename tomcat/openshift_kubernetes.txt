@@ -1,0 +1,11 @@
+
+STEPS TO CREATE SERVICE/CONTROLLER ON OPENSHIFT
+
+# get in the container
+.)$ docker exec -it openshift bash
+
+# create controller
+.)$ osc create -f tomcat-controller.json 
+
+# create service
+.)$ osc create -f tomcat-service.yaml    
