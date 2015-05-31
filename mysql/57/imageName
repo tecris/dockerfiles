@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/mysql57
+IMAGE_NAME=tecris.org:5000/mysql57

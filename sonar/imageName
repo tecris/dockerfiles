@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/sonar
+IMAGE_NAME=tecris.org:5000/sonar

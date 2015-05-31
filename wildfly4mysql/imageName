@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/wildfly4mysql
+IMAGE_NAME=tecris.org:5000/wildfly4mysql

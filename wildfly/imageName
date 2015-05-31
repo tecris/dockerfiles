@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/wildfly
+IMAGE_NAME=tecris.org:5000/wildfly

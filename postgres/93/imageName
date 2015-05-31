@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/postgres93
+IMAGE_NAME=tecris.org:5000/postgres93

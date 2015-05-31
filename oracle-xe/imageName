@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/oraclexe
+IMAGE_NAME=tecris.org:5000/oraclexe

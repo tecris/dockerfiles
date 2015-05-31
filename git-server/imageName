@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/git-server
+IMAGE_NAME=tecris.org:5000/git-server

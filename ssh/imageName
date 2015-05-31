@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/ssh
+IMAGE_NAME=tecris.org:5000/ssh

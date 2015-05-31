@@ -1,4 +1,4 @@
-FROM tecris.org/jdk8
+FROM tecris.org:5000/jdk8
 
 ENV REPO_URL http://192.168.1.66/repo/packages
 ENV JENKINS_VERSION 1.612

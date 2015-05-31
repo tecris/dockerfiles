@@ -1,4 +1,4 @@
-FROM tecris.org/jdk8
+FROM tecris.org:5000/jdk8
 
 # based on https://github.com/sonatype/docker-nexus
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>

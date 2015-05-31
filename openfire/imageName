@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/openfire
+IMAGE_NAME=tecris.org:5000/openfire

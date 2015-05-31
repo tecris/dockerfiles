@@ -1,4 +1,4 @@
-FROM tecris.org/wildfly
+FROM tecris.org:5000/wildfly
 
 USER jboss
 
