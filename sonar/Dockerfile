@@ -1,4 +1,4 @@
-FROM org.tecris.ubuntu1404.util/jdk8
+FROM org.tecris/jdk8
 
 MAINTAINER David Gageot <david.gageot@sonarsource.com>
 
@@ -26,7 +26,7 @@ ENV SONAR_VERSION 4.5.4
 # sub   4096R/A0D97B83 2014-06-25 [expires: 2019-06-24]
 # RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys E5C67B4077ADA450D2092D4D2B2EE179F0EA05E3
 
-RUN apt-get install unzip
+RUN apt-get install -y unzip curl
 
 RUN set -x \
 	&& cd /opt \
@@ -38,6 +38,5 @@ RUN set -x \
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
-ADD sonar.supervisor.conf /etc/supervisor/conf.d/sonar.conf
 
-# ENTRYPOINT ["./bin/run.sh"]
+ENTRYPOINT ["./bin/run.sh"]
