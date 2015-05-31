@@ -2,26 +2,26 @@
    "kind":"ReplicationController",
    "apiVersion":"v1beta3",
    "metadata":{
-      "name":"tomcat",
+      "name":"omstomcat7",
       "labels":{
-         "name":"tomcat"
+         "name":"omstomcat7"
       }
    },
    "spec":{
       "replicas":1,
       "selector":{
-         "name":"tomcat"
+         "name":"omstomcat7"
       },
       "template":{
          "metadata":{
             "labels":{
-               "name":"tomcat"
+               "name":"omstomcat7"
             }
          },
          "spec":{
             "containers":[
                {
-                  "name":"tomcat",
+                  "name":"omstomcat7",
                   "image":"tecris.org:5000/omstomcat7",
                   "ports":[
                      {
