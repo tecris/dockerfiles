@@ -10,7 +10,7 @@ spec:
     - resources:
         limits :
           cpu: 1
-      image: 192.168.1.66:5000/omsdb
+      image: tecris.org:5000/omsdb
       name: postgres
       ports:
         - containerPort: 5432
