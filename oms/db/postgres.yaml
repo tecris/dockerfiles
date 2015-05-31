@@ -1,10 +1,9 @@
-# cat postgres.yaml 
 apiVersion: v1beta3
 kind: Pod
 metadata:
-  name: postgres
+  name: db
   labels:
-    name: postgres
+    name: db
 spec:
   containers:
     - resources:
