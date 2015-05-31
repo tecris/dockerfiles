@@ -1,0 +1,18 @@
+# cat postgres.yaml 
+apiVersion: v1beta3
+kind: Pod
+metadata:
+  name: postgres
+  labels:
+    name: postgres
+spec:
+  containers:
+    - resources:
+        limits :
+          cpu: 1
+      image: 192.168.1.66:5000/omsdb
+      name: postgres
+      ports:
+        - containerPort: 5432
+          name: postgres
+

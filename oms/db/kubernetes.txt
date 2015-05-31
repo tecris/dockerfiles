@@ -1,0 +1,9 @@
+
+# connect to container
+docker exec -it openshift bash
+
+# create pod
+osc create -f postgres.yaml
+
+# create service
+osc create -f postgres-service.yaml
