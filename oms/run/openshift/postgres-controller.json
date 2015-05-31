@@ -1,0 +1,38 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1beta3",
+   "metadata":{
+      "name":"nzwoodomsdb",
+      "labels":{
+         "name":"nzwoodomsdb"
+      }
+   },
+   "spec":{
+      "replicas":1,
+      "selector":{
+         "name":"nzwoodomsdb"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "name":"nzwoodomsdb"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"nzwoodomsdb",
+                  "image":"tecris.org:5000/omsdb",
+                  "ports":[
+                     {
+                        "containerPort":5432,
+                        "protocol":"TCP"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}
+
