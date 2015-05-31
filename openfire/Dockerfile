@@ -12,6 +12,6 @@ RUN wget -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb "http://www.igniterealtime
 
 RUN dpkg -i /tmp/openfire_${OPENFIRE_VERSION}_all.deb
 
-ADD openfire.supervisor.conf /etc/supervisor/conf.d/openfire.conf
-
 EXPOSE 9090 9091 5222 5223 5269 9999
+
+ENTRYPOINT ["java", "-server", "-DopenfireHome=/usr/share/openfire", "-Dopenfire.lib.dir=/usr/share/openfire/lib", "-classpath", "/usr/share/openfire/lib/startup.jar", "-jar", "/usr/share/openfire/lib/startup.jar"]

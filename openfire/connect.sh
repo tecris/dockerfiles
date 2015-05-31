@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-ssh -p $1 root@localhost
+docker exec -it openfire bash
