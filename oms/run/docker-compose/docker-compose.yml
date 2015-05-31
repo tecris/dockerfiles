@@ -1,10 +1,10 @@
 web:
-  image: tecris.org:5000/omstomcat7
+  image: tecris.org:5000/oms-tomcat7
   links:
    - db:nzwoodomsdb
   ports:
    - "8080:8080"
 db:
-  image: tecris.org:5000/omsdb
+  image: tecris.org:5000/oms-db
   ports:
    - "5432:5432"
