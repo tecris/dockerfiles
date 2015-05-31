@@ -1,4 +1,4 @@
-FROM tecris.org/tomcat7
+FROM tecris.org:5000/tomcat7
 
 ENV REPORTS_FILE=reports-33-SNAPSHOT.jar
 

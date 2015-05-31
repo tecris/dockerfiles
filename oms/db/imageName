@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org/omsdb
+IMAGE_NAME=tecris.org:5000/omsdb
