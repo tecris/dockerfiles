@@ -1,4 +1,4 @@
-FROM org.tecris/postgres93
+FROM tecris.org/postgres93
 
 USER postgres
 

@@ -1,4 +1,4 @@
-FROM org.tecris/jdk7
+FROM tecris.org/jdk7
 
 # inspired from
 # https://github.com/oskapt/docker-openfire, and,

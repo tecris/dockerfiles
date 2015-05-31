@@ -1,5 +1,5 @@
 db:
-  image: org.tecris/mysql56
+  image: tecris.org/mysql56
   hostname: db
   stdin_open: true
   tty: true
@@ -13,7 +13,7 @@ db:
   - MYSQL_DATABASE=bookstoredb
 
 web:
-  image: org.tecris/wildfly4mysql
+  image: tecris.org/wildfly4mysql
   hostname: web
   stdin_open: true
   tty: true

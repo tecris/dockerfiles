@@ -1,4 +1,4 @@
-FROM org.tecris/jdk8
+FROM tecris.org/jdk8
 
 # based on https://registry.hub.docker.com/_/tomcat/
 

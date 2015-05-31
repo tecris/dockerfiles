@@ -1,4 +1,4 @@
-FROM org.tecris/jdk8
+FROM tecris.org/jdk8
 
 MAINTAINER David Gageot <david.gageot@sonarsource.com>
 

@@ -1,4 +1,4 @@
-FROM org.tecris/ansible
+FROM tecris.org/ansible
 
 RUN echo 'root:root' |chpasswd
 
