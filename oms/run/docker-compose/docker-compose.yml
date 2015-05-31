@@ -1,7 +1,7 @@
 web:
   image: tecris.org/omstomcat7
   links:
-   - db
+   - db:nzwoodomsdb
   ports:
    - "8080:8080"
 db:
