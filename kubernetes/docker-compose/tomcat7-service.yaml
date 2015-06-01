@@ -1,0 +1,14 @@
+apiVersion: v1beta3
+kind: Service
+metadata:
+  labels:
+    name: tomcat7
+  name: tomcat7
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 8080
+  # label keys and values that must match in order to receive traffic for this service
+  selector:
+    name: tomcat7
+  sessionAffinity: ClientIP
