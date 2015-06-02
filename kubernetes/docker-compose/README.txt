@@ -33,9 +33,9 @@ k8s-master-127.0.0.1                                                            
 
  .) One liners
 
-  .) $ kubectl run-container tomcat7 --image=172.25.1.88:5000/tomcat7 --port=8080
-  .) $ kubectl expose rc tomcat7 --port=8081 --target-port=8080 --public-ip=172.25.1.130
+  .) $ kubectl run-container tomcat7 --image=192.168.1.66:5000/tomcat7 --port=8080
+  .) $ kubectl expose rc tomcat7 --port=8081 --target-port=8080 --public-ip=192.168.1.66
 
-  .) load in browser 172.25.1.130:8081
+  .) load in browser 192.168.1.66:8081
 
-     172.25.1.130 public ip of the host machine
+     192.168.1.66 public ip of the host machine

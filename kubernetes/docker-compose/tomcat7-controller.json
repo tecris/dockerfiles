@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"tomcat7",
-                  "image":"172.25.1.88:5000/tomcat7",
+                  "image":"tecris.org:5000/tomcat7",
                   "ports":[
                      {
                         "containerPort":8080,
