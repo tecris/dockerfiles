@@ -12,3 +12,5 @@ spec:
   selector:
     name: tomcat7
   sessionAffinity: ClientIP
+  publicIPs:
+    - 192.168.1.66
