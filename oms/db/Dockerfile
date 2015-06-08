@@ -3,14 +3,16 @@ FROM tecris.org:5000/postgres93
 USER postgres
 
 ADD ./oms-small-march-2015.pg /var/lib/postgresql/oms.pg
+ADD sql /var/lib/postgresql/sql
 
 RUN     /etc/init.d/postgresql start &&\
         psql --command "CREATE USER oms WITH CREATEDB;" &&\
         # pgsql is needed for pg_restore
         psql --command "CREATE USER pgsql WITH CREATEDB;" &&\
         createdb -U oms oms  &&\
+        createdb -U oms oms-mvn  &&\
         # in case an empty empty database is needed
-        # cat /var/lib/postgresql/sql/*.sql | psql -U oms oms
+        cat /var/lib/postgresql/sql/*.sql | psql -U oms oms-mvn &&\
         # restore dump
         pg_restore -v -d oms /var/lib/postgresql/oms.pg &&\
         # reset admin password to 'admin'
@@ -21,7 +23,7 @@ USER root
 RUN chown postgres:postgres /var/lib/postgresql/oms.pg
 RUN adduser --no-create-home --disabled-password --gecos "" oms
 # testing user (not used currently)
-# RUN adduser --no-create-home --disabled-password --gecos "" oms-mvn
+RUN adduser --no-create-home --disabled-password --gecos "" oms-mvn
 
 USER postgres
 
