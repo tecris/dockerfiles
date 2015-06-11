@@ -1,8 +1,4 @@
-# Collection of Dockerfile(s)
-
- - ubuntu-util provides basic utilities(ssh, wget, etc) on top of standard ubuntu image and can be seen as a base image (very likely to be used by other containers)
-
-## Cheat Sheet
+## Docker Cheat Sheet
 
 ### Create image from container
 
