@@ -2,8 +2,6 @@
 
 Based on  [Getting started][1] & [Kubernetes with docker][2]
 
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
-http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
 
 1. Start
  * ```$ ./start.sh```
