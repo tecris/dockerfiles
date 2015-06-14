@@ -1,5 +1,4 @@
-
-This is about running kubernetes on docker (single node)
+# Kubernetes on docker (single node)
 
 Based on:
 https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
