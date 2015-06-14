@@ -24,7 +24,7 @@ k8s-master-127.0.0.1                                                            
 .) Run tomcat
 
  .) Scripting
-  .) $ kubectl create -f tomcat7-service.json
+  .) $ kubectl create -f tomcat7-service.yaml
   .) $ kubectl create -f tomcat7-controller.json
   .) $ kubectl get pods -> should show one pod for tomcat
     edit tomcat7-controller.json update replicas from 1 to 3
