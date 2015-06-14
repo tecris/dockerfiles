@@ -30,6 +30,10 @@ k8s-master-127.0.0.1                                                            
     edit tomcat7-controller.json update replicas from 1 to 3
   .) $ kubectl update -f tomcat7-controller.json
   .) $ kubectl get pods -> should show three pods for tomcat
+ .) Simple commands
+  .) kubectl delete pod tomcat7-e7hxk
+   - show replica controllers
+  .) kubectl get rc 
 
  .) One liners
 
