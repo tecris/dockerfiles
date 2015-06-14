@@ -60,9 +60,13 @@ tomcat7      tomcat7        healthlink.docker/tomcat7   name=tomcat7   1
  ```
     $ kubectl delete pod tomcat7-e7hxk
  ```
-  * Delete a pod
+  * Delete tomcat7 replica controller
  ```
-    $ kubectl delete pod tomcat7-e7hxk
+    $ kubectl delete rc tomcat7
+ ```
+  * Delete tomcat7 service
+ ```
+    $ kubectl delete services tomcat7
  ```
   * Show all replica controllers
  ```
