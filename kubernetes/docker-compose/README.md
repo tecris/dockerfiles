@@ -16,13 +16,11 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  ```
      $ kubectl get pods
      POD                    IP           CONTAINER(S)         IMAGE(S)                                     HOST                  LABELS         STATUS    CREATED      MESSAGE
-k8s-master-127.0.0.1                                                                                  127.0.0.1/127.0.0.1   <none>         Running   16 minutes
-                                    scheduler            gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
-                                    apiserver            gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
-                                    controller-manager   gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
+     k8s-master-127.0.0.1                                                                                  127.0.0.1/127.0.0.1   <none>         Running   16 minutes
+                                         scheduler            gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
+                                         apiserver            gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
+                                         controller-manager   gcr.io/google_containers/hyperkube:v0.17.0                                        Running   16 minutes
  ```
-
-
 3. Run tomcat
  * Create single node cluster
  * Create service
@@ -32,8 +30,8 @@ k8s-master-127.0.0.1                                                            
  * Check service created
  ```
     $ kubectl get services tomcat7
-NAME      LABELS         SELECTOR       IP(S)          PORT(S)
-tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8080/TCP
+      NAME      LABELS         SELECTOR       IP(S)          PORT(S)
+      tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8080/TCP
                                         192.168.1.66   
  ```
  * Create replica controller
