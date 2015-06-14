@@ -1,6 +1,7 @@
 # Kubernetes on docker (single node)
 
-Based on:
+Based on  [Getting started][1] & [Kubernetes with docker][2]
+
 https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
 http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
 
@@ -42,3 +43,6 @@ k8s-master-127.0.0.1                                                            
   .) load in browser 192.168.1.66:8081
 
      192.168.1.66 public ip of the host machine
+
+[1]:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
+[2]:http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
