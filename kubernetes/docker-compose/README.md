@@ -5,7 +5,7 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
 1. Prerequisites
  * Docker
  * Docker-compose
- * [Kubectl binary][3]
+ * [Kubectl binary][3] (see [Releases][4])
 1. Start
  * ```$ ./start.sh```
 2. Test installation
@@ -86,3 +86,4 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
 [1]:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
 [2]:http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
 [3]:http://storage.googleapis.com/kubernetes-release/release/v0.18.1/bin/linux/amd64/kubectl
+[4]:https://github.com/GoogleCloudPlatform/kubernetes/releases
