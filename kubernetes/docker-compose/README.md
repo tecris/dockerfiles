@@ -44,8 +44,8 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  * Check replica controller created
  ```
    $ kubectl get rc tomcat7
-CONTROLLER   CONTAINER(S)   IMAGE(S)                    SELECTOR       REPLICAS
-tomcat7      tomcat7        healthlink.docker/tomcat7   name=tomcat7   1
+     CONTROLLER   CONTAINER(S)   IMAGE(S)                    SELECTOR       REPLICAS
+     tomcat7      tomcat7        healthlink.docker/tomcat7   name=tomcat7   1
  ```
  * Check service and controller created
  ```
