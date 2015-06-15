@@ -15,13 +15,13 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
 1. Start
  * ```$ ./start.sh```
 2. Test installation
- * 
+ * Check nodes
  ```
      $ kubectl get nodes
      NAME        LABELS    STATUS
      127.0.0.1   <none>    Ready
  ```
- * 
+ * Check pods
  ```
      $ kubectl get pods
      POD                    IP           CONTAINER(S)         IMAGE(S)                                     HOST                  LABELS         STATUS    CREATED      MESSAGE
@@ -46,7 +46,7 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  ```
     $ kubectl create -f tomcat7-service.yaml
  ```
- * Test service created:
+ * Check service created:
     - cli: 
     ```
      $ kubectl get services tomcat7
