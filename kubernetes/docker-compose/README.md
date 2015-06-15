@@ -3,6 +3,7 @@
 Based on  [Getting started][1] & [Kubernetes with docker][2]
 
 1. Prerequisites
+ * Nothing running on port 8080
  * Docker
  * Docker-compose
  * [Kubectl binary][3] (see [Releases][4])
@@ -10,8 +11,8 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
    $ wget http://storage.googleapis.com/kubernetes-release/release/v0.18.2/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl
   $ chmod +x /usr/local/bin/kubectl
   $ kubectl version
-
   ```
+  
 1. Start
  * ```$ ./start.sh```
 2. Test installation
