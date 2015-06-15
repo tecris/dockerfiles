@@ -81,15 +81,6 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
     $ kubectl get rc 
  ```
 
-Tomcat visible
-  as service @ tomcat7_service_ip:8083
-  as pod @ tomcat7_pod_ip:8083
-
- tomcat7_service_ip can be found by running 'kubectl get services tomcat7'
- Actually there could be multiple tomcat7 pods. To find tomcat7_pod_ip run 'kubectl get pods' and read IP value
-
-
-
 [1]:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
 [2]:http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
 [3]:http://storage.googleapis.com/kubernetes-release/release/v0.18.2/bin/linux/amd64/kubectl
