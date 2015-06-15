@@ -47,13 +47,13 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
     $ kubectl create -f tomcat7-service.yaml
  ```
  * Test service created:
-    - in browser: ```10.0.0.191:8083```
     - cli: 
     ```
      $ kubectl get services tomcat7
        NAME      LABELS         SELECTOR       IP(S)          PORT(S)
       tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8083/TCP
     ```
+    - in browser: ```10.0.0.191:8083```
  * Check pod
  ```
     $ kubectl get pods -> should show one pod for tomcat
