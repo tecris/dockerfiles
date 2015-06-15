@@ -32,17 +32,6 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  ```
 3. Run tomcat
  * Create single node cluster
- * Create service
- ```
-    $ kubectl create -f tomcat7-service.yaml
- ```
- * Check service created
- ```
-    $ kubectl get services tomcat7
-      NAME      LABELS         SELECTOR       IP(S)          PORT(S)
-      tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8080/TCP
-                                        192.168.1.66   
- ```
  * Create replica controller
  ```
     $ kubectl create -f tomcat7-controller.json
@@ -53,7 +42,19 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
      CONTROLLER   CONTAINER(S)   IMAGE(S)                    SELECTOR       REPLICAS
      tomcat7      tomcat7        healthlink.docker/tomcat7   name=tomcat7   1
  ```
- * Check service and controller created
+ * Create service
+ ```
+    $ kubectl create -f tomcat7-service.yaml
+ ```
+ * Test service created:
+    - in browser: ```10.0.0.191:8083```
+    - cli: 
+    ```
+     $ kubectl get services tomcat7
+       NAME      LABELS         SELECTOR       IP(S)          PORT(S)
+      tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8083/TCP
+    ```
+ * Check pod
  ```
     $ kubectl get pods -> should show one pod for tomcat
  ```
@@ -80,7 +81,7 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
     $ kubectl get rc 
  ```
 
- Tomcat visible
+Tomcat visible
   as service @ tomcat7_service_ip:8083
   as pod @ tomcat7_pod_ip:8083
 
