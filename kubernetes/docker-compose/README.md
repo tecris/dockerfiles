@@ -79,17 +79,17 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  ```
     $ kubectl get rc 
  ```
-5. One liners
- ```
-    $ kubectl run-container tomcat7 --image=192.168.1.66:5000/tomcat7 --port=8080
-    $ kubectl expose rc tomcat7 --port=8081 --target-port=8080 --public-ip=192.168.1.66
- ```
 
- Tomcat visible @ 192.168.1.66:8081
+ Tomcat visible
+  as service @ tomcat7_service_ip:8083
+  as pod @ tomcat7_pod_ip:8083
 
-     192.168.1.66 public ip of the host machine
+ tomcat7_service_ip can be found by running 'kubectl get services tomcat7'
+ Actually there could be multiple tomcat7 pods. To find tomcat7_pod_ip run 'kubectl get pods' and read IP value
+
+
 
 [1]:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/docker.md
 [2]:http://sebgoa.blogspot.co.nz/2015/04/1-command-to-kubernetes-with-docker.html
-[3]:http://storage.googleapis.com/kubernetes-release/release/v0.18.1/bin/linux/amd64/kubectl
+[3]:http://storage.googleapis.com/kubernetes-release/release/v0.18.2/bin/linux/amd64/kubectl
 [4]:https://github.com/GoogleCloudPlatform/kubernetes/releases
