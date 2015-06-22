@@ -1,0 +1,38 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"tomcat7",
+      "labels":{
+         "name":"tomcat7"
+      }
+   },
+   "spec":{
+      "replicas":1,
+      "selector":{
+         "name":"tomcat7"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "name":"tomcat7"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"tomcat7",
+                  "image":"tecris.org:5000/tomcat7",
+                  "ports":[
+                     {
+                        "containerPort":8080,
+                        "protocol":"TCP"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}
+

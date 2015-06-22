@@ -1,0 +1,148 @@
+#cloud-config
+
+---
+write-files:
+  - path: /etc/conf.d/nfs
+    permissions: '0644'
+    content: |
+      OPTS_RPC_MOUNTD=""
+  - path: /opt/bin/wupiao
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
+      [ -n "$1" ] && \
+        until curl -o /dev/null -sIf http://${1}; do \
+          sleep 1 && echo .;
+        done;
+      exit $?
+  - __PROXY_LINE__path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    __PROXY_LINE__owner: core:core
+    __PROXY_LINE__permissions: '0644'
+    __PROXY_LINE__content: |
+      __PROXY_LINE__[Service]
+      __PROXY_LINE__Environment="HTTP_PROXY=__HTTP_PROXY__" "HTTPS_PROXY=__HTTPS_PROXY__" "NO_PROXY=__NO_PROXY__"
+
+coreos:
+  etcd2:
+    name: __NAME__
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    advertise-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    initial-cluster: __ETCD_SEED_CLUSTER__
+    proxy: on
+  fleet:
+    public-ip: $public_ipv4
+    metadata: "role=minion"
+  flannel:
+    interface: $public_ipv4
+  units:
+    - __PROXY_LINE__name: set-http-proxy.service
+      __PROXY_LINE__command: start
+      __PROXY_LINE__content: |
+        __PROXY_LINE__[Unit]
+        __PROXY_LINE__Description=Set HTTP proxy
+        __PROXY_LINE__DefaultDependencies=no
+        __PROXY_LINE__After=systemd-sysctl.service
+        __PROXY_LINE__Before=sysinit.target
+        __PROXY_LINE__[Service]
+        __PROXY_LINE__Type=oneshot
+        __PROXY_LINE__ExecStartPre=/usr/bin/systemctl set-environment HTTP_PROXY=__HTTP_PROXY__
+        __PROXY_LINE__ExecStartPre=/usr/bin/systemctl set-environment HTTPS_PROXY=__HTTP_PROXY__
+        __PROXY_LINE__ExecStartPre=/usr/bin/systemctl set-environment NO_PROXY=__NO_PROXY__
+        __PROXY_LINE__ExecStartPre=/usr/bin/systemctl set-environment http_proxy=__HTTP_PROXY__
+        __PROXY_LINE__ExecStartPre=/usr/bin/systemctl set-environment https_proxy=__HTTP_PROXY__
+        __PROXY_LINE__ExecStart=/usr/bin/systemctl set-environment no_proxy=__NO_PROXY__
+        __PROXY_LINE__[Install]
+        __PROXY_LINE__WantedBy=multi-user.target
+    - name: rpcbind.service
+      enable: true
+      command: start
+    - name: rpc-statd.service
+      enable: true
+      command: start
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=https://github.com/kelseyhightower/setup-network-environment
+        Requires=network-online.target
+        After=network-online.target
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/wget -P /opt/bin http://172.25.1.130:88/repo/iso/k8/0.19.0/setup-network-environment
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+        ExecStart=/opt/bin/setup-network-environment
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: flanneld.service
+      command: start
+      drop-ins:
+        - name: 50-network-config.conf
+          content: |
+            [Unit]
+            Requires=etcd2.service
+            [Service]
+            ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config '{"Network":"10.244.0.0/16", "Backend": {"Type": "vxlan"}}'
+    - name: fleet.service
+      command: start
+    - name: docker.service
+      command: start
+      drop-ins:
+        - name: 51-docker-mirror.conf
+          content: |
+            [Unit]
+            # making sure that flanneld finished startup, otherwise containers
+            # won't land in flannel's network...
+            Requires=flanneld.service
+            After=flanneld.service
+            [Service]
+            Environment='DOCKER_OPTS=--registry-mirror=http://$private_ipv4:5000 --insecure-registry=172.25.1.130/24'
+            ExecStartPre=/opt/bin/wupiao __MASTER_IP__:5000
+    - name: kube-proxy.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Proxy
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        [Service]
+        ExecStartPre=/usr/bin/wget -P /opt/bin http://172.25.1.130:88/repo/iso/k8/0.19.0/kube-proxy
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy
+        ExecStartPre=/opt/bin/wupiao __MASTER_IP__:8080
+        ExecStart=/opt/bin/kube-proxy \
+          --master=__MASTER_IP__:8080 \
+          --logtostderr=true
+        Restart=always
+        RestartSec=10
+    - name: kube-kubelet.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Kubelet
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        [Service]
+        EnvironmentFile=/etc/network-environment
+        ExecStartPre=/usr/bin/wget -P /opt/bin http://172.25.1.130:88/repo/iso/k8/0.19.0/kubelet
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet
+        ExecStartPre=/usr/bin/mkdir -p /opt/kubernetes/manifests/
+        ExecStartPre=/opt/bin/wupiao __MASTER_IP__:8080
+        ExecStart=/opt/bin/kubelet \
+          --address=0.0.0.0 \
+          --port=10250 \
+          --hostname_override=$public_ipv4 \
+          --api_servers=__MASTER_IP__:8080 \
+          --cloud_provider=__CLOUDPROVIDER__ \
+          --allow_privileged=true \
+          --cluster_dns=10.100.0.10 \
+          --cluster_domain=__DNS_DOMAIN__ \
+          --logtostderr=true \
+          --config=/opt/kubernetes/manifests/ \
+          --cadvisor_port=4194 \
+          --healthz_bind_address=0.0.0.0 \
+          --healthz_port=10248
+        Restart=always
+        RestartSec=10
+        WorkingDirectory=/root/
+  update:
+    group: __CHANNEL__
+    reboot-strategy: off
