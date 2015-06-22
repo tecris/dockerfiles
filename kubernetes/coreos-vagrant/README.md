@@ -13,7 +13,7 @@ Based on  [Kubernetes coreos vagrant cluster][1]
   $ wget -c http://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kubectl
   ```
 1. Start
- * ```$ $ time NUM_INSTANCES=6 vagrant up```
+ * ```$ NUM_INSTANCES=2 vagrant up```
 2. Test installation
  * Check nodes
  ```
