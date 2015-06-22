@@ -10,7 +10,7 @@ Based on  [Kubernetes coreos vagrant cluster][1]
   $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kube-scheduler
   $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kube-proxy
   $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kubelet
-  $ wget -c http://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kubectl
+  $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kubectl
   ```
 1. Start
  * ```$ NUM_INSTANCES=2 vagrant up```
