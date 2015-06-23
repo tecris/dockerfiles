@@ -4,8 +4,8 @@ Based on  [Kubernetes coreos vagrant cluster][1]
 
 
 1. Prerequisites
- * Vagrant 
- * Virtual Box
+ * Vagrant (tested with v1.7.2)
+ * Virtual Box (tested with v4.3.26)
  * Download coreos vagrant box and add to vagrant
  ```
  $ wget -c http://alpha.release.core-os.net/amd64-usr/717.0.0/coreos_production_vagrant.box
