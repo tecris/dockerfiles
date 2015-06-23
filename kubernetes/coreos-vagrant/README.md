@@ -2,8 +2,13 @@
 
 Based on  [Kubernetes coreos vagrant cluster][1]
 
-1. Prerequisites
- * Download kubernetes binaries (this is just 'network' optimization) and serve them locally 
+1. Prerequisites (cache binaries)
+ * Download coreos vagrant box and add to vagrant
+ ```
+ $ wget -c http://alpha.release.core-os.net/amd64-usr/717.0.0/coreos_production_vagrant.box
+ $ vagrant box add coreos-717.0.0 coreos_production_vagrant.box
+ ```
+ * Download kubernetes binaries
   ```
   $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.0/bin/linux/amd64/kube-apiserver
   $ wget -c https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kube-controller-manager
