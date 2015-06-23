@@ -57,9 +57,9 @@ Based on  [Kubernetes coreos vagrant cluster][1]
     ```
      $ kubectl -s 172.17.8.101:8080 get services tomcat7
        NAME      LABELS         SELECTOR       IP(S)          PORT(S)
-      tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8083/TCP
+      tomcat7   name=tomcat7   name=tomcat7   10.0.0.191     8080/TCP
     ```
-    - in browser: ```10.0.0.191:8083```
+    - in browser: ```10.0.0.191:8080```
  * Check pod
  ```
     $ kubectl -s 172.17.8.101:8080 get pods
