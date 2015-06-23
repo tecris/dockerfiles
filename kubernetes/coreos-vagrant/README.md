@@ -62,12 +62,15 @@ Based on  [Kubernetes coreos vagrant cluster][1]
     - in browser: ```10.0.0.191:8083```
  * Check pod
  ```
-    $ kubectl -s 172.17.8.101:8080 get pods -> should show one pod for tomcat
+    $ kubectl -s 172.17.8.101:8080 get pods
  ```
- * Update cluster to 3 nodes (edit tomcat7-controller.json change replica from 1 to 3)
+ * Update cluster to 3 pods
  ```
-    $ kubectl -s 172.17.8.101:8080 update -f tomcat7-controller.json
-    $ kubectl -s 172.17.8.101:8080 get pods -> should show three pods for tomcat
+    $ kubectl -s 172.17.8.101:8080 scale --replicas=3 rc tomcat7
+ ```
+ * Check number of pods
+ ```
+    $ kubectl -s 172.17.8.101:8080 get pods
  ```
 4. Simple commands
   * Delete a pod
