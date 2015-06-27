@@ -7,7 +7,7 @@
 2. Import tar-ed container
   - `$ cat container_db.tar |docker import - terra/container`
 
- ### Backup/Restore image
+### Backup/Restore image
 
 1. Save image as a tar file
   - `$ docker save image_name > image_file.tar`
