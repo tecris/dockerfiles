@@ -1,0 +1,1 @@
+JAVA_OPTS="$JAVA_OPTS -Ddb_url=192.168.1.66"
