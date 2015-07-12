@@ -1,0 +1,10 @@
+TRUNCATE inventory_values CASCADE;
+TRUNCATE order_inventory CASCADE;
+TRUNCATE backorders CASCADE;
+TRUNCATE orderset_orders CASCADE;
+TRUNCATE hardstock_values CASCADE;
+TRUNCATE order_hardstock CASCADE;
+TRUNCATE order_charges CASCADE;
+TRUNCATE orders CASCADE;
+DELETE FROM hardstock WHERE state = 'Cancelled';
+TRUNCATE inventory CASCADE;
