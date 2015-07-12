@@ -1,6 +1,6 @@
 FROM tecris.org:5000/tomcat7
 
-ENV REPORTS_FILE=reports-33-SNAPSHOT.jar
+ENV REPORTS_FILE=reports-34-SNAPSHOT.jar
 
 RUN mkdir -p /opt/apps/nzwoms/jasperreports
 RUN mkdir -p /opt/apps/nzwoms/config
