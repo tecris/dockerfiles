@@ -2,7 +2,7 @@ FROM tecris.org:5000/postgres93
 
 USER postgres
 
-ADD ./cwoms-12072015-truncated.pg /var/lib/postgresql/oms.pg
+ADD ./oms-12072015-truncated.pg /var/lib/postgresql/oms.pg
 
 RUN     /etc/init.d/postgresql start &&\
         psql --command "CREATE USER oms WITH CREATEDB;" &&\
