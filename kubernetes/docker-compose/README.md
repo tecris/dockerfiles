@@ -59,10 +59,14 @@ Based on  [Getting started][1] & [Kubernetes with docker][2]
  ```
     $ kubectl get pods -> should show one pod for tomcat
  ```
- * Update cluster to 3 nodes (edit tomcat7-controller.json change replica from 1 to 3)
+ * Scale cluster to 3 pods 
  ```
-    $ kubectl update -f tomcat7-controller.json
-    $ kubectl get pods -> should show three pods for tomcat
+    $ kubectl scale rc tomcat7 --replicas=3
+ ```
+    - check no of replicas/pods: 
+ ```
+    $ kubectl get pods
+    $ kubectl get rc tomcat7
  ```
 4. Simple commands
   * Delete a pod
