@@ -9,9 +9,8 @@ spec:
     # the port that this service should serve on
     - port: 8083
       targetPort: 8080
+      nodePort: 30001
   # label keys and values that must match in order to receive traffic for this service
   selector:
     name: tomcat8
-  sessionAffinity: ClientIP
-  publicIPs:
-    - 192.168.1.66
+  type: NodePort
