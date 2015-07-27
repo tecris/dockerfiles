@@ -1,0 +1,23 @@
+
+https://github.com/docker/distribution/blob/master/docs/deploying.md
+
+ -- Create self-signed certificate
+mkdir -p certs && openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+    -x509 -days 365 -out certs/domain.crt
+
+
+FQDN used when creating certificate: docker.nuc
+
+ -- Configure docker to trust it
+mkdir -p /etc/docker/certs.d/docker.nuc:5000
+cp domain.crt /etc/docker/certs.d/docker.nuc:5000/ca.crt
+
+ -- Use docker-compose to facilitate managing your Registry configuration.
+
+$ mkdir /usr/local/docker/certs
+$ cp certs/* /usr/local/docker/certs/
+
+$ docker-compose up -d
+
+
