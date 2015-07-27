@@ -11,7 +11,7 @@ FQDN used when creating certificate: docker.nuc
 
  -- Configure docker to trust it
 mkdir -p /etc/docker/certs.d/docker.nuc:5000
-cp domain.crt /etc/docker/certs.d/docker.nuc:5000/ca.crt
+cp certs/domain.crt /etc/docker/certs.d/docker.nuc:5000/ca.crt
 
  -- Use docker-compose to facilitate managing your Registry configuration.
 
