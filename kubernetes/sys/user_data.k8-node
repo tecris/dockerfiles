@@ -1,0 +1,112 @@
+#cloud-config
+write-files:
+  - path: /opt/bin/wupiao
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      # [w]ait [u]ntil [p]ort [i]s [a]ctually [o]pen
+      [ -n "$1" ] && [ -n "$2" ] && while ! curl --output /dev/null \
+        --silent --head --fail \
+        http://${1}:${2}; do sleep 1 && echo -n .; done;
+      exit $?
+
+hostname: antifraud-2
+users:
+  - name: antifraud
+    groups:
+      - sudo
+      - docker
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDK+b0zWimAcJfNPFcWMytWupL6a+fabCcD1TRBK5U4xDJMFnFtHbHR2Xm0UcmK86P2Rh5LIyCHTBY4QP5dtIsLkhg+7o06n5ojxGZMRgZLaTDH851LcOArjxJd7/bcWEN7ayLvtU/AqAaRi6npOvaFF4baAFkYNL1Qt+/2HVQzu/SMO4a0WbsUNUNcmnDfNzdWpQX10I7oSTASRP+lxE4TVKRx9K5PC4YhxFr8nFLYKRYNI9J6eLb3XV1GUn/f67Mz7AdPnVPyakO6MUA7TP200JYigoKdgKOkWuF4gR+CocwNZaXyYP7CoA0SuHpSO1mFx7xRmqueGfeTFgsfrkC1Rbv/pb8tDQjJp1TDFSzuBHI4D1wLzPCMtEXo+nxV+95H2j1M8nqz1LtJFL2MHAXQnA2pI54BO54B4HB5w4ewJ8iI72zh6Rkl4hkm9Bzsbg5QetNFviouQN/OFcsnY1YbMHRvPG8BI1lkQb86x4t4qxHqikRYQ4qKX9XEGQA7lKBMGXth5vyuBQH4u5gxQ959bkUmXVSonXfNMo8eorw8r4zYXKaF9qsLLelj3xbCK3xy6C7gbpzqRuQb0S9Vf3PVswKzpXaMmB4zr6DtrYTa3UD/VwMK11+Eaj//Swh5ZhU9utgC0HF7cqArGhZp0j6seaTNhOCqAg6QPu9isXGeNQ== alex@transpaygo.com
+
+coreos:
+  etcd2:
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    advertise-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    initial-cluster: master=http://176.31.244.6:2380
+    proxy: on
+  fleet:
+    public-ip: 37.59.43.7
+    metadata: "role=node"
+  units:
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=https://github.com/kelseyhightower/setup-network-environment
+        Requires=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/setup-network-environment -z /opt/bin/setup-network-environment https://github.com/kelseyhightower/setup-network-environment/releases/download/v1.0.0/setup-network-environment
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+        ExecStart=/opt/bin/setup-network-environment
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: etcd2.service
+      command: start
+    - name:  systemd-networkd.service
+      command: restart
+    - name: fleet.service
+      command: start
+    - name: flanneld.service
+      command: start
+      drop-ins:
+        - name: 50-network-config.conf
+          content: |
+            [Unit]
+            Requires=etcd2.service
+            [Service]
+            ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config '{"Network":"10.244.0.0/16", "Backend": {"Type": "vxlan"}}'
+    - name: docker.service
+      command: start
+    - name: kube-proxy.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Proxy
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
+
+        [Service]
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kube-proxy
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy
+        # wait for kubernetes master to be up and ready
+        ExecStartPre=/opt/bin/wupiao 176.31.244.6 8080
+        ExecStart=/opt/bin/kube-proxy \
+        --master=http://176.31.244.6:8080 \
+        --logtostderr=true
+        Restart=always
+        RestartSec=10
+    - name: kube-kubelet.service
+      command: start
+      content: |
+        [Unit]
+        Description=Kubernetes Kubelet
+        Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
+
+        [Service]
+        EnvironmentFile=/etc/network-environment
+        ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet httphttps://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubelet
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet
+        # wait for kubernetes master to be up and ready
+        ExecStartPre=/opt/bin/wupiao 176.31.244.6 8080
+        ExecStart=/opt/bin/kubelet \
+        --address=0.0.0.0 \
+        --port=10250 \
+        --api_servers=http://176.31.244.6:8080 \
+        --allow_privileged=true \
+        --logtostderr=true \
+        --cadvisor_port=4194 \
+        --healthz_bind_address=0.0.0.0 \
+        --healthz_port=10248
+        Restart=always
+        RestartSec=10
+  update:
+    group: alpha
+    reboot-strategy: off
