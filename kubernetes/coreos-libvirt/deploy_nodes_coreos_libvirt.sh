@@ -17,7 +17,7 @@ if ! [[ $1 =~ ^[0-9]+$ ]]; then
 fi
 
 LIBVIRT_PATH=/var/lib/libvirt/images/coreos
-USER_DATA_TEMPLATE=$LIBVIRT_PATH/user_data
+USER_DATA_TEMPLATE=$LIBVIRT_PATH/node_user_data
 ETCD_DISCOVERY=$(curl -s "https://discovery.etcd.io/new?size=$1")
 RAM=1024
 CPUs=1
@@ -46,7 +46,7 @@ for SEQ in $(seq 1 $1); do
                 qemu-img create -f qcow2 -b $LIBVIRT_PATH/coreos_production_qemu_image.img $LIBVIRT_PATH/$COREOS_HOSTNAME.qcow2
         fi
 
-        sed "s#%HOSTNAME%#$COREOS_HOSTNAME#g;s#%DISCOVERY%#$ETCD_DISCOVERY#g" $LIBVIRT_PATH/user_data > $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest/user_data
+        sed "s#%HOSTNAME%#$COREOS_HOSTNAME#g;s#%DISCOVERY%#$ETCD_DISCOVERY#g" $LIBVIRT_PATH/node_user_data > $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest/user_data
 
         virt-install --connect qemu:///system --import --name $COREOS_HOSTNAME --ram $RAM --vcpus $CPUs --os-type=linux --os-variant=virtio26 --disk path=$LIBVIRT_PATH/$COREOS_HOSTNAME.qcow2,format=qcow2,bus=virtio --filesystem $LIBVIRT_PATH/$COREOS_HOSTNAME/,config-2,type=mount,mode=squash --vnc --noautoconsole
 done
