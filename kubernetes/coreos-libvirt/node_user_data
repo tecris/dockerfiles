@@ -11,9 +11,8 @@ write-files:
       exit $?
   - path: /etc/systemd/system/docker.service.d/50-insecure-registry.conf
     content: |
-        [Service]
-        Environment='DOCKER_OPTS=--insecure-registry="tecris.org"'
-
+      [Service]
+      Environment='DOCKER_OPTS=--insecure-registry="docker.nuc" --insecure-registry="docker.nuc:5000"'
 
 ssh_authorized_keys:
  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8qlWJPi5evOvB1/1m9nMaSc9tf1Phq8npyY8TgK7dnn/GmHzvQMF+dAZCcwpVkr8cr8GJHcPlIXDix+lLJ8Ow1Vmh4K9n/lp5pXnKn4gxTxp0Ox11zAZu+WsTP0rl8iAjBoVe20MI64Ni1M4kdXMe7FFCS+tsveWoG09KMDbMR3SxmPHdt6mPpZhJM0e0fs/zkMbxbwH/muxnpH7Lr/569OOvC+5tFmKHa6+ZLGrU4s5KSJSTI8DyH99Z+z92ctMagyTgGrc5fK/LU2na7fpKpO+iodxLaOBjTH+duHc/qO6f/yez92wvflMqCQyRyAa+GnrjAMD20JpcRhBbJ1er eugen@cristea.org
