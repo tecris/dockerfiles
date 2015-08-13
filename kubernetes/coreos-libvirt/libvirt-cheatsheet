@@ -57,7 +57,7 @@ Configuration to allow external machines to connect to guests.
     $ sudo route add -net 192.168.123.0 netmask 255.255.255.0 gw 192.168.1.73
     all the packets addressed to 192.168.123.* network will be forwarded via the 192.168.1.73 interface, which then delivers the packets to the addressed machine.
 
-  2.1) add routes that both subnet 192.168.12[2,3].* can reach outside. These routes had to be added in the gateway used to go outside.
+  2.1) add routes that both subnet 192.168.12[2,3].* can reach outside. These routes had to be added in the gateway used by machines A and B to go outside.
     
 
 
