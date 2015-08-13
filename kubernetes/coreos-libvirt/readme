@@ -1,0 +1,3 @@
+based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
+
+Kubernetes running on coreos, that in turn is virualized with libvirt.
