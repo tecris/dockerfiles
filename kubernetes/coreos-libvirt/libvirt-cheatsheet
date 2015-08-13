@@ -16,39 +16,53 @@ cat /var/lib/libvirt/dnsmasq/default.leases
 
 
 
-==== N E T W O R K I N G ====
+==== N E T W O R K I N G (virtual in routed mode) ====
 http://wiki.libvirt.org/page/VirtualNetworking
+
+machine A - 192.168.1.72
+libvirt net - 192.168.122.*
+
+machine B - 192.168.1.73
+libvirt net - 192.168.123.*
 
 Configuration to allow external machines to connect to guests.
 
-1) Configure virtual switch to use Routed mode
-2) Add routes in the physical network (this is required as no other hosts know about the subnet created by virtual switch)
+1) Configure virtual switch
 
-
-1) Configure virtual switch to use Routed mode
-
- .) edit configuration
+ 1.1) edit configuration
   # virsh net-edit default
+    1.1.1) use Routed mode (on each machine)
 
-   and change forward mode from nat to route
-   <forward mode='nat'/>
-   becomes
-   <forward mode='route'/>
-
- .) stop network:
+      change forward mode from nat(default mode) to route
+      <forward mode='nat'/>
+      becomes
+      <forward mode='route'/>
+    
+    1.1.2) on machine B edit subnet to 192.168.123
+  
+ 1.2) stop network:
   # virsh net-destroy default
 
- .) start network:
+ 1.3) start network:
   # virsh net-start default
 
-2) Add route
 
-http://www.thegeekstuff.com/2012/04/route-examples/
+2) Add routes in the physical network (this is required as no other hosts know about the subnet created by virtual switch)
+  2.1) add routes that subnet 192.168.122.* can reach 192.168.123.* and vice-versa.
+    http://www.thegeekstuff.com/2012/04/route-examples/
 
-$ route add -net 192.168.3.0 netmask 255.255.255.0 gw 192.168.3.10
-all the packets addressed to 192.168.3.* network will be forwarded via the 192.168.3.10 interface, which then delivers the packets to the addressed machine.
+    $ sudo route add -net 192.168.122.0 netmask 255.255.255.0 gw 192.168.1.72
+    all the packets addressed to 192.168.122.* network will be forwarded via the 192.168.1.72 interface, which then delivers the packets to the addressed machine.
+
+    $ sudo route add -net 192.168.123.0 netmask 255.255.255.0 gw 192.168.1.73
+    all the packets addressed to 192.168.123.* network will be forwarded via the 192.168.1.73 interface, which then delivers the packets to the addressed machine.
+
+  2.1) add routes that both subnet 192.168.12[2,3].* can reach outside. These routes had to be added in the gateway used to go outside.
+    
 
 
 
 
 
+https://help.ubuntu.com/lts/serverguide/libvirt.html
+https://help.ubuntu.com/community/KVM/Networking#bridgednetworking
