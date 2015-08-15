@@ -1,13 +1,8 @@
 ## Kubernetes on CoreOS (virtualized on Ubuntu with libvirt)
 
-
-based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
-
-Setup:
-  * Ubuntu 14.04 installed on 2 physical machines
-  * CoreOS cluster running with libvirt on Ubuntu
-  * Kubernetes installed on CoreOS cluster
-
+- Kubernetes installed on CoreOS cluster
+- CoreOS cluster running with libvirt on Ubuntu 14.04
+- Ubuntu 14.04 installed on 2 physical machines
 
 1. Ubuntu
  - 2 physical machines with Ubuntu 14.04
@@ -43,3 +38,6 @@ Setup:
  - 192.168.1.73 should have libvirt subnet - 192.168.123.*
 
 1. CoreOS
+
+
+based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
