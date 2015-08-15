@@ -32,7 +32,7 @@ if [ ! -f $USER_DATA_TEMPLATE ]; then
 fi
 
 for SEQ in $(seq 1 $1); do
-        COREOS_HOSTNAME="node$SEQ"
+        COREOS_HOSTNAME="node-nuc$SEQ"
 
         if [ ! -d $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest ]; then
                 mkdir -p $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest || (echo "Can not create $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest directory" && exit 1)
