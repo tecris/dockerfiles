@@ -67,6 +67,14 @@
     get the ip address of the kubernetes master
     $ cat /var/lib/libvirt/dnsmasq/default.leases
     ```
+ - Start 3 kubernetes nodes on 192.168.1.73
+
+    ```
+    $ cp deploy_nodes_coreos_libvirt.sh node_user_data  /var/lib/libvirt/images/coreos
+    $ cd /var/lib/libvirt/images/coreos
+    $ replace master_ip with kubernetes master ip address in node_user_data
+    $ sudo ./deploy_nodes_coreos_libvirt.sh a 3
+    ```
  
 
 
