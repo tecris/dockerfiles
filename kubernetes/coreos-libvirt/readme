@@ -1,0 +1,12 @@
+based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
+
+Kubernetes running on coreos, that in turn is virualized with libvirt.
+libvirt networking: virtual in routed mode
+
+Setup: 2(two) physical machines:
+
+machine A - 192.168.1.72
+libvirt subnet - 192.168.122.*
+
+machine B - 192.168.1.73
+libvirt subnet - 192.168.123.*
