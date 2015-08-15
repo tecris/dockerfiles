@@ -63,6 +63,6 @@
 
 
 
+References
 
-
-based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
+[CoreOS with libvirt](https://coreos.com/os/docs/latest/booting-with-libvirt.html)
