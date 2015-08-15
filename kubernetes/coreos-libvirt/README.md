@@ -41,6 +41,19 @@
  - 192.168.1.73 should have libvirt subnet - 192.168.123.*
 
 1. CoreOS
+ - Download image
+
+    ```
+    $ mkdir -p /var/lib/libvirt/images/coreos
+    $ cd /var/lib/libvirt/images/coreos
+    $ wget http://alpha.release.core-os.net/amd64-usr/774.0.0/coreos_production_qemu_image.img.bz2
+    $ bzip2 -d coreos_production_qemu_image.img.bz2
+    ```
+ 
+
+
+
+
 
 
 based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
