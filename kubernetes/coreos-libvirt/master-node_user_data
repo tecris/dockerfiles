@@ -154,12 +154,11 @@ coreos:
         Documentation=https://github.com/GoogleCloudPlatform/kubernetes
         Requires=setup-network-environment.service
         After=setup-network-environment.service
+        After=kube-scheduler.service
 
         [Service]
         ExecStartPre=/usr/bin/curl -L -o /opt/bin/kube-proxy -z /opt/bin/kube-proxy http://192.168.1.72/repo/packages/k8/1.0.1/kube-proxy
         ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-proxy
-        # wait for kubernetes master to be up and ready
-        ExecStartPre=/opt/bin/wupiao master 8080
         ExecStart=/opt/bin/kube-proxy \
         --master=http://master:8080 \
         --logtostderr=true
@@ -173,13 +172,12 @@ coreos:
         Documentation=https://github.com/GoogleCloudPlatform/kubernetes
         Requires=setup-network-environment.service
         After=setup-network-environment.service
+        After=kube-scheduler.service
 
         [Service]
         EnvironmentFile=/etc/network-environment
         ExecStartPre=/usr/bin/curl -L -o /opt/bin/kubelet -z /opt/bin/kubelet http://192.168.1.72/repo/packages/k8/1.0.1/kubelet
         ExecStartPre=/usr/bin/chmod +x /opt/bin/kubelet
-        # wait for kubernetes master to be up and ready
-        ExecStartPre=/opt/bin/wupiao master 8080
         ExecStart=/opt/bin/kubelet \
         --address=0.0.0.0 \
         --port=10250 \
