@@ -49,7 +49,7 @@
     $ wget http://alpha.release.core-os.net/amd64-usr/774.0.0/coreos_production_qemu_image.img.bz2
     $ bzip2 -d coreos_production_qemu_image.img.bz2
     ```
- - Start kubernetes master
+ - Start kubernetes master on 192.168.1.73
 
     ```
     $ cp deploy_master-node_coreos_libvirt.sh master-node_user_data  /var/lib/libvirt/images/coreos
