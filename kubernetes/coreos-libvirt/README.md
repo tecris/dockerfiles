@@ -6,7 +6,7 @@ based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
  - 2 physical machines with Ubuntu 14.04
     * machine A - 192.168.1.72
     * machine B - 192.168.1.73
-2. Install libvirt
+1. Install libvirt
 ```
     $ sudo apt-get install dnsmasq ebtables qemu-kvm qemu virt-manager virt-viewer libvirt-bin
     $ sudo usermod -a -G libvirtd $USER`
