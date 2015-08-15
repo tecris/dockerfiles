@@ -27,10 +27,10 @@ based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
   ```
  - Restart libvirt network
 
-  ```
-   $ virsh net-destroy default
-   $ virsh net-start default
-  ```
+    ```
+    $ virsh net-destroy default
+    $ virsh net-start default
+    ```
  - 192.168.1.72 should have libvirt subnet - 192.168.122.*
  - 192.168.1.73 should have libvirt subnet - 192.168.123.*
 
