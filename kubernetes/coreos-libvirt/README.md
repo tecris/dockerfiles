@@ -1,8 +1,15 @@
-## Kubernetes with CoreOS (virtualized on Ubuntu with libvirt)
+## Kubernetes on CoreOS (virtualized on Ubuntu with libvirt)
+
 
 based on https://coreos.com/os/docs/latest/booting-with-libvirt.html
 
-1. Prerequisites
+Setup:
+  * Ubuntu 14.04 installed on 2 physical machines
+  * CoreOS cluster running with libvirt on Ubuntu
+  * Kubernetes installed on CoreOS cluster
+
+
+1. Ubuntu
  - 2 physical machines with Ubuntu 14.04
     * machine A - 192.168.1.72
     * machine B - 192.168.1.73
