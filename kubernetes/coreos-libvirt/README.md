@@ -49,6 +49,15 @@
     $ wget http://alpha.release.core-os.net/amd64-usr/774.0.0/coreos_production_qemu_image.img.bz2
     $ bzip2 -d coreos_production_qemu_image.img.bz2
     ```
+ - Start kubernetes master
+
+    ```
+    $ cp deploy_master-node_coreos_libvirt.sh master-node_user_data  /var/lib/libvirt/images/coreos
+    $ cd /var/lib/libvirt/images/coreos
+    $ sudo ./deploy_master-node_coreos_libvirt.sh
+    get the ip address of the kubernetes master
+    $ cat /var/lib/libvirt/dnsmasq/default.leases
+    ```
  
 
 
