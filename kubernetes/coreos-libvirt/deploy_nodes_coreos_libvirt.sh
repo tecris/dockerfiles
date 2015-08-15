@@ -1,24 +1,30 @@
 #!/bin/bash -e
 
 usage() {
-        echo "Usage: $0 number_of_coreos_nodes"
+        echo "Usage: $0 node_identifier number_of_coreos_nodes"
 }
 
 if [ "$1" == "" ]; then
+        echo "Node identifier not specified"
+        usage
+        exit 1
+fi
+
+if [ "$2" == "" ]; then
         echo "Cluster size is empty"
         usage
         exit 1
 fi
 
-if ! [[ $1 =~ ^[0-9]+$ ]]; then
-        echo "'$1' is not a number"
+if ! [[ $2 =~ ^[0-9]+$ ]]; then
+        echo "'$2' is not a number"
         usage
         exit 1
 fi
 
 LIBVIRT_PATH=/var/lib/libvirt/images/coreos
 USER_DATA_TEMPLATE=$LIBVIRT_PATH/node_user_data
-ETCD_DISCOVERY=$(curl -s "https://discovery.etcd.io/new?size=$1")
+ETCD_DISCOVERY=$(curl -s "https://discovery.etcd.io/new?size=$2")
 RAM=1024
 CPUs=1
 
@@ -31,8 +37,8 @@ if [ ! -f $USER_DATA_TEMPLATE ]; then
         exit 1
 fi
 
-for SEQ in $(seq 1 $1); do
-        COREOS_HOSTNAME="node-nuc$SEQ"
+for SEQ in $(seq 1 $2); do
+        COREOS_HOSTNAME="node-$1$SEQ"
 
         if [ ! -d $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest ]; then
                 mkdir -p $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest || (echo "Can not create $LIBVIRT_PATH/$COREOS_HOSTNAME/openstack/latest directory" && exit 1)
