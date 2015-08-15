@@ -40,6 +40,15 @@
  - 192.168.1.72 should have libvirt subnet - 192.168.122.*
  - 192.168.1.73 should have libvirt subnet - 192.168.123.*
 
+1. Add routes in the physical network (this is required as no other hosts know about the subnet created by virtual switch)
+ - add routes that subnet 192.168.123 can reach 192.168.122 and vice-versa.
+ - 
+    ```
+     $ sudo route add -net 192.168.122.0 netmask 255.255.255.0 gw 192.168.1.72
+     $ sudo route add -net 192.168.123.0 netmask 255.255.255.0 gw 192.168.1.73
+    ```
+ - add routes that both subnet 192.168.12[2,3] can reach outside. Find gateway for machine A/B and add routes (good luck).
+
 1. CoreOS
  - Download image
 
@@ -66,3 +75,5 @@
 References
 
 [CoreOS with libvirt](https://coreos.com/os/docs/latest/booting-with-libvirt.html)
+
+[Route example](http://www.thegeekstuff.com/2012/04/route-examples/)
