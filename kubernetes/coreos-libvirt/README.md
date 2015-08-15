@@ -42,7 +42,7 @@
 
 1. Add routes in the physical network (this is required as no other hosts know about the subnet created by virtual switch)
  - add routes that subnet 192.168.123 can reach 192.168.122 and vice-versa.
- - 
+
     ```
      $ sudo route add -net 192.168.122.0 netmask 255.255.255.0 gw 192.168.1.72
      $ sudo route add -net 192.168.123.0 netmask 255.255.255.0 gw 192.168.1.73
