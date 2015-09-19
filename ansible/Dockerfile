@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.3
 
 # Based on https://github.com/ansible/ansible-docker-base/blob/master/stable-ubuntu14.04
 
