@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.3
 
 # Install Java 8
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -q -y software-properties-common
