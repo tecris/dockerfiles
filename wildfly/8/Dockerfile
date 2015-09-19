@@ -11,7 +11,7 @@ WORKDIR /opt/jboss
 USER jboss
 
 # Set the WILDFLY_VERSION env variable
-ENV WILDFLY_VERSION 8.2.0.Final
+ENV WILDFLY_VERSION 8.2.1.Final
 
 # ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
 ENV DOWNLOAD_URL=http://192.168.1.66/repo/packages
