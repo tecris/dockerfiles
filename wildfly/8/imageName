@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org:5000/wildfly821
+IMAGE_NAME=tecris.org:5000/wildfly:8.2.1
