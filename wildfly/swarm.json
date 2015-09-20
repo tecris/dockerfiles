@@ -1,0 +1,12 @@
+{
+  "name": "wildfly9",
+  "components": {
+    "webserver": {
+      "image": "registry.giantswarm.io/tecris/wildfly:9.0.1",
+      "ports": [8080],
+      "domains": {
+        "8080": "$domain"
+      }
+    }
+  }
+}
