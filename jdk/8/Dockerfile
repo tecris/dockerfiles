@@ -4,8 +4,6 @@
 # docker build --no-cache -t org.tecris:5000/jdk8 .
 # .) Run
 # docker run --name jdk8 -it org.tecris:5000/jdk8 bash
-# .) Connect
-# docker exec -it jdk8 bash
 
 FROM ubuntu:14.04
 
