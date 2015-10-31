@@ -1,4 +1,15 @@
-FROM tecris.org:5000/ansible
+# .) Build
+# docker build -t org.tecris:5000/git-server .
+# docker build --no-cache -t org.tecris:5000/git-server .
+# .) Run
+# docker run --name git-server -d -p 24:22 -v /datadrive/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
+
+# inspired from
+# https://github.com/EHER/ansible-git (for the ansible part)
+# https://github.com/ansible/ansible-docker-base/tree/master/examples/webserver-simple
+# http://superuser.com/questions/844101/docker-login-via-ssh-always-asks-for-password
+
+FROM org.tecris:5000/ansible
 
 RUN echo 'root:root' |chpasswd
 
@@ -23,11 +34,6 @@ RUN chmod 755 /var/run/sshd && chmod  755 /var/run
 
 # with Apt-Cacher-ng 
 # RUN  echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
-
-# inspired from
-# https://github.com/EHER/ansible-git (for the ansible part)
-# https://github.com/ansible/ansible-docker-base/tree/master/examples/webserver-simple
-# http://superuser.com/questions/844101/docker-login-via-ssh-always-asks-for-password
 
 # Add playbooks to the Docker image
 ADD ansible /srv/example/
