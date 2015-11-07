@@ -1,9 +1,11 @@
-FROM tecris.org:5000/wildfly
+FROM org.tecris:5000/wildfly:9.0.2
 
 USER jboss
 
+ENV WILDFLY_VERSION 9.0.2
+
 # mysql datasource configuration & jdbc driver
-ADD wildfly /opt/jboss/wildfly-8.2.0.Final/
+ADD wildfly /opt/jboss/wildfly-$WILDFLY_VERSION.Final/
 
 USER root
 
