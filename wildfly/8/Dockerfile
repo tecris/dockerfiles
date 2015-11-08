@@ -1,6 +1,17 @@
 # based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
 
-FROM tecris.org:5000/jdk8
+
+# .) Build
+# docker build --no-cache -t org.tecris:5000/wildfly:8.2.1 .
+# .) Run
+# docker run -d --name wildfly8 -p 8080:8080 -p 9990:9990 org.tecris:5000/wildfly:8.2.1
+# .) Connect
+# docker exec -it wildfly8 bash
+# .) Remove
+# docker rmi org.tecris:5000/wildfly:8.2.1
+
+
+FROM org.tecris:5000/jdk8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 
@@ -10,11 +21,13 @@ WORKDIR /opt/jboss
 # Specify the user which should be used to execute all commands below
 USER jboss
 
+ENV REPO_URL 192.168.1.69:88
+
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 8.2.1.Final
 
 # ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
-ENV DOWNLOAD_URL=http://192.168.1.70/repo/packages
+ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
 
 RUN wget ${DOWNLOAD_URL}/wildfly-$WILDFLY_VERSION.tar.gz
 RUN tar -xf wildfly-$WILDFLY_VERSION.tar.gz
