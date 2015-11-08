@@ -152,7 +152,7 @@
                     </pool>
                     <security>
                         <user-name>root</user-name>
-                        <password>mysql</password>
+                        <password>${mysql.root_password}</password>
                     </security>
                     <statement>
                         <prepared-statement-cache-size>100</prepared-statement-cache-size>
