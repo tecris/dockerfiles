@@ -19,7 +19,7 @@ USER jboss
 
 ENV WILDFLY_VERSION 9.0.2
 
-ADD ./wildfly/modules/com/mysql/main/mysql-connector-java-5.1.29-bin.jar /opt/jboss/mysql-connector-java-5.1.29-bin.jar
+ADD ./mysql-connector/mysql-connector-java-5.1.29-bin.jar /opt/jboss/mysql-connector-java-5.1.29-bin.jar
 
 ADD datasource.cli /opt/jboss/datasource.cli
 
