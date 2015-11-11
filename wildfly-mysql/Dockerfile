@@ -1,3 +1,12 @@
+# Wildfly image with parameterized (system properies) datasource 
+#
+# mysql.ipaddress - mysql database ip address
+# mysql.port      - mysql port
+# mysql.database  - database name
+# mysql.username  - database user
+# mysql.password  - database password
+# Usage: -Dmysql.ipaddress=10.1.1.4
+
 
 # .) Build
 # docker build --no-cache -t org.tecris:5000/wildfly-mysql:9.0.2 .
