@@ -1,9 +1,14 @@
+
+# .) Build
+# docker build --no-cache -t org.tecris:5000/ldap .
+# .) Run
+# docker run --name ldap -d -p 63389:389 org.tecris:5000/ldap
+# .) Connect
+# docker exec -it ldap bash
+
 FROM ubuntu:14.04
 
-RUN echo 'root:root' |chpasswd
-
 RUN apt-get -y update
-
 
 # Install slapd 
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
@@ -20,6 +25,6 @@ RUN service slapd start ;\
 	ldapadd -x -D cn=admin,dc=atlas,dc=org -w password -c -f more.ldif
 
 
-EXPOSE 22 389
+EXPOSE 389
 
-CMD slapd -h 'ldap:/// ldapi:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
+ENTRYPOINT ["slapd", "-h", "ldap:/// ldapi:///", "-g", "openldap", "-u", "openldap", "-F", "/etc/ldap/slapd.d", "-d", "stats"]
