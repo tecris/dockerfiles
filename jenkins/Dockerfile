@@ -2,6 +2,8 @@
 
 # .) Build
 docker build --no-cache -t org.tecris:5000/jenkins-base .
+# .) Run
+# docker run --name jenkins --restart=always -d -p 8080:8080 org.tecris:5000/jenkins-base
 
 FROM org.tecris:5000/jdk8
 
