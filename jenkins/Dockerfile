@@ -1,68 +1,62 @@
-FROM tecris.org:5000/jdk8
+# fork from https://github.com/jenkinsci/docker.git
 
-ENV REPO_URL http://192.168.1.66/repo/packages
-ENV JENKINS_VERSION 1.612
-ENV MAVEN_HOME /opt/maven
-ENV MAVEN_VERSION 3.3.1
+# .) Build
+docker build --no-cache -t org.tecris:5000/jenkins-base .
 
-RUN echo 'root:root' |chpasswd
+FROM org.tecris:5000/jdk8
 
-RUN apt-get -y update
-RUN apt-get install -y openssh-server supervisor wget curl telnet git
+RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
 
-# SSH
-RUN mkdir -p /var/run/sshd
-RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
-RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+ENV JENKINS_HOME /var/jenkins_home
+ENV JENKINS_SLAVE_AGENT_PORT 50000
 
-# supervisor
-RUN mkdir -p /var/log/supervisor
-ADD ssh.supervisor.conf /etc/supervisor/conf.d/ssh.conf
-RUN chown root /var/run && chown root /var/run/sshd
-RUN chmod 755 /var/run/sshd && chmod  755 /var/run
+# Jenkins is run with user `jenkins`, uid = 1000
+# If you bind mount a volume from the host or a data container, 
+# ensure you use the same uid
+RUN useradd -d "$JENKINS_HOME" -u 1000 -m -s /bin/bash jenkins
 
-# maven
-RUN wget -qO- ${REPO_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xvz -C /opt
+# Jenkins home directory is a volume, so configuration and build history 
+# can be persisted and survive image upgrades
+VOLUME /var/jenkins_home
 
-RUN apt-get install -y daemon psmisc
-RUN wget ${REPO_URL}/jenkins_${JENKINS_VERSION}_all.deb
-RUN dpkg -i jenkins_${JENKINS_VERSION}_all.deb
+# `/usr/share/jenkins/ref/` contains all reference configuration we want 
+# to set on a fresh new installation. Use it to bundle additional plugins 
+# or config file with your custom jenkins Docker image.
+RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 
-RUN mkdir /var/lib/jenkins/plugins
-RUN wget ${REPO_URL}/git-client.hpi -O /var/lib/jenkins/plugins/git-client.hpi
-RUN wget ${REPO_URL}/scm-api.hpi -O /var/lib/jenkins/plugins/scm-api.hpi
-RUN wget ${REPO_URL}/git.hpi -O /var/lib/jenkins/plugins/git.hpi
-RUN wget ${REPO_URL}/docker-build-step.hpi -O /var/lib/jenkins/plugins/docker-build-step.hpi
-RUN wget ${REPO_URL}/sonar.hpi -O /var/lib/jenkins/plugins/sonar.hpi
-# ADD files/settings.xml /opt/settings.xml
-ADD files/settings.xml /var/lib/jenkins/.m2/settings.xml
+ENV TINI_SHA 066ad710107dc7ee05d3aa6e4974f01dc98f3888
 
-# Let's start with some basic stuff.
-RUN apt-get update -qq && apt-get install -qqy \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    lxc \
-    iptables
-    
-# Install Docker from Docker Inc. repositories.
-RUN curl -sSL https://get.docker.com/ubuntu/ | sh
+# Use tini as subreaper in Docker container to adopt zombie processes 
+RUN curl -fL https://github.com/krallin/tini/releases/download/v0.5.0/tini-static -o /bin/tini && chmod +x /bin/tini \
+  && echo "$TINI_SHA /bin/tini" | sha1sum -c -
 
-# Install the magic wrapper.
-ADD ./wrapdocker /usr/local/bin/wrapdocker
-RUN chmod +x /usr/local/bin/wrapdocker
+COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
-RUN echo 'DOCKER_OPTS="--insecure-registry 192.168.1.66:5000"' >> /etc/default/docker
-ADD jenkins.supervisor.conf /etc/supervisor/conf.d/jenkins.conf
-ADD docker.supervisor.conf /etc/supervisor/conf.d/docker.conf
-RUN mkdir ${MAVEN_HOME}
-RUN usermod -aG docker jenkins
+ENV JENKINS_VERSION 1.625.2
+ENV JENKINS_SHA 395fe6975cf75d93d9fafdafe96d9aab1996233b
 
 
-RUN chown -R jenkins:jenkins ${MAVEN_HOME} /var/lib/jenkins
+# could use ADD but this one does not check Last-Modified header 
+# see https://github.com/docker/docker/issues/8331
+RUN curl -fL http://mirrors.jenkins-ci.org/war-stable/$JENKINS_VERSION/jenkins.war -o /usr/share/jenkins/jenkins.war \
+  && echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
 
-EXPOSE 22 8080
+ENV JENKINS_UC https://updates.jenkins-ci.org
+RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref
 
-CMD ["/usr/bin/supervisord"]
+# for main web interface:
+EXPOSE 8080
+
+# will be used by attached slave agents:
+EXPOSE 50000
+
+ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
+
+USER jenkins
+
+COPY jenkins.sh /usr/local/bin/jenkins.sh
+ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
+
+# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
+COPY plugins.sh /usr/local/bin/plugins.sh
 
