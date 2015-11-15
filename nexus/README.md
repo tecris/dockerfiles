@@ -71,6 +71,8 @@
     * repositoryid
     * My Repository Name
     * Save
+5. JBoss Maven Repository
+https://repository.jboss.org/nexus/content/repositories/public/
 [1]:https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus
 
 [2]:http://books.sonatype.com/nexus-book/reference/config-maven.html

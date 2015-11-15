@@ -1,14 +1,22 @@
+# based on https://github.com/sonatype/docker-nexus
+
 
 # .) Build
 # docker build --no-cache -t org.tecris:5000/nexus .
-# .) Run
-# docker run --name nexus -d -p 8081:8081 org.tecris:5000/nexus
+# .) Run with volumes (survive image updates, or container removals)
+# create directory and set permissions
+# mkdir /opt/docker_volumes/nexus && chown -R 200 /opt/docker_volumes/nexus
+# docker run --name nexus --restart=always -d -p 8081:8081 -v /opt/docker_volumes/nexus:/sonatype-work org.tecris:5000/nexus
 # .) Connect
 # docker exec -it nexus bash
 
+# .) How to find container ip address
+# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nexus
+
+
+
 FROM org.tecris:5000/jdk8
 
-# based on https://github.com/sonatype/docker-nexus
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 
 ENV REPO_URL=http://192.168.1.69:88/repo/packages
@@ -28,11 +36,12 @@ RUN mkdir -p /opt/sonatype/nexus \
 
 RUN useradd -r -u 200 -m -c "nexus role account" -d ${SONATYPE_WORK} -s /bin/false nexus
 
-# VOLUME ${SONATYPE_WORK}
 
 EXPOSE 8081
 WORKDIR /opt/sonatype/nexus
 USER nexus
+
+VOLUME ${SONATYPE_WORK}
 
 CMD java \
   -Dnexus-work=/sonatype-work -Dnexus-webapp-context-path=/ \
