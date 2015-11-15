@@ -5,8 +5,8 @@
 # docker build --no-cache -t org.tecris:5000/nexus .
 # .) Run with volumes (survive image updates, or container removals)
 # create directory and set permissions
-# mkdir /opt/docker_volumes/nexus && chown -R 200 /opt/docker_volumes/nexus
-# docker run --name nexus --restart=always -d -p 8081:8081 -v /opt/docker_volumes/nexus:/sonatype-work org.tecris:5000/nexus
+# mkdir /opt/docker_volumes/nexus-data && chown -R 200 /opt/docker_volumes/nexus-data
+# docker run --name nexus --restart=always -d -p 8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work org.tecris:5000/nexus
 # .) Connect
 # docker exec -it nexus bash
 
