@@ -14,20 +14,13 @@ FROM org.tecris:5000/ansible
 RUN echo 'root:root' |chpasswd
 
 RUN apt-get -y update
-RUN apt-get install -y openssh-server supervisor wget curl telnet git
+RUN apt-get install -y openssh-server git
 
 # SSH
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-
-# supervisor
-RUN mkdir -p /var/log/supervisor
-ADD ssh.supervisor.conf /etc/supervisor/conf.d/ssh.conf
-RUN chown root /var/run && chown root /var/run/sshd
-RUN chmod 755 /var/run/sshd && chmod  755 /var/run
-
 
 # ssh-keygen -t rsa -C "your_email@example.com"
 # cat ~/.ssh/id_rsa.pub >> ansible/files/authorized_keys
@@ -50,4 +43,4 @@ RUN ansible-playbook main.yml -c local
 
 EXPOSE 22
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/sbin/sshd", "-D"]
