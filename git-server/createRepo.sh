@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_NAME=sultana
+REPO_NAME=ionradan
 BARE_REPO=$REPO_NAME.git
 
 mkdir $REPO_NAME

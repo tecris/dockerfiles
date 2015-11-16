@@ -12,14 +12,16 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
   * `$ docker run --name git-server -d -p 22:22 -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server`
   * `$ sudo chmod -R o+w /opt/git`
 4. How to create new repository
-  * `$ git init --bare name_of_repo.git`
+  * `$ git init --bare ionradan.git`
 5. How to create bare repository out of an existing repository
-  * `git clone --bare repo_to_bare_clone name_of_repo.git`
+  * `git clone --bare repo_to_bare_clone ionradan.git`
 6. How to add a repository to git server:
-  * `$ scp -r name_of_repo.git git@10.1.1.8:/opt/git/repositories`
+  * `$ scp -r ionradan.git git@10.1.1.8:/opt/git/repositories`
 7. Clone repository:
-  * `$ git clone git@10.1.1.8:/opt/git/repositories/name_of_repo.git`
+  * `$ git clone git@10.1.1.8:/opt/git/repositories/ionradan.git`
 8. How to add new keys:
  * `$ scp user_id_rsa.pub git@10.1.1.8:/home/git`
  * `$ ssh git@10.1.1.8`
  * `$ cat user_id_rsa.pub >> /home/git/.ssh/authorized_keys`
+9. Non standard ssh port
+ * git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git
