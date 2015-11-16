@@ -2,7 +2,7 @@
 # docker build -t org.tecris:5000/git-server .
 # docker build --no-cache -t org.tecris:5000/git-server .
 # .) Run
-# docker run --name git-server -d -p 24:22 -v /datadrive/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
+# docker run --name git-server -d -p 24:22 -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
 
 # inspired from
 # https://github.com/EHER/ansible-git (for the ansible part)
