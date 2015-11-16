@@ -10,3 +10,6 @@ cd $REPO_NAME; echo "Ion Radan" >> ionradan.txt;git init; git add *; git commit 
 
 # copy bare repository to git server home directory
 cp -r $BARE_REPO /opt/docker_volumes/git/repositories
+
+# to checkout repo
+# git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git
