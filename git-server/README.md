@@ -10,7 +10,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
 3. Run docker git-server container
   * On docker host, if /opt/docker_volumes/git/repositories directory does not exist will be created.
   * `$ docker run --name git-server -d -p 22:22 -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server`
-  * `$ sudo chmod -R o+w /opt/git`
+  * `$ sudo chmod -R o+w /opt/docker_volumes/git`
 4. How to create new repository
   * `$ git init --bare ionradan.git`
 5. How to create bare repository out of an existing repository
@@ -25,3 +25,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
  * `$ cat user_id_rsa.pub >> /home/git/.ssh/authorized_keys`
 9. Non standard ssh port
  * git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git
+
+A. Keys outside container
+ .) append public key to /opt/docker_volumes/git/.ssh/authorized_keys, and run
+ .) setPermissions.sh
