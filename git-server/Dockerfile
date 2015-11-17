@@ -2,7 +2,9 @@
 # docker build -t org.tecris:5000/git-server .
 # docker build --no-cache -t org.tecris:5000/git-server .
 # .) Run
-# docker run --name git-server -d -p 24:22 -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
+# docker run --name git-server -d -p 24:22 -v /opt/docker_volumes/git/.ssh:/home/git/.ssh -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
+# see section README.md:'A. Keys outside container' for passwordless-ssh-access configuration 
+
 
 # inspired from
 # https://github.com/EHER/ansible-git (for the ansible part)
@@ -21,9 +23,6 @@ RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-
-# ssh-keygen -t rsa -C "your_email@example.com"
-# cat ~/.ssh/id_rsa.pub >> ansible/files/authorized_keys
 
 # with Apt-Cacher-ng 
 # RUN  echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
