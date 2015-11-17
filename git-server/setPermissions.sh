@@ -3,6 +3,9 @@
 SSH_HOME=/opt/docker_volumes/git
 ME=`whoami`
 
+echo Fix permissions for repositories
+sudo chmod -R o+w /opt/docker_volumes/git/repositories
+
 echo Setting owner for .ssh to $ME
 
 sudo mkdir -p $SSH_HOME/.ssh

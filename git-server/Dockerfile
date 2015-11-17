@@ -20,9 +20,10 @@ RUN apt-get install -y openssh-server git
 
 # SSH
 RUN mkdir -p /var/run/sshd
-RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
-RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+# for now we aim for passwordless-ssh-access
+# RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+# RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
+# RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 # with Apt-Cacher-ng 
 # RUN  echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
