@@ -22,5 +22,9 @@
   - `sudo service docker restart`
 
 ### Remote API
- 1. Enable: modify /etc/default/docker file to include parameter `H tcp://0.0.0.0:4243`:
-  - `DOCKER_OPTS="H tcp://0.0.0.0:4243"`
+ 1. Enable: modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`:
+  - `DOCKER_OPTS="-H tcp://0.0.0.0:4243"`
+
+### Other
+ 1. Find container ip address:
+   `# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name`
