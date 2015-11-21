@@ -17,6 +17,9 @@ USER root
 
 RUN mkdir -p /opt/maven_config/.m2
 ADD files/settings.xml /opt/maven_config/.m2/settings.xml
+RUN mkdir -p /opt/docker/dockerfiles
+ADD files/Dockerfile.bookstore /opt/docker/dockerfiles/Dockerfile.bookstore
+RUN tar cf Dockerfile.bookstore.tar.gz -C /opt/docker/dockerfiles Dockerfile.bookstore
 RUN chown -R jenkins:jenkins /opt
 USER jenkins
 
