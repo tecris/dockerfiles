@@ -1,4 +1,4 @@
-## Docker Cheat Sheet
+## Doandcker Cheat Sheet
 
 ### Create image from container
 
@@ -21,3 +21,6 @@
  3. Restart docker
   - `sudo service docker restart`
 
+### Remote API
+ 1. Enable: modify /etc/default/docker file to include parameter `H tcp://0.0.0.0:4243`:
+  - `DOCKER_OPTS="H tcp://0.0.0.0:4243"`
