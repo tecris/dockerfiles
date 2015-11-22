@@ -18,8 +18,8 @@ USER jenkins
 RUN mkdir -p /opt/maven_config/.m2
 ADD files/settings.xml /opt/maven_config/.m2/settings.xml
 RUN mkdir -p /opt/docker/dockerfiles
-ADD files/Dockerfile.bookstore /opt/docker/dockerfiles/Dockerfile
-RUN tar cf /opt/docker/dockerfiles/Dockerfile.bookstore.tar.gz -C /opt/docker/dockerfiles Dockerfile
+ADD files/Dockerfile.planets /opt/docker/dockerfiles/Dockerfile
+RUN tar cf /opt/docker/dockerfiles/Dockerfile.planets.tar.gz -C /opt/docker/dockerfiles Dockerfile
 
 
 RUN wget -qO- http://www.eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-3.3.3-bin.tar.gz | tar xvz -C /opt
