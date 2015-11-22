@@ -24,7 +24,12 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/2 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>org.planets</groupId>
@@ -52,35 +57,63 @@
   <buildWrappers/>
   <prebuilders/>
   <postbuilders>
-    <hudson.tasks.Shell>
-      <command> curl -v -X POST -H &quot;Content-Type:application/tar&quot; --data-binary &apos;@/opt/docker/dockerfiles/Dockerfile.planets.tar.gz&apos; \
-        http://docker.host:4243/build?t=org.tecris:5000/planets:${BUILD_NUMBER}</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>curl -v -X POST -H &quot;X-Registry-Auth:123&quot; http://docker.host:4243/images/org.tecris:5000/planets/push?tag=${BUILD_NUMBER}</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>curl -X POST http://docker.host:4243/containers/planets-snapshot/stop</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>curl -X DELETE http://docker.host:4243/containers/planets-snapshot</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>sed -e &quot;s/BUILD_NUMBER/${BUILD_NUMBER}/g&quot; /opt/docker/create_container.txt.bak &gt; /opt/docker/create_container.txt</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>curl -i -H &quot;Content-Type: application/json&quot; \
-        -X POST -d &apos;@/opt/docker/create_container.txt&apos; \
-        http://docker.host:4243/containers/create?name=planets-snapshot</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>curl -X POST http://docker.host:4243/containers/planets-snapshot/start</command>
-    </hudson.tasks.Shell>
+    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
+      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
+        <dockerFolder>/opt/docker/dockerfiles</dockerFolder>
+        <imageTag>org.tecris:5000/planets-snapshot:$BUILD_NUMBER</imageTag>
+        <noCache>true</noCache>
+        <rm>false</rm>
+      </dockerCmd>
+    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
+    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
+      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.PushImageCommand">
+        <dockerRegistryEndpoint plugin="docker-commons@1.2">
+          <url>https://docker.host</url>
+        </dockerRegistryEndpoint>
+        <image>planets-snapshot</image>
+        <tag>$BUILD_NUMBER</tag>
+        <registry>org.tecris:5000</registry>
+      </dockerCmd>
+    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
+    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
+      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.RemoveCommand">
+        <containerIds>planets-snapshot</containerIds>
+        <ignoreIfNotFound>true</ignoreIfNotFound>
+        <removeVolumes>false</removeVolumes>
+        <force>true</force>
+      </dockerCmd>
+    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
+    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
+      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateContainerCommand">
+        <image>org.tecris:5000/planets-snapshot:$BUILD_NUMBER</image>
+        <command></command>
+        <hostName></hostName>
+        <containerName>planets-snapshot</containerName>
+        <envVars></envVars>
+        <links></links>
+        <exposedPorts></exposedPorts>
+        <cpuShares></cpuShares>
+        <memoryLimit></memoryLimit>
+      </dockerCmd>
+    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
+    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
+      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.StartCommand">
+        <containerIds>planets-snapshot</containerIds>
+        <publishAllPorts>true</publishAllPorts>
+        <portBindings>8084:8080
+9990:9990</portBindings>
+        <waitPorts></waitPorts>
+        <links></links>
+        <bindMounts></bindMounts>
+        <privileged>false</privileged>
+        <containerIdsLogging></containerIdsLogging>
+      </dockerCmd>
+    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
   </postbuilders>
   <runPostStepsIfResult>
-    <name>FAILURE</name>
-    <ordinal>2</ordinal>
-    <color>RED</color>
+    <name>SUCCESS</name>
+    <ordinal>0</ordinal>
+    <color>BLUE</color>
     <completeBuild>true</completeBuild>
   </runPostStepsIfResult>
 </maven2-moduleset>
