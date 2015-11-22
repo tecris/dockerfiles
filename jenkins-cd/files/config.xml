@@ -57,9 +57,6 @@
         http://docker.host:4243/build?t=org.tecris:5000/planets:${BUILD_NUMBER}</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>sleep 10</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
       <command>curl -v -X POST -H &quot;X-Registry-Auth:123&quot; http://docker.host:4243/images/org.tecris:5000/planets/push?tag=${BUILD_NUMBER}</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -69,9 +66,11 @@
       <command>curl -X DELETE http://docker.host:4243/containers/planets-snapshot</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
+      <command>sed -i -e &quot;s/BUILD_NUMBER/${BUILD_NUMBER}/g&quot; /opt/docker/create_container.txt</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
       <command>curl -i -H &quot;Content-Type: application/json&quot; \
-        -X POST -d &apos;{&quot;Image&quot;: &quot;org.tecris:5000/wildfly-mysql:9.0.2&quot;, &quot;NetworkMode&quot;:&quot;bridge&quot;,
-        &quot;PortBindings&quot;:{ &quot;8080/tcp&quot;:[ {&quot;HostIp&quot;:&quot;&quot;, &quot;HostPort&quot;:&quot;8084&quot;}], &quot;9990/tcp&quot;:[ {&quot;HostIp&quot;:&quot;&quot;, &quot;HostPort&quot;:&quot;9990&quot;}]} ,&quot;PublishAllPorts&quot;:true}&apos; \
+        -X POST -d &apos;@/opt/docker/create_container.txt&apos; \
         http://docker.host:4243/containers/create?name=planets-snapshot</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
