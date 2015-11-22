@@ -1,0 +1,34 @@
+
+
+http://localhost:8080/
+ .) Manage Jenkins > Configure System 
+   - Maven Configuration > Default global settings provider > Global settings file on filesystem
+     .) File path: /opt/maven_config/.m2/settings.xml
+   - Maven > Maven installations > Add Maven
+     .) Deselect 'Install automatically', 
+     .) Name: maven3
+     .) MAVEN_HOME: /opt/apache-maven-3.3.3
+
+
+===== Continuous Delivery Demo bookstore =====
+
+-) SCRIPTING
+
+ .) demo/createJob.sh
+
+-) MANUAL
+
+.) Create new job
+ .) Project name: bookstore
+ .) Maven project
+ .) Source Code Management
+  .) Git: https://github.com/tecris/bookstore.git
+
+
+.) Build
+  .) Goals and options: clean deploy
+.) Post Build:
+  .) Execute Shell: 
+    .) Build image with each build using following command:
+    .) curl -v -X POST -H "Content-Type:application/tar" --data-binary '@/opt/docker/dockerfiles/Dockerfile.bookstore.tar.gz' \
+	http://192.168.1.69:4243/build?t=org.tecris:5000/bookstore:${BUILD_NUMBER}
