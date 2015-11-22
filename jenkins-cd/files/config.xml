@@ -66,7 +66,7 @@
       <command>curl -X DELETE http://docker.host:4243/containers/planets-snapshot</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>sed -i -e &quot;s/BUILD_NUMBER/${BUILD_NUMBER}/g&quot; /opt/docker/create_container.txt</command>
+      <command>sed -e &quot;s/BUILD_NUMBER/${BUILD_NUMBER}/g&quot; /opt/docker/create_container.txt.bak &gt; /opt/docker/create_container.txt</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>curl -i -H &quot;Content-Type: application/json&quot; \
