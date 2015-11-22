@@ -4,7 +4,7 @@
     <mirror>
       <id>local.mirror</id>
       <name>Nexus-Mirror</name>
-      <url>http://maven.nexus:8081/content/groups/public</url>
+      <url>http://maven-nexus.repository:8081/content/groups/public</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
