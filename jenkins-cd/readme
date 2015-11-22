@@ -31,22 +31,22 @@ http://localhost:8080/
   .) Execute shell:
     .) Build image
     .) curl -v -X POST -H "Content-Type:application/tar" --data-binary '@/opt/docker/dockerfiles/Dockerfile.planets.tar.gz' \
-	http://192.168.1.69:4243/build?t=org.tecris:5000/planets:${BUILD_NUMBER}
+	http://docker.host:4243/build?t=org.tecris:5000/planets:${BUILD_NUMBER}
   .) Execute shell:
     .) Push image to docker registry
-    .) curl -v -X POST -H "X-Registry-Auth:123" http://192.168.1.69:4243/images/org.tecris:5000/planets/push?tag=${BUILD_NUMBER}
+    .) curl -v -X POST -H "X-Registry-Auth:123" http://docker.host:4243/images/org.tecris:5000/planets/push?tag=${BUILD_NUMBER}
   .) Execute shell:
     .) Stop container
-    .) curl -X POST http://192.168.1.69:4243/containers/planets-snapshot/stop
+    .) curl -X POST http://docker.host:4243/containers/planets-snapshot/stop
   .) Execute shell:
     .) Delete container
-    .) curl -X DELETE http://192.168.1.69:4243/containers/planets-snapshot
+    .) curl -X DELETE http://docker.host:4243/containers/planets-snapshot
   .) Execute shell:
     .) Create container
     .) curl -i -H "Content-Type: application/json" \
         -X POST -d '{"Image": "org.tecris:5000/wildfly-mysql:9.0.2", "NetworkMode":"bridge",
         "PortBindings":{ "8080/tcp":[ {"HostIp":"", "HostPort":"8084"}], "9990/tcp":[ {"HostIp":"", "HostPort":"9990"}]} ,"PublishAllPorts":true}' \
-        http://192.168.1.69:4243/containers/create?name=planets-snapshot
+        http://docker.host:4243/containers/create?name=planets-snapshot
   .) Execute shell:
     .) Start container
-    .) curl -X POST http://192.168.1.69:4243/containers/planets-snapshot/start
+    .) curl -X POST http://docker.host:4243/containers/planets-snapshot/start
