@@ -8,6 +8,9 @@ http://localhost:8080/
      .) Deselect 'Install automatically', 
      .) Name: maven3
      .) MAVEN_HOME: /opt/apache-maven-3.3.3
+   - Docker Builder 
+     .) Docker URL: http://docker.host:4243
+     .) Apply > Test connection
 
 
 ===== Continuous Delivery Demo planets =====
