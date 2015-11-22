@@ -19,6 +19,7 @@ RUN mkdir -p /opt/maven_config/.m2
 ADD files/settings.xml /opt/maven_config/.m2/settings.xml
 RUN mkdir -p /opt/docker/dockerfiles
 ADD files/Dockerfile.planets /opt/docker/dockerfiles/Dockerfile
+ADD files/create_container.txt /opt/docker/create_container.txt
 RUN tar cf /opt/docker/dockerfiles/Dockerfile.planets.tar.gz -C /opt/docker/dockerfiles Dockerfile
 
 

@@ -44,7 +44,7 @@ http://localhost:8080/
   .) Execute shell:
     .) Create container
     .) curl -i -H "Content-Type: application/json" \
-        -X POST -d '{"Image": "org.tecris:5000/wildfly-mysql:9.0.2", "NetworkMode":"bridge",
+        -X POST -d '{"Image": "org.tecris:5000/planets:${BUILD_NUMBER}", "NetworkMode":"bridge",
         "PortBindings":{ "8080/tcp":[ {"HostIp":"", "HostPort":"8084"}], "9990/tcp":[ {"HostIp":"", "HostPort":"9990"}]} ,"PublishAllPorts":true}' \
         http://docker.host:4243/containers/create?name=planets-snapshot
   .) Execute shell:
