@@ -57,6 +57,9 @@
         http://docker.host:4243/build?t=org.tecris:5000/planets:${BUILD_NUMBER}</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
+      <command>sleep 10</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
       <command>curl -v -X POST -H &quot;X-Registry-Auth:123&quot; http://docker.host:4243/images/org.tecris:5000/planets/push?tag=${BUILD_NUMBER}</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
