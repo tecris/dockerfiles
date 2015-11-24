@@ -1,4 +1,8 @@
 
+Pre-requisites:
+Enable Remote API
+ 1. Modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`:
+  - `DOCKER_OPTS="-H tcp://0.0.0.0:4243"`
 
 http://localhost:8080/
  .) Manage Jenkins > Configure System 
