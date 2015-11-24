@@ -1,1 +1,0 @@
-{"Image": "org.tecris:5000/planets:BUILD_NUMBER", "NetworkMode":"bridge", "PortBindings":{ "8080/tcp":[ {"HostIp":"", "HostPort":"8084"}], "9990/tcp":[ {"HostIp":"", "HostPort":"9990"}]} ,"PublishAllPorts":true}
