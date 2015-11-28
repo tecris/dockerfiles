@@ -8,5 +8,5 @@ echo $FQDN
 sudo mkdir -p /etc/docker/certs.d/$FQDN
 sudo cp certs/domain.crt /etc/docker/certs.d/$FQDN/ca.crt
 
-sudo mkdir /usr/local/docker/certs
+sudo mkdir -p /usr/local/docker/certs
 sudo cp certs/* /usr/local/docker/certs/
