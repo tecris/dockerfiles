@@ -4,7 +4,7 @@
 Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-a-Server)
 
 1. Generate keys
-  * `$ ssh-keygen -t rsa -C "your_email@example.com"`
+  * `$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 2. Get key in the right place to build docker image
   * `$ cat ~/.ssh/id_rsa.pub >> ansible/files/authorized_keys`
 3. Run docker git-server container
@@ -18,13 +18,14 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
 6. How to add a repository to git server:
   * `$ scp -r ionradan.git git@10.1.1.8:/opt/git/repositories`
 7. Clone repository:
-  * `$ git clone git@10.1.1.8:/opt/git/repositories/ionradan.git`
+  * Standard ssh port
+    * `$ git clone git@10.1.1.8:/opt/git/repositories/ionradan.git`
+  * Non-standard ssh port
+    * `git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git`
 8. How to add new keys:
  * `$ scp user_id_rsa.pub git@10.1.1.8:/home/git`
  * `$ ssh git@10.1.1.8`
  * `$ cat user_id_rsa.pub >> /home/git/.ssh/authorized_keys`
-9. Non standard ssh port
- * git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git
 
 A. Keys outside container
  .) append public key to /opt/docker_volumes/git/.ssh/authorized_keys, and run
