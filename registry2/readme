@@ -1,27 +1,21 @@
 
 https://github.com/docker/distribution/blob/master/docs/deploying.md
 
- -- Create self-signed certificate
-mkdir -p certs && openssl req \
+-) Create self-signed certificate
+  mkdir -p certs && openssl req \
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
     -x509 -days 365 -out certs/domain.crt
 
+  FQDN used when creating certificate: org.tecris
 
-FQDN used when creating certificate: org.tecris
+-) Deploy certiifcates, edit (set FQDN) and execute script
+  ./deployCertificates.sh
 
- -- Configure docker to trust it
-mkdir -p /etc/docker/certs.d/org.tecris:5000
-cp certs/domain.crt /etc/docker/certs.d/org.tecris/ca.crt
-
- -- Use docker-compose to facilitate managing your Registry configuration.
-
-$ mkdir /usr/local/docker/certs
-$ cp certs/* /usr/local/docker/certs/
-
-$ docker-compose up -d
+-) Use docker compose to start registry
+  $ docker-compose up -d
 
 
- - Util
+-) Util
   .) show images
       https://localhost:5000/v2/_catalog
   .) show tags for a given image
