@@ -1,4 +1,4 @@
-## Doandcker Cheat Sheet
+## Docker Cheat Sheet
 
 ### Create image from container
 
