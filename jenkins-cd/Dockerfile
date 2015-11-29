@@ -2,7 +2,7 @@
 # .) Build
 # docker build --no-cache -t org.tecris:5000/jenkins-cd .
 # .) Run
-# docker run --name jenkins-cd --link nexus:maven-nexus.repository --add-host docker.host:192.168.1.69 --restart=always -d -p 8080:8080 org.tecris:5000/jenkins-cd
+# docker run --name jenkins-cd --link nexus:maven-nexus.repository --add-host docker.host:192.168.1.69 --restart=always -d -p 8088:8080 org.tecris:5000/jenkins-cd
 
 
 FROM org.tecris:5000/jenkins-base
