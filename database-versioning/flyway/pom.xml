@@ -6,6 +6,13 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>flyway</name>
+  <dependencies>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.37</version>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -17,13 +24,6 @@
           <user>root</user>
           <password>mysql</password>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.36</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
   </build>
