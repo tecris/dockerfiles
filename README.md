@@ -13,14 +13,7 @@
 1. Save image as a tar file
   - `$ docker save image_name > image_file.tar`
 2. Import tar-ed image
-  - `$ docker load < image_file.tar` 
- 
-### Docker registry
- 1. [How to](https://github.com/docker/distribution/blob/master/docs/deploying.md)
- 2. For the insecure part edit /etc/default/docker file and add the following line:
-  - `DOCKER_OPTS="--insecure-registry localhost:port"`
- 3. Restart docker
-  - `sudo service docker restart`
+  - `$ docker load < image_file.tar`
 
 ### Remote API
  1. Enable: modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`:
