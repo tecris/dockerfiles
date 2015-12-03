@@ -1,9 +1,9 @@
 # fork from https://github.com/jenkinsci/docker.git
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/jenkins-base .
+# docker build --no-cache -t org.tecris:5000/jenkins-base:1.625.2 .
 # .) Run
-# docker run --name jenkins --restart=always -d -p 8080:8080 org.tecris:5000/jenkins-base
+# docker run --name jenkins --restart=always -d -p 8080:8080 org.tecris:5000/jenkins-base:1.625.2
 
 FROM org.tecris:5000/jdk8
 
