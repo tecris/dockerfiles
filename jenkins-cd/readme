@@ -11,7 +11,7 @@ http://localhost:8080/
    - Maven > Maven installations > Add Maven
      .) Deselect 'Install automatically', 
      .) Name: maven3
-     .) MAVEN_HOME: /opt/apache-maven-3.3.3
+     .) MAVEN_HOME: /opt/apache-maven-3.3.9
    - Docker Builder 
      .) Docker URL: http://docker.host:4243
      .) Apply > Test connection
