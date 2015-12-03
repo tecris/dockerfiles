@@ -2,7 +2,7 @@
 
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/nexus .
+# docker build --no-cache -t org.tecris:5000/nexus:2.11.4-01 .
 # .) Run with volumes (survive image updates, or container removals)
 # create directory and set permissions
 # mkdir /opt/docker_volumes/nexus-data && chown -R 200 /opt/docker_volumes/nexus-data
@@ -19,7 +19,7 @@ FROM org.tecris:5000/jdk8
 
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 
-ENV REPO_URL=http://192.168.1.69:88/repo/packages
+ENV REPO_URL=http://package.repo:88/repo/packages
 
 ENV SONATYPE_WORK /sonatype-work
 ENV NEXUS_VERSION 2.11.4-01
