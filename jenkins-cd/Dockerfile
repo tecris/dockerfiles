@@ -20,7 +20,7 @@ ADD files/settings.xml /opt/maven_config/.m2/settings.xml
 RUN mkdir -p /opt/docker/dockerfiles
 ADD files/Dockerfile.planets /opt/docker/dockerfiles/planets/Dockerfile
 
-RUN wget -qO- http://www.eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-3.3.3-bin.tar.gz | tar xvz -C /opt
+RUN wget -qO- http://www.eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xvz -C /opt
 
 COPY plugins.txt /plugins.txt
 RUN /usr/local/bin/plugins.sh /plugins.txt
