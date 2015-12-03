@@ -1,14 +1,14 @@
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/jenkins-cd .
+# docker build --no-cache -t org.tecris:5000/jenkins-cd:1.625.2 .
 # .) Run
-# docker run --name jenkins-cd --link nexus:maven-nexus.repository --add-host docker.host:192.168.1.69 --restart=always -d -p 8088:8080 org.tecris:5000/jenkins-cd
+# docker run --name jenkins-cd --link nexus:maven-nexus.repository --add-host docker.host:192.168.1.69 --restart=always -d -p 8088:8080 org.tecris:5000/jenkins-cd:1.625.2
 
 
-FROM org.tecris:5000/jenkins-base
+FROM org.tecris:5000/jenkins-base:1.625.2
 
 
-ENV MAVEN_VERSION 3.3.3
+ENV MAVEN_VERSION 3.3.9
 ENV MAVEN_HOME /opt/apache-maven-${MAVEN_VERSION}
 
 USER root
