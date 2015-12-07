@@ -5,7 +5,7 @@
 # .) Run
 # docker run --name jenkins --restart=always -d -p 8080:8080 org.tecris:5000/jenkins-base:1.625.2
 
-FROM org.tecris:5000/jdk8
+FROM org.tecris:5000/jdk:8
 
 RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
 

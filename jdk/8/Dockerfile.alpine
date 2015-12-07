@@ -2,10 +2,10 @@
 # https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
 
 # .) Build
-# docker build -f Dockerfile.alpine -t org.tecris:5000/alpine_jdk8 .
-# docker build -f Dockerfile.alpine --no-cache -t org.tecris:5000/alpine_jdk8 .
+# docker build -f Dockerfile.alpine -t org.tecris:5000/alpine_jdk:8 .
+# docker build -f Dockerfile.alpine --no-cache -t org.tecris:5000/alpine_jdk:8 .
 # .) Run
-# docker run --name jdk8 -it org.tecris:5000/jdk8 bash
+# docker run --name jdk8 -it org.tecris:5000/alpine_jdk:8 bash
 
 FROM alpine
 

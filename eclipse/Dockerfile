@@ -1,4 +1,4 @@
-FROM tecris.org:5000/jdk8
+FROM tecris.org:5000/jdk:8
 
 # based on https://github.com/fgrehm/docker-eclipse
 # MAINTAINER Fabio Rehm "fgrehm@gmail.com"

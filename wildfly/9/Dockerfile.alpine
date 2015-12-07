@@ -11,7 +11,7 @@
 # docker rmi org.tecris:5000/wildfly:9.0.2
 
 
-FROM org.tecris:5000/alpine_jdk8
+FROM org.tecris:5000/alpine_jdk:8
 
 RUN adduser -D -h /opt/jboss jboss 
 

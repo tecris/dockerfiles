@@ -11,7 +11,7 @@
 # docker rmi org.tecris:5000/wildfly:9.0.2
 
 
-FROM org.tecris:5000/jdk8
+FROM org.tecris:5000/jdk:8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 
@@ -26,8 +26,8 @@ ENV REPO_URL 192.168.1.69:88
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 9.0.2.Final
 
-# ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
-ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
+ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
+# ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
 
 RUN wget ${DOWNLOAD_URL}/wildfly-$WILDFLY_VERSION.tar.gz
 RUN tar -xf wildfly-$WILDFLY_VERSION.tar.gz

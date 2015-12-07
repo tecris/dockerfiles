@@ -15,7 +15,7 @@
 
 
 
-FROM org.tecris:5000/jdk8
+FROM org.tecris:5000/jdk:8
 
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 

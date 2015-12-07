@@ -11,7 +11,7 @@
 # docker rmi org.tecris:5000/wildfly:8.2.1
 
 
-FROM org.tecris:5000/jdk8
+FROM org.tecris:5000/jdk:8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 

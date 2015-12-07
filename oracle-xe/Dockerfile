@@ -1,4 +1,4 @@
-FROM tecris.org:5000/jdk8
+FROM tecris.org:5000/jdk:8
 
 
 # set environment

@@ -18,7 +18,7 @@
 # https://github.com/tech-sketch/docker-apache-apollo
 
 
-FROM org.tecris:5000/jdk8
+FROM org.tecris:5000/jdk:8
 
 RUN apt-get update -y \
     && apt-get install -y -q curl
