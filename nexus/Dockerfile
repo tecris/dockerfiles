@@ -19,7 +19,8 @@ FROM org.tecris:5000/jdk:8
 
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 
-ENV REPO_URL=http://192.168.1.68:88/repo/packages
+# ENV REPO_URL=http://192.168.1.68:88/repo/packages
+ENV REPO_URL=https://download.sonatype.com/nexus/oss
 
 ENV SONATYPE_WORK /sonatype-work
 ENV NEXUS_VERSION 2.11.4-01
