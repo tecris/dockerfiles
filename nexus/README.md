@@ -76,8 +76,11 @@
   * Move newly created repository from 'Available Repositories' to 'Ordered Group Repositories'
   * Save
 
-5. JBoss Maven Repository
-https://repository.jboss.org/nexus/content/repositories/public/
+5. Misc Repositories
+  * JBoss
+    * https://repository.jboss.org/nexus/content/repositories/public/
+  * tomp2p
+    * http://tomp2p.net/dev/mvn/
 
 [1]:https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus
 [2]:http://books.sonatype.com/nexus-book/reference/config-maven.html
