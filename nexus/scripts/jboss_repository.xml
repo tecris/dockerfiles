@@ -1,0 +1,13 @@
+<repository>
+  <data>
+    <id>jboss</id>
+    <name>JBoss</name>
+    <contentResourceURI>https://repository.jboss.org/nexus/content/repositories/public</contentResourceURI>
+    <exposed>true</exposed>
+    <repoType>hosted</repoType>
+    <repoPolicy>RELEASE</repoPolicy>
+    <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+    <provider>maven2</provider>
+    <format>maven2</format>
+  </data>
+</repository>
