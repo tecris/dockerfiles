@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org:5000/sonar
+IMAGE_NAME=casa.docker/sonar

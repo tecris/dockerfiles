@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org:5000/oms-db
+IMAGE_NAME=casa.docker/oms-db

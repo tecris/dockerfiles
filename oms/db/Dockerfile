@@ -1,4 +1,4 @@
-FROM tecris.org:5000/postgres93
+FROM casa.docker/postgres93
 
 USER postgres
 

@@ -1,1 +1,1 @@
-IMAGE_NAME=tecris.org:5000/tomcat7
+IMAGE_NAME=casa.docker/tomcat7

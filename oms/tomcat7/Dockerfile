@@ -1,4 +1,4 @@
-FROM tecris.org:5000/tomcat7
+FROM casa.docker/tomcat7
 
 ENV REPORTS_FILE=reports-34-SNAPSHOT.jar
 

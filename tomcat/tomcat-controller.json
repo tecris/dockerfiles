@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"tomcat",
-                  "image":"tecris.org:5000/tomcat7",
+                  "image":"casa.docker/tomcat7",
                   "ports":[
                      {
                         "containerPort":8080,

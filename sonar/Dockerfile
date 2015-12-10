@@ -1,4 +1,4 @@
-FROM tecris.org:5000/jdk:8
+FROM casa.docker/jdk:8
 
 MAINTAINER David Gageot <david.gageot@sonarsource.com>
 
