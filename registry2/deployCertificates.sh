@@ -1,6 +1,6 @@
 #1/bin/bash
 
-FQDN=org.tecris:5000
+FQDN=casa.docker
 
 echo $FQDN
 

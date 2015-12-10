@@ -1,9 +1,9 @@
 
 # .) Build
-# docker build -t org.tecris:5000/jdk:8 .
-# docker build --no-cache -t org.tecris:5000/jdk:8 .
+# docker build -t casa.docker/jdk:8 .
+# docker build --no-cache -t casa.docker/jdk:8 .
 # .) Run
-# docker run --name jdk8 -it org.tecris:5000/jdk:8 bash
+# docker run --name jdk8 -it casa.docker/jdk:8 bash
 
 FROM ubuntu:14.04
 

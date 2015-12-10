@@ -2,16 +2,16 @@
 
 
 # .) Build
-# docker build --no-cache -f Dockerfile.alpine -t org.tecris:5000/wildfly:9.0.2 .
+# docker build --no-cache -f Dockerfile.alpine -t casa.docker/wildfly:9.0.2 .
 # .) Run
-# docker run -d --name wildfly9 -p 8080:8080 -p 9990:9990 org.tecris:5000/wildfly:9.0.2
+# docker run -d --name wildfly9 -p 8080:8080 -p 9990:9990 casa.docker/wildfly:9.0.2
 # .) Connect
 # docker exec -it wildfly9 bash
 # .) Remove
-# docker rmi org.tecris:5000/wildfly:9.0.2
+# docker rmi casa.docker/wildfly:9.0.2
 
 
-FROM org.tecris:5000/alpine_jdk:8
+FROM casa.docker/alpine_jdk:8
 
 RUN adduser -D -h /opt/jboss jboss 
 

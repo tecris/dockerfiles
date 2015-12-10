@@ -1,8 +1,8 @@
 # .) Build
-# docker build -t org.tecris:5000/git-server .
-# docker build --no-cache -t org.tecris:5000/git-server .
+# docker build -t casa.docker/git-server .
+# docker build --no-cache -t casa.docker/git-server .
 # .) Run
-# docker run --name git-server -d -p 24:22 -v /opt/docker_volumes/git/.ssh:/home/git/.ssh -v /opt/docker_volumes/git/repositories:/opt/git/repositories org.tecris:5000/git-server 
+# docker run --name git-server -d -p 24:22 -v /opt/docker_volumes/git/.ssh:/home/git/.ssh -v /opt/docker_volumes/git/repositories:/opt/git/repositories casa.docker/git-server 
 # see section README.md:'A. Keys outside container' for passwordless-ssh-access configuration 
 
 
@@ -11,7 +11,7 @@
 # https://github.com/ansible/ansible-docker-base/tree/master/examples/webserver-simple
 # http://superuser.com/questions/844101/docker-login-via-ssh-always-asks-for-password
 
-FROM org.tecris:5000/ansible
+FROM casa.docker/ansible
 
 RUN echo 'root:root' |chpasswd
 

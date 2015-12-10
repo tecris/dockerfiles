@@ -12,4 +12,4 @@ docker run -ti --rm \
         -e DISPLAY=$DISPLAY \
 	-v /etc/machine-id:/etc/machine-id \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-        org.tecris:5000/jitsi
+        casa.docker/jitsi

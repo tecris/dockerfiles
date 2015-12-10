@@ -9,20 +9,20 @@
 
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/wildfly-mysql:9.0.2 .
+# docker build --no-cache -t casa.docker/wildfly-mysql:9.0.2 .
 # .) Run
 # link to container named mysqldb
 # docker run -d --name web \
 #	--link mysqldb:mysql \
 #	-p 8080:8080 -p 9990:9990 \
-#	org.tecris:5000/wildfly-mysql:9.0.2 \
+#	casa.docker/wildfly-mysql:9.0.2 \
 #	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysqldb.username=root -Dmysqldb.password=mysql
 # .) Connect
 # docker exec -it web bash
 
 
 
-FROM org.tecris:5000/wildfly:9.0.2
+FROM casa.docker/wildfly:9.0.2
 
 USER jboss
 

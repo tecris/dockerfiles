@@ -6,7 +6,7 @@ https://github.com/docker/distribution/blob/master/docs/deploying.md
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
     -x509 -days 365 -out certs/domain.crt
 
-  FQDN used when creating certificate: org.tecris
+  FQDN used when creating certificate: casa.docker
 
 -) Deploy certiifcates, edit (set FQDN) and execute script
   ./deployCertificates.sh

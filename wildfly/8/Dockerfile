@@ -2,16 +2,16 @@
 
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/wildfly:8.2.1 .
+# docker build --no-cache -t casa.docker/wildfly:8.2.1 .
 # .) Run
-# docker run -d --name wildfly8 -p 8080:8080 -p 9990:9990 org.tecris:5000/wildfly:8.2.1
+# docker run -d --name wildfly8 -p 8080:8080 -p 9990:9990 casa.docker/wildfly:8.2.1
 # .) Connect
 # docker exec -it wildfly8 bash
 # .) Remove
-# docker rmi org.tecris:5000/wildfly:8.2.1
+# docker rmi casa.docker/wildfly:8.2.1
 
 
-FROM org.tecris:5000/jdk:8
+FROM casa.docker/jdk:8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 

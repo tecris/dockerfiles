@@ -1,8 +1,8 @@
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/ldap .
+# docker build --no-cache -t casa.docker/ldap .
 # .) Run
-# docker run --name ldap -d -p 63389:389 org.tecris:5000/ldap
+# docker run --name ldap -d -p 63389:389 casa.docker/ldap
 # .) Connect
 # docker exec -it ldap bash
 

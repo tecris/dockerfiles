@@ -1,9 +1,9 @@
 # 1. Build
-# docker build -t org.tecris:5000/ansible .
+# docker build -t casa.docker/ansible .
 # 2. Run
-# docker run --name ansible -it org.tecris:5000/ansible bash
+# docker run --name ansible -it casa.docker/ansible bash
 # 3. Remove image
-# docker rmi org.tecris:5000/ansible
+# docker rmi casa.docker/ansible
 
 
 FROM ubuntu:14.04

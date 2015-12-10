@@ -2,12 +2,12 @@
 
 
 # .) Build
-# docker build --no-cache -t org.tecris:5000/nexus:2.11.4-01 .
+# docker build --no-cache -t casa.docker/nexus:2.11.4-01 .
 # .) Run with volumes (survive image updates, or container removals)
 # create directory and set permissions
 # mkdir /opt/docker_volumes/nexus-data && chown -R 200 /opt/docker_volumes/nexus-data
 # -p 172.17.0.1:8081:8081 ugly hack, TODO, find elegant solution, dns ...
-# docker run --name nexus --restart=always -d -p 172.17.0.1:8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work org.tecris:5000/nexus:2.11.4-01
+# docker run --name nexus --restart=always -d -p 172.17.0.1:8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work casa.docker/nexus:2.11.4-01
 # .) Connect
 # docker exec -it nexus bash
 
@@ -16,7 +16,7 @@
 
 
 
-FROM org.tecris:5000/jdk:8
+FROM casa.docker/jdk:8
 
 # MAINTAINER Sonatype <cloud-ops@sonatype.com>
 

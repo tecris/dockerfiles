@@ -1,4 +1,4 @@
-FROM org.tecris:5000/wildfly-mysql:9.0.2
+FROM casa.docker/wildfly-mysql:9.0.2
 
 ENV MAVEN_GROUP_ID org.planets
 ENV MAVEN_ARTIFACT_ID planets

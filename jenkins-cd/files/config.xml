@@ -60,7 +60,7 @@
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
         <dockerFolder>/opt/docker/dockerfiles/planets</dockerFolder>
-        <imageTag>org.tecris:5000/planets-snapshot:$BUILD_NUMBER</imageTag>
+        <imageTag>casa.docker/planets-snapshot:$BUILD_NUMBER</imageTag>
         <noCache>true</noCache>
         <rm>false</rm>
       </dockerCmd>
@@ -72,7 +72,7 @@
         </dockerRegistryEndpoint>
         <image>planets-snapshot</image>
         <tag>$BUILD_NUMBER</tag>
-        <registry>org.tecris:5000</registry>
+        <registry>casa.docker</registry>
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
@@ -85,7 +85,7 @@
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateContainerCommand">
-        <image>org.tecris:5000/planets-snapshot:$BUILD_NUMBER</image>
+        <image>casa.docker/planets-snapshot:$BUILD_NUMBER</image>
         <command></command>
         <hostName></hostName>
         <containerName>planets-snapshot</containerName>
