@@ -1,4 +1,5 @@
 registry:
+  container_name: registry2
   restart: always
   image: registry:2
   ports:
