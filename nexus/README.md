@@ -1,10 +1,11 @@
 # Dockerize Nexus
+
 ============================================
 
-1. Nexus available at http://10.0.0.2:8081 
+1. Nexus available at http://172.17.0.1:8081 
  * `user/password: admin/admin123`
-2. [Configure-Maven-to-Deploy-to-Nexus][1]
- * Add in project pom:
+2. Step-by-step  [Configure-Maven-to-Deploy-to-Nexus][1]
+ * Configure project, add distribution management in pom:
  ```
     <distributionManagement>
         <repository>
@@ -19,7 +20,7 @@
         </snapshotRepository>
     </distributionManagement>
  ```
-   * Add following snippet in ~/.m2/settings.xml
+ * Convigure maven settings, add following snippet in ~/.m2/settings.xml:
  ```
   <servers>
     <server>
@@ -30,7 +31,8 @@
   </servers>
  ```
 3. [Repository Management with Nexus][2]
-```
+ * Add following snippet in ~/.m2/settings.xml
+ ```
   <mirrors>
     <mirror>
       <id>local.mirror</id>
@@ -63,7 +65,7 @@
   <activeProfiles>
     <activeProfile>nexus</activeProfile>
   </activeProfiles>
-```
+ ```
 4. Add Proxy Repository
   * Login admin/admin123
   * Repositories
