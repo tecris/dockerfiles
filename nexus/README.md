@@ -1,10 +1,11 @@
 # Dockerize Nexus
+
 ============================================
 
 1. Nexus available at http://172.17.0.1:8081 
  * `user/password: admin/admin123`
-2. For the impatient if ~/.m2/settings.xml does not exist.
- * `cp settings.xml ~/.m2/settings.xml`
+2. For the impatient, ONLY if ~/.m2/settings.xml does not exist.
+ * `# cp settings.xml ~/.m2/settings.xml`
 3. Step-by-step  [Configure-Maven-to-Deploy-to-Nexus][1]
  * Configure project, add distribution management in pom:
  ```
