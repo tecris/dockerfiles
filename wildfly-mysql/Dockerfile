@@ -32,10 +32,12 @@ ENV MYSQL_CONNECTOR_VERSION 5.1.37
 
 RUN wget "http://central.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar" -O /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar
 
+# this is to fix "Deploying non-JDBC-compliant driver class"
+ADD META-INF META-INF
+RUN jar uf /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar META-INF
 
 ADD datasource.cli /opt/jboss/datasource.cli
 RUN sed -i -e s/MYSQL-CONNECTOR-VERSION/${MYSQL_CONNECTOR_VERSION}/g /opt/jboss/datasource.cli
-RUN cat /opt/jboss/datasource.cli
 
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/datasource.cli
 
