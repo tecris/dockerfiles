@@ -2,7 +2,8 @@
 embed-server
 batch
 
-/subsystem=webservices/:write-attribute(name=wsdl-host,value=localhost)
+/subsystem=webservices/:write-attribute(name=wsdl-host,value=jbossws.undefined.host)
+#/subsystem=webservices/:write-attribute(name=wsdl-host,value=localhost)
 :reload
 
 run-batch
