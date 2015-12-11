@@ -7,7 +7,6 @@
 # mysql.password  - database password
 # Usage: -Dmysql.ipaddress=10.1.1.4
 
-
 # .) Build
 # docker build --no-cache -t casa.docker/wildfly-mysql:9.0.2 .
 # .) Run
@@ -16,10 +15,9 @@
 #	--link mysqldb:mysql \
 #	-p 8080:8080 -p 9990:9990 \
 #	casa.docker/wildfly-mysql:9.0.2 \
-#	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysqldb.username=root -Dmysqldb.password=mysql
+#	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysql.username=root -Dmysql.password=mysql
 # .) Connect
 # docker exec -it web bash
-
 
 
 FROM casa.docker/wildfly:9.0.2
@@ -28,7 +26,6 @@ USER jboss
 
 ENV WILDFLY_VERSION 9.0.2
 ENV MYSQL_CONNECTOR_VERSION 5.1.37
-
 
 RUN wget "http://central.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar" -O /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar
 
