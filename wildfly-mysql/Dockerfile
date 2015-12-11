@@ -27,8 +27,11 @@ FROM casa.docker/wildfly:9.0.2
 USER jboss
 
 ENV WILDFLY_VERSION 9.0.2
+ENV MYSQL_CONNECTOR_VERSION 5.1.37
 
-ADD ./mysql-connector/mysql-connector-java-5.1.29-bin.jar /opt/jboss/mysql-connector-java-5.1.29-bin.jar
+
+RUN wget "http://central.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar" -O /opt/jboss/mysql-connector-java-bin.jar
+
 
 ADD datasource.cli /opt/jboss/datasource.cli
 
