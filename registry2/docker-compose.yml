@@ -9,5 +9,5 @@ registry:
     REGISTRY_HTTP_TLS_KEY: /certs/domain.key
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
   volumes:
-    - /usr/local/docker/certs/registry-data:/var/lib/registry
-    - /usr/local/docker/certs:/certs
+    - /opt/docker_volumes/registry/data:/var/lib/registry
+    - /opt/docker_volumes/registry/certs:/certs
