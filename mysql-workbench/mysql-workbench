@@ -11,4 +11,4 @@ docker run -ti --rm \
         -e DISPLAY=$DISPLAY \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v $HOME/.mysql-workbench:/root/.mysql/workbench \
-        mysql-workbench
+        casa.docker/mysql-workbench

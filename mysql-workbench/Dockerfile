@@ -1,6 +1,9 @@
 # https://github.com/jdecool/dockerfiles/tree/master/mysql-workbench
-
+#
 # MySQL Workbench in a container
+#
+# .) Build
+# docker build -t casa.docker/mysql-workbench .
 #
 # USAGE :
 #   docker run -d \
@@ -13,6 +16,8 @@
 #
 # to fix error: Gtk: cannot open display: unix:0
 # xhost local:root
+################################################################
+
 
 FROM ubuntu:latest
 MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
