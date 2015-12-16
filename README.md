@@ -14,6 +14,9 @@
   - `$ docker save image_name > image_file.tar`
 2. Import tar-ed image
   - `$ docker load < image_file.tar`
+  
+### Remove dangling volumes
+ - `$ docker volume rm $(docker volume ls -qf dangling=true)`
 
 ### Remote API
  1. Enable: modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`:
@@ -21,4 +24,4 @@
 
 ### Other
  1. Find container ip address:
-   `# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name`
+  - `# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name`
