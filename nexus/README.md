@@ -11,12 +11,12 @@
         <repository>
             <id>deployment</id>
             <name>Internal Releases</name>
-            <url>http://10.0.0.2:8081/content/repositories/releases/</url>
+            <url>http://172.17.0.1:8081/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>deployment</id>
             <name>Internal Releases</name>
-            <url>http://10.0.0.2:8081/content/repositories/snapshots</url>
+            <url>http://172.17.0.1:8081/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
  ```
@@ -37,7 +37,7 @@
     <mirror>
       <id>local.mirror</id>
       <name>Nexus-Mirror</name>
-      <url>http://10.0.0.2:8081/content/groups/public</url>
+      <url>http://172.17.0.1:8081/content/groups/public</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
