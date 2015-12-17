@@ -25,12 +25,13 @@ FROM casa.docker/wildfly:9.0.2
 USER jboss
 
 ENV WILDFLY_VERSION 9.0.2
-ENV MYSQL_CONNECTOR_VERSION 5.1.37
+ENV MYSQL_CONNECTOR_VERSION 5.1.38
 
 RUN wget "http://central.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar" -O /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar
 
 # this is to fix "Deploying non-JDBC-compliant driver class"
-ADD META-INF META-INF
+RUN mkdir -p META-INF/services
+RUN echo "com.mysql.jdbc.Driver" > META-INF/services/java.sql.Driver 
 RUN jar uf /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar META-INF
 
 ADD datasource.cli /opt/jboss/datasource.cli
