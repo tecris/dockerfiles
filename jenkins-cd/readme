@@ -6,7 +6,7 @@ Enable Remote API
 
 http://localhost:8080/
  .) Manage Jenkins > Configure System 
-   - Maven Configuration > Default global settings provider > Global settings file on filesystem
+   - Maven Configuration > Default settings provider > Global settings file on filesystem
      .) File path: /opt/maven_config/.m2/settings.xml
    - Maven > Maven installations > Add Maven
      .) Deselect 'Install automatically', 

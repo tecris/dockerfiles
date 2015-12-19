@@ -7,4 +7,4 @@ JOB_NAME=$2
 FILE=$3
 
 
-curl -X POST "http://$HOST:8080/createItem/createItem?name=$JOB_NAME" --data-binary "@$FILE" -H "Content-Type: text/xml"
+curl -X POST "http://$HOST:8088/createItem/createItem?name=$JOB_NAME" --data-binary "@$FILE" -H "Content-Type: text/xml"
