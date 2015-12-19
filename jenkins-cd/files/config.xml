@@ -59,7 +59,7 @@
   <postbuilders>
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.33">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
-        <dockerFolder>/opt/docker/dockerfiles/planets</dockerFolder>
+        <dockerFolder>$WORKSPACE/docker</dockerFolder>
         <imageTag>casa.docker/planets-snapshot:$BUILD_NUMBER</imageTag>
         <noCache>true</noCache>
         <rm>false</rm>
