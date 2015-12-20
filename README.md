@@ -27,5 +27,5 @@
   - `# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name`
  1. Docker daemon log
   - `# sudo tail -f /var/log/upstart/docker.log`
- 1. Docker daemon log
+ 1. Docker events
   - `# docker events`
