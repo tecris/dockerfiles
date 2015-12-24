@@ -2,12 +2,12 @@
 
 
 # .) Build
-# docker build --no-cache -t casa.docker/nexus:2.11.4-01 .
+# docker build --no-cache -t casa.docker/nexus:2.12.0-01 .
 # .) Run with volumes (survive image updates, or container removals)
 # create directory and set permissions
 # mkdir /opt/docker_volumes/nexus-data && chown -R 200 /opt/docker_volumes/nexus-data
 # -p 172.17.0.1:8081:8081 ugly hack, TODO, find elegant solution, dns ...
-# docker run --name nexus --restart=always -d -p 172.17.0.1:8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work casa.docker/nexus:2.11.4-01
+# docker run --name nexus --restart=always -d -p 172.17.0.1:8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work casa.docker/nexus:2.12.0-01
 # .) Connect
 # docker exec -it nexus bash
 
@@ -24,7 +24,7 @@ FROM casa.docker/jdk:8
 ENV REPO_URL=https://download.sonatype.com/nexus/oss
 
 ENV SONATYPE_WORK /sonatype-work
-ENV NEXUS_VERSION 2.11.4-01
+ENV NEXUS_VERSION 2.12.0-01
 
 RUN apt-get install -y curl
 
