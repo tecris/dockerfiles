@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nexusConfiguration>
   <version>2.8.0</version>
-  <nexusVersion>2.11.4-01</nexusVersion>
+  <nexusVersion>2.12.0-01</nexusVersion>
   <globalConnectionSettings>
     <connectionTimeout>20000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
@@ -228,14 +228,13 @@
           <memberRepository>snapshots</memberRepository>
           <memberRepository>thirdparty</memberRepository>
           <memberRepository>central</memberRepository>
-          <memberRepository>tomp2p</memberRepository>
           <memberRepository>jboss</memberRepository>
         </memberRepositories>
       </externalConfiguration>
     </repository>
     <repository>
       <id>jboss</id>
-      <name>JBoss</name>
+      <name> JBoss.org Maven Public Repository</name>
       <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
       <providerHint>maven2</providerHint>
       <localStatus>IN_SERVICE</localStatus>
@@ -252,37 +251,6 @@
       </localStorage>
       <remoteStorage>
         <url>https://repository.jboss.org/nexus/content/repositories/public/</url>
-      </remoteStorage>
-      <externalConfiguration>
-        <repositoryPolicy>RELEASE</repositoryPolicy>
-        <checksumPolicy>WARN</checksumPolicy>
-        <fileTypeValidation>true</fileTypeValidation>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
-        <artifactMaxAge>-1</artifactMaxAge>
-        <metadataMaxAge>1440</metadataMaxAge>
-        <itemMaxAge>1440</itemMaxAge>
-        <autoBlockActive>true</autoBlockActive>
-      </externalConfiguration>
-    </repository>
-    <repository>
-      <id>tomp2p</id>
-      <name>Tomp2p</name>
-      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>maven2</providerHint>
-      <localStatus>IN_SERVICE</localStatus>
-      <notFoundCacheActive>true</notFoundCacheActive>
-      <notFoundCacheTTL>1440</notFoundCacheTTL>
-      <userManaged>true</userManaged>
-      <exposed>true</exposed>
-      <browseable>true</browseable>
-      <writePolicy>READ_ONLY</writePolicy>
-      <indexable>true</indexable>
-      <searchable>true</searchable>
-      <localStorage>
-        <provider>file</provider>
-      </localStorage>
-      <remoteStorage>
-        <url>http://tomp2p.net/dev/mvn/</url>
       </remoteStorage>
       <externalConfiguration>
         <repositoryPolicy>RELEASE</repositoryPolicy>
@@ -402,7 +370,7 @@
     <hostname>smtp-host</hostname>
     <port>25</port>
     <username>smtp-username</username>
-    <password>{JYxWSus4ROcHCj7dXq5LHIsKJUJ9MSnWRgM9UmlC7YA=}</password>
+    <password>{UqN93taLgHAHvjjrHRANzcbMxWQzYBR2PB1WRkJQx1E=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
   <notification />
