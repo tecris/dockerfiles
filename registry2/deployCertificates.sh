@@ -1,6 +1,6 @@
 #1/bin/bash
 
-FQDN=casa.docker
+FQDN=cache.registry
 
 echo $FQDN
 

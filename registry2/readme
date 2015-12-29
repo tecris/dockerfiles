@@ -6,7 +6,7 @@ https://github.com/docker/distribution/blob/master/docs/deploying.md
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
     -x509 -days 365 -out certs/domain.crt
 
-  FQDN used when creating certificate: casadocker
+  FQDN used when creating certificate: cache.registry
 
 -) Deploy certiifcates, edit (set FQDN) and execute script
   ./deployCertificates.sh
@@ -16,6 +16,10 @@ https://github.com/docker/distribution/blob/master/docs/deploying.md
 
 -) Proxy
    https://blog.docker.com/2015/10/registry-proxy-cache-docker-open-source/
+   Edit /etc/default/docker, add argument --registry-mirror=https://cache.registry for DOCKER_OPTS
+ 
+   DOCKER_OPTS='... --registry-mirror=https://cache.registry'
+
 
 
 -) Util
