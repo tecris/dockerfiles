@@ -2,10 +2,10 @@
 # https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
 
 # .) Build
-# docker build -f Dockerfile.alpine -t casa.docker/alpine_jdk:8 .
-# docker build -f Dockerfile.alpine --no-cache -t casa.docker/alpine_jdk:8 .
+# docker build -f Dockerfile.alpine -t casadocker/alpine_jdk:8 .
+# docker build -f Dockerfile.alpine --no-cache -t casadocker/alpine_jdk:8 .
 # .) Run
-# docker run --name jdk8 -it casa.docker/alpine_jdk:8 bash
+# docker run --name jdk8 -it casadocker/alpine_jdk:8 bash
 
 FROM alpine
 

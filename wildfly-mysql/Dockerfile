@@ -8,19 +8,19 @@
 # Usage: -Dmysql.ipaddress=10.1.1.4
 
 # .) Build
-# docker build --no-cache -t casa.docker/wildfly-mysql:9.0.2 .
+# docker build --no-cache -t casadocker/wildfly-mysql:9.0.2 .
 # .) Run
 # link to container named mysqldb
 # docker run -d --name web \
 #	--link mysqldb:mysql \
 #	-p 8080:8080 -p 9990:9990 \
-#	casa.docker/wildfly-mysql:9.0.2 \
+#	casadocker/wildfly-mysql:9.0.2 \
 #	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysql.username=root -Dmysql.password=mysql
 # .) Connect
 # docker exec -it web bash
 
 
-FROM casa.docker/wildfly:9.0.2
+FROM casadocker/wildfly:9.0.2
 
 USER jboss
 

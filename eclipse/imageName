@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/eclipse:v4.4.2
+IMAGE_NAME=casadocker/eclipse:v4.4.2

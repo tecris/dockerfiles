@@ -1,7 +1,7 @@
 # https://github.com/tommyoshaw/pidgin
 
 # .) Build
-# docker build --no-cache -t casa.docker/jitsi .
+# docker build --no-cache -t casadocker/jitsi .
 # .) Run
 # to fix error: Gtk: cannot open display: unix:0
 # xhost local:root
@@ -11,7 +11,7 @@
 # 	-e DISPLAY=$DISPLAY \
 #	-v /etc/machine-id:/etc/machine-id \
 #	-v /tmp/.X11-unix:/tmp/.X11-unix \
-#	casa.docker/jitsi
+#	casadocker/jitsi
 
 FROM ubuntu:14.04
 

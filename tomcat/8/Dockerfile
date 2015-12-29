@@ -2,15 +2,15 @@
 #
 #
 # .) Build
-# docker build -t casa.docker/tomcat:8.0.30 .
-# docker build --no-cache -t casa.docker/tomcat:8.0.30 .
+# docker build -t casadocker/tomcat:8.0.30 .
+# docker build --no-cache -t casadocker/tomcat:8.0.30 .
 # .) Run
-# docker run -d --name tomcat-8 -p 8080:8080 casa.docker/tomcat:8.0.30
+# docker run -d --name tomcat-8 -p 8080:8080 casadocker/tomcat:8.0.30
 # .) Connect
 # docker exec -it tomcat-8 bash
 
 
-FROM casa.docker/jdk:8
+FROM casadocker/jdk:8
 
 # based on https://registry.hub.docker.com/_/tomcat/
 

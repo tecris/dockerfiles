@@ -10,4 +10,4 @@ docker run -ti --rm \
 	--net host \
         -e DISPLAY=$DISPLAY \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-        casa.docker/pgadmin:3
+        casadocker/pgadmin:3

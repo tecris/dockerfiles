@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/ssh
+IMAGE_NAME=casadocker/ssh

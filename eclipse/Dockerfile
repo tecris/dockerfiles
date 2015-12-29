@@ -1,4 +1,4 @@
-FROM casa.docker/jdk:8
+FROM casadocker/jdk:8
 
 # based on https://github.com/fgrehm/docker-eclipse
 # MAINTAINER Fabio Rehm "fgrehm@gmail.com"

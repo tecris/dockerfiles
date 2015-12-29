@@ -3,7 +3,7 @@
 # Pgadmin in a container
 #
 # .) Build
-# docker build -t casa.docker/pgadmin:3 .
+# docker build -t casadocker/pgadmin:3 .
 #
 # USAGE :
 #   docker run -d \
@@ -12,7 +12,7 @@
 #     -v $HOME/.pgpass:/root/.pgpass \
 #     -e DISPLAY=unix$DISPLAY \
 #     --name mysql-workbench \
-#     casa.docker/pgadmin:3
+#     casadocker/pgadmin:3
 #
 # to fix error: Gtk: cannot open display: unix:0
 # xhost local:root

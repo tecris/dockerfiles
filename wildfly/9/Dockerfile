@@ -2,16 +2,16 @@
 
 
 # .) Build
-# docker build --no-cache -t casa.docker/wildfly:9.0.2 .
+# docker build --no-cache -t casadocker/wildfly:9.0.2 .
 # .) Run
-# docker run -d --name wildfly9 -p 8080:8080 -p 9990:9990 casa.docker/wildfly:9.0.2
+# docker run -d --name wildfly9 -p 8080:8080 -p 9990:9990 casadocker/wildfly:9.0.2
 # .) Connect
 # docker exec -it wildfly9 bash
 # .) Remove
-# docker rmi casa.docker/wildfly:9.0.2
+# docker rmi casadocker/wildfly:9.0.2
 
 
-FROM casa.docker/jdk:8
+FROM casadocker/jdk:8
 
 RUN adduser --disabled-password --home /opt/jboss --gecos "" jboss
 

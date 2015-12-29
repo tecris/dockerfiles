@@ -1,4 +1,4 @@
-FROM casa.docker/postgres93
+FROM casadocker/postgres93
 
 USER postgres
 

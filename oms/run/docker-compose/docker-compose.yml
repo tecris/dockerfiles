@@ -1,10 +1,10 @@
 web:
-  image: casa.docker/oms-tomcat7
+  image: casadocker/oms-tomcat7
   links:
    - db:nzwoodomsdb
   ports:
    - "8080:8080"
 db:
-  image: casa.docker/oms-db
+  image: casadocker/oms-db
   ports:
    - "5432:5432"

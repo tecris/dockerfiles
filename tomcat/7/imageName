@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/tomcat7
+IMAGE_NAME=casadocker/tomcat7

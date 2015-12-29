@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/openfire
+IMAGE_NAME=casadocker/openfire

@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"nzwoodomsdb",
-                  "image":"casa.docker/oms-db",
+                  "image":"casadocker/oms-db",
                   "ports":[
                      {
                         "containerPort":5432,

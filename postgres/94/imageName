@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/postgres:9.4
+IMAGE_NAME=casadocker/postgres:9.4

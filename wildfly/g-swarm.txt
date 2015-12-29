@@ -1,5 +1,5 @@
 
-docker tag casa.docker/wildfly:9.0.1 registry.giantswarm.io/tecris/wildfly:9.0.1
+docker tag casadocker/wildfly:9.0.1 registry.giantswarm.io/tecris/wildfly:9.0.1
 
 docker push registry.giantswarm.io/tecris/wildfly:9.0.1
 

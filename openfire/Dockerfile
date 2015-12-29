@@ -1,4 +1,4 @@
-FROM casa.docker/jdk7
+FROM casadocker/jdk7
 
 # inspired from
 # https://github.com/oskapt/docker-openfire, and,

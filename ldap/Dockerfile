@@ -1,8 +1,8 @@
 
 # .) Build
-# docker build --no-cache -t casa.docker/ldap .
+# docker build --no-cache -t casadocker/ldap .
 # .) Run
-# docker run --name ldap -d -p 63389:389 casa.docker/ldap
+# docker run --name ldap -d -p 63389:389 casadocker/ldap
 # .) Connect
 # docker exec -it ldap bash
 

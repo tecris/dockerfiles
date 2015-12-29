@@ -10,4 +10,4 @@ xhost local:root
  docker run -ti --rm \
  -v /tmp/.X11-unix:/tmp/.X11-unix \
  -e DISPLAY=unix$DISPLAY \
- casa.docker/pidgin
+ casadocker/pidgin

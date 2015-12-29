@@ -1,11 +1,11 @@
 # fork from https://github.com/jenkinsci/docker.git
 
 # .) Build
-# docker build --no-cache -t casa.docker/jenkins-base:1.625.3 .
+# docker build --no-cache -t casadocker/jenkins-base:1.625.3 .
 # .) Run
-# docker run --name jenkins --restart=always -d -p 8080:8080 casa.docker/jenkins-base:1.625.3
+# docker run --name jenkins --restart=always -d -p 8080:8080 casadocker/jenkins-base:1.625.3
 
-FROM casa.docker/jdk:8
+FROM casadocker/jdk:8
 
 RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
 

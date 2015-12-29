@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/jdk7
+IMAGE_NAME=casadocker/jdk7

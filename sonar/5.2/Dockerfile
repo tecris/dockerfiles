@@ -5,15 +5,15 @@
 #
 #
 # .) Build
-# docker build -t casa.docker/sonarqube:5.2 .
-# docker build --no-cache -t casa.docker/sonarqube:5.2 .
+# docker build -t casadocker/sonarqube:5.2 .
+# docker build --no-cache -t casadocker/sonarqube:5.2 .
 # .) Run
-# docker run --name sonar_5.2 --restart=always --env SONARQUBE_JDBC_URL=jdbc:postgresql://172.17.0.1:5432/sonar -d -p 172.17.0.1:19000:9000 casa.docker/sonarqube:5.2
+# docker run --name sonar_5.2 --restart=always --env SONARQUBE_JDBC_URL=jdbc:postgresql://172.17.0.1:5432/sonar -d -p 172.17.0.1:19000:9000 casadocker/sonarqube:5.2
 #
 #####################################################
 
 
-FROM casa.docker/jdk:8
+FROM casadocker/jdk:8
 
 
 ENV SONARQUBE_HOME /opt/sonarqube

@@ -3,7 +3,7 @@
 # MySQL Workbench in a container
 #
 # .) Build
-# docker build -t casa.docker/mysql-workbench .
+# docker build -t casadocker/mysql-workbench .
 #
 # USAGE :
 #   docker run -d \

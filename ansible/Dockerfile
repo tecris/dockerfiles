@@ -1,9 +1,9 @@
 # 1. Build
-# docker build -t casa.docker/ansible .
+# docker build -t casadocker/ansible .
 # 2. Run
-# docker run --name ansible -it casa.docker/ansible bash
+# docker run --name ansible -it casadocker/ansible bash
 # 3. Remove image
-# docker rmi casa.docker/ansible
+# docker rmi casadocker/ansible
 
 
 FROM ubuntu:14.04

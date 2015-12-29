@@ -3,12 +3,12 @@
 #
 #
 # .) Build
-# docker build --no-cache -t casa.docker/wildfly-soap:9.0.2 .
+# docker build --no-cache -t casadocker/wildfly-soap:9.0.2 .
 # .) Connect
 # docker exec -it web bash
 
 
-FROM casa.docker/wildfly:9.0.2
+FROM casadocker/wildfly:9.0.2
 
 USER jboss
 

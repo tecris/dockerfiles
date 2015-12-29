@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/sonar
+IMAGE_NAME=casadocker/sonar

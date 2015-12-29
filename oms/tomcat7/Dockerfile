@@ -1,4 +1,4 @@
-FROM casa.docker/tomcat7
+FROM casadocker/tomcat7
 
 ENV REPORTS_FILE=reports-34-SNAPSHOT.jar
 

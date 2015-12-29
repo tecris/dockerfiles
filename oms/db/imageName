@@ -1,1 +1,1 @@
-IMAGE_NAME=casa.docker/oms-db
+IMAGE_NAME=casadocker/oms-db

@@ -1,9 +1,9 @@
 
 # .) Build
-# docker build -t casa.docker/jdk:8 .
-# docker build --no-cache -t casa.docker/jdk:8 .
+# docker build -t casadocker/jdk:8 .
+# docker build --no-cache -t casadocker/jdk:8 .
 # .) Run
-# docker run --name jdk8 -it casa.docker/jdk:8 bash
+# docker run --name jdk8 -it casadocker/jdk:8 bash
 
 FROM ubuntu:14.04
 

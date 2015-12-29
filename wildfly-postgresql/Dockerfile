@@ -8,19 +8,19 @@
 # Usage: -Dpostgres.ipaddress=10.1.1.4
 
 # .) Build
-# docker build --no-cache -t casa.docker/wildfly-postgres:9.0.2 .
+# docker build --no-cache -t casadocker/wildfly-postgres:9.0.2 .
 # .) Run
 # link to container named postgres
 # docker run -d --name web \
 #	--link postgres:postgres \
 #	-p 8080:8080 -p 9990:9990 \
-#	casa.docker/wildfly-postgres:9.0.2 \
+#	casadocker/wildfly-postgres:9.0.2 \
 #	-Dpostgres.ipaddress=postgres -Dpostgres.port=3306 -Dpostgres.database=db_name -Dpostgres.root_password=postgres -Dpostgres.username=root -Dpostgres.password=postgres
 # .) Connect
 # docker exec -it web bash
 
 
-FROM casa.docker/wildfly:9.0.2
+FROM casadocker/wildfly:9.0.2
 
 USER jboss
 
