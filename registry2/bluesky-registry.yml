@@ -12,5 +12,5 @@ bluesky-registry:
     REGISTRY_HTTP_TLS_KEY: /certs/domain.key
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
   volumes:
-    - /opt/docker_volumes/registry/bluesky/data:/var/lib/registry
-    - /opt/docker_volumes/registry/bluesky/certs:/certs
+    - /opt/docker_volumes/registry/blue.sky/data:/var/lib/registry
+    - /opt/docker_volumes/registry/blue.sky/certs:/certs
