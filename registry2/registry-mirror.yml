@@ -3,7 +3,7 @@ registry-mirror:
   restart: always
   image: registry:2
   ports:
-    - 443:5000
+    - 5000:5000
   environment:
     # how to override configuration
     # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
@@ -13,5 +13,5 @@ registry-mirror:
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
     REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
   volumes:
-    - /opt/docker_volumes/registry/mirror/data:/var/lib/registry
-    - /opt/docker_volumes/registry/mirror/certs:/certs
+    - /opt/docker_volumes/registry/registry.mirror/data:/var/lib/registry
+    - /opt/docker_volumes/registry/registry.mirror/certs:/certs
