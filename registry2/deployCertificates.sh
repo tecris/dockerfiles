@@ -1,6 +1,6 @@
 #1/bin/bash
 
-FQDN=cache.registry
+FQDN=registry.mirror
 
 echo $FQDN
 
