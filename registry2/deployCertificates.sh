@@ -1,12 +1,14 @@
 #1/bin/bash
 
-FQDN=registry.mirror
+FQDN=$1
+# registry.mirror
+# bluesky
 
 echo $FQDN
 
 # -- Configure docker to trust it
 sudo mkdir -p /etc/docker/certs.d/$FQDN
-sudo cp certs/domain.crt /etc/docker/certs.d/$FQDN/ca.crt
+sudo cp certs/$FQDN/domain.crt /etc/docker/certs.d/$FQDN/ca.crt
 
-sudo mkdir -p /opt/docker_volumes/registry/certs
-sudo cp certs/* /opt/docker_volumes/registry/certs/
+sudo mkdir -p /opt/docker_volumes/registry/$FQDN/certs
+sudo cp certs/$FQDN/* /opt/docker_volumes/registry/$FQDN/certs/

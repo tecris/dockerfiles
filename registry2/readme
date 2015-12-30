@@ -1,26 +1,37 @@
 
+
+Registry registry.mirror is configured as a pull through cache registry
+Registry bluesky is configured as a local private registry.
+
 https://github.com/docker/distribution/blob/master/docs/deploying.md
+https://github.com/docker/distribution/blob/master/docs/mirror.md
+
+It seems that it's not possible to configure a registry to store private images
+and cache dockerhub. (https://github.com/docker/distribution/issues/1218)
 
 -) Create self-signed certificate
   mkdir -p certs && openssl req \
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
     -x509 -days 365 -out certs/domain.crt
 
-  FQDN used when creating certificate: registry.mirror
+  FQDNs:
+   .) for registry mirror: registry.mirror
+   .) for bluesky(private) mirror: bluesky
 
 -) Deploy certiifcates, edit (set FQDN) and execute script
-  ./deployCertificates.sh
+  ./deployCertificates.sh registry-FQDN
 
--) Use docker compose to start registry
-  $ docker-compose up -d
+-) Start bluesky/private registry:
+  $ docker-compose -f bluesky-registry.yml up -d
+
+-) Start mirror registry:
+  $ docker-compose -f registry-mirror.yml up -d
 
 -) Proxy
    https://blog.docker.com/2015/10/registry-proxy-cache-docker-open-source/
    Edit /etc/default/docker, add argument --registry-mirror=https://cache.registry for DOCKER_OPTS
  
-   DOCKER_OPTS='... --registry-mirror=https://cache.registry'
-
-
+   DOCKER_OPTS='... --registry-mirror=https://registry.mirror:5000'
 
 -) Util
   .) show images

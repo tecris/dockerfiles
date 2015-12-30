@@ -1,9 +1,9 @@
-registry-mirror:
-  container_name: registry-mirror
+bluesky-registry:
+  container_name: bluesky-registry
   restart: always
   image: registry:2
   ports:
-    - 443:5000
+    - 172.17.0.1:443:5000
   environment:
     # how to override configuration
     # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
@@ -11,7 +11,6 @@ registry-mirror:
     REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
     REGISTRY_HTTP_TLS_KEY: /certs/domain.key
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
-    REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
   volumes:
-    - /opt/docker_volumes/registry/mirror/data:/var/lib/registry
-    - /opt/docker_volumes/registry/mirror/certs:/certs
+    - /opt/docker_volumes/registry/bluesky/data:/var/lib/registry
+    - /opt/docker_volumes/registry/bluesky/certs:/certs
