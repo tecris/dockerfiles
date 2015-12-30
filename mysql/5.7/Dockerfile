@@ -1,4 +1,25 @@
+################################################################################
 # based on https://github.com/docker-library/mysql/tree/master/5.7
+#
+#
+# .) Build
+# docker build --no-cache -t casadocker/mysql:5.7 .
+#
+# .) Run
+# docker run -d --name mysql57 \
+#        -e MYSQL_ROOT_PASSWORD=mysql \
+#        -e MYSQL_DATABASE=bookstoredb \
+#        -e MYSQL_USER=bookstore \
+#        -e MYSQL_PASSWORD=1bookstore! \
+#        -v /var/lib/mysql \
+#        -p 3306:3306 \
+#         casadocker/mysql:5.7
+#
+#
+#
+#
+#
+################################################################################
 
 
 FROM debian:jessie
@@ -41,7 +62,7 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 
-VOLUME /var/lib/mysql
+
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod 766 /entrypoint.sh
