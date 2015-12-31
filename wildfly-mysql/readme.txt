@@ -1,6 +1,6 @@
 
  
- Wildfly configured for MySQL data source.
+ Wildfly configured with MySQL data source.
  
  Datasource properties:
   - mysql.ipaddress - mysql database ip address
