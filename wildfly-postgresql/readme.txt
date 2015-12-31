@@ -1,6 +1,6 @@
 
  
- Wildfly configured for PostgreSQL data source.
+ Wildfly configured with PostgreSQL data source.
  
  Datasource properties:
   - postgres.ipaddress - postgres database ip address
