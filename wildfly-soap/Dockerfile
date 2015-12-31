@@ -1,11 +1,15 @@
+################################################################################
+#
 # Wildfly modified to rewrite <soap:address>
 # https://docs.jboss.org/author/display/AS71/Web+services+configuration
 #
-#
 # .) Build
 # docker build --no-cache -t casadocker/wildfly-soap:9.0.2 .
+#
 # .) Connect
 # docker exec -it web bash
+#
+################################################################################
 
 
 FROM casadocker/wildfly:9.0.2
