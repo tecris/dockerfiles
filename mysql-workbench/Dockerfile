@@ -1,6 +1,9 @@
-# https://github.com/jdecool/dockerfiles/tree/master/mysql-workbench
+################################################################################
 #
 # MySQL Workbench in a container
+#
+# https://github.com/jdecool/dockerfiles/tree/master/mysql-workbench
+#
 #
 # .) Build
 # docker build -t casadocker/mysql-workbench .
@@ -16,11 +19,11 @@
 #
 # to fix error: Gtk: cannot open display: unix:0
 # xhost local:root
-################################################################
+#
+################################################################################
 
 
 FROM ubuntu:latest
-MAINTAINER Jérémy DECOOL <contact@jdecool.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
 
