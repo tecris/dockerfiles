@@ -27,8 +27,8 @@
           <changeLogFile>./src/main/liquibase/master.xml</changeLogFile>
           <driver>com.mysql.jdbc.Driver</driver>
           <url>jdbc:mysql://localhost:3306/bookstoredb</url>
-          <username>root</username>
-          <password>mysql</password>
+          <username>book</username>
+          <password>1book!</password>
         </configuration>
         <executions>
           <execution>

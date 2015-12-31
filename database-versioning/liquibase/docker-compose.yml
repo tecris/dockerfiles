@@ -1,0 +1,12 @@
+db:
+  image: casadocker/mysql:5.7
+  container_name: liquibase-mysql-db-demo
+  stdin_open: true
+  tty: true
+  ports:
+  - "3306:3306"
+  environment:
+  - MYSQL_ROOT_PASSWORD=mysql
+  - MYSQL_USER=book
+  - MYSQL_PASSWORD=1book!
+  - MYSQL_DATABASE=bookstoredb
