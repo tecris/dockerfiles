@@ -1,2 +1,3 @@
 
- $ mvn compile flyway:migrate
+ # docker-compose up -d
+ # mvn compile flyway:migrate
