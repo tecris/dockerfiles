@@ -1,7 +1,6 @@
 db:
   image: casadocker/mysql:5.7
-  hostname: flyway-demo
-  container_name: mysql-planets-db
+  container_name: flyway-mysql-db-demo
   stdin_open: true
   tty: true
   ports:
