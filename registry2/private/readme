@@ -1,0 +1,27 @@
+
+ Private registry
+
+Registry blue.sky is configured as a local private registry.
+
+https://github.com/docker/distribution/blob/master/docs/deploying.md
+
+-) Create self-signed certificate
+  mkdir -p certs && openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+    -x509 -days 365 -out certs/domain.crt
+
+  FQDN: blue.sky
+
+-) Deploy certiifcates, edit (set FQDN) and execute script
+  ./deployBlueskyCertificates.sh.sh
+
+-) Start bluesky/private registry:
+  $ docker-compose -f bluesky-registry.yml up -d
+
+-) Util
+  .) show images
+      https://localhost:5000/v2/_catalog
+  .) show tags for a given image
+      https://localhost:5000/v2/bookstore/tags/list
+
+
