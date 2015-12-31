@@ -5,7 +5,7 @@
 # .) Build
 # docker build -t casadocker/tomcat:8.0.30 .
 # docker build --no-cache -t casadocker/tomcat:8.0.30 .
-
+#
 # .) Run
 # docker run -d --name tomcat-8 -p 8080:8080 casadocker/tomcat:8.0.30
 #
