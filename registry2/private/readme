@@ -3,7 +3,7 @@
 
 Registry blue.sky is configured as a local private registry(TLS & basic auth).
 TLS: self-signed certificates
-Basic authentication: test/tests
+Basic authentication: test/test
 
 https://github.com/docker/distribution/blob/v2.2.1/docs/deploying.md
 
