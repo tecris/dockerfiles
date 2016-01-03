@@ -16,7 +16,7 @@ https://github.com/docker/distribution/blob/v2.2.1/docs/deploying.md
   
 -) Create password file:
  # mkdir auth
- # docker run --entrypoint htpasswd registry:2 -Bbn testuser testpassword > auth/htpasswd
+ # docker run --entrypoint htpasswd registry:2 -Bbn test test > auth/htpasswd
 
 -) Deploy certiifcates, edit (set FQDN) and execute script
   # ./deployBlueskyCertificates.sh.sh
