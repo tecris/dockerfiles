@@ -2,8 +2,10 @@
 
 
 Why two separate registries and not one?
-It seems that it's not possible to configure a registry to store private images
-and cache dockerhub. (https://github.com/docker/distribution/issues/1218)
+It seems that it's not possible to configure a registry to:
+ 1) store private images, and,
+ 2) cache dockerhub. 
+- REF: https://github.com/docker/distribution/issues/1218
 
 -) Util
   .) show images
