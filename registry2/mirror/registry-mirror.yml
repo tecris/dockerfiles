@@ -12,6 +12,10 @@ registry-mirror:
     REGISTRY_HTTP_TLS_KEY: /certs/domain.key
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
     REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
   volumes:
     - /opt/docker_volumes/registry/registry.mirror/data:/var/lib/registry
     - /opt/docker_volumes/registry/registry.mirror/certs:/certs
+    - /opt/docker_volumes/registry/registry.mirror/auth:/auth
