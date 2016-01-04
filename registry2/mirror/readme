@@ -27,8 +27,8 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 
 -) Util
   .) show images
-      https://localhost:5000/v2/_catalog
+      https://registry.mirror:5000/v2/_catalog
   .) show tags for a given image
-      https://localhost:5000/v2/bookstore/tags/list
+      https://registry.mirror:5000/v2/bookstore/tags/list
 
 
