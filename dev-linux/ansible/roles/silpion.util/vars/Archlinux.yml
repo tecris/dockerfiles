@@ -1,0 +1,11 @@
+---
+util_package_state: "{{ util_package_state_archlinux }}"
+
+util_package_states:
+  - present
+  - absent
+
+util_package_list_ansible_deps:
+  - python-httplib2
+
+util_init_system_default: systemd

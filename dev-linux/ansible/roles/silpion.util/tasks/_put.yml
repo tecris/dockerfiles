@@ -1,0 +1,14 @@
+---
+# This task will have configurable become framework once v2 arrives
+- name: util._put
+  tags: util
+  copy:
+    src={{ src|mandatory }}
+    dest={{ dest|mandatory }}
+    backup={{ backup|default(false) }}
+    follow={{ follow|default(false) }}
+    force={{ force|default(true) }}
+    validate={{ validate|default(omit) }}
+    mode={{ mode|default(0644) }}
+    owner={{ util_persistent_data_path_remote_owner|default(omit) }}
+    group={{ util_persistent_data_path_remote_group|default(omit) }}

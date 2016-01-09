@@ -1,0 +1,86 @@
+---
+# Whether to show `ansible_managed` or a fancy cow
+util_template_use_cow: true
+
+# Configure become framework
+#   action:
+util_action_become_enable: true
+util_action_become_user: root
+util_action_become_method: sudo
+#   local_action:
+util_local_action_become_enable: true
+util_local_action_become_user: root
+util_local_action_become_method: sudo
+
+# Configure local_action tasks sudo configuration
+util_local_action_sudo_enable: true
+# You can configure the sudo_user argument for local_action
+#   tasks with the following var. This has no default value
+#   and is configured to be omitted in the task.
+# - {# util_local_action_sudo_user #}
+
+
+# Control how to setup a local path for persistent storage
+#   to use for downloads with Ansible.
+# Base idea is to have a shared workstation with individual
+#   user accounts without local superuser privileges required
+#   to download data to a shared persistent directory.
+#   This enables to download data once from third party network
+#   resources and re-distribute downloaded content to internal
+#   networks.
+util_persistent_data_path_local: "{{ lookup('env', 'HOME') + '/.ansible/assets' }}"
+# The following vars may be used to configure the file module
+#   for local_action when creating {# util_persistent_data_path_local #}.
+#   These have no default values and are configured to be
+#   omitted in the task.
+#   When configuring values for these variables ensure to have
+#   - util_persistent_data_path_local_mode
+#   quoted if you want to configure octal access mode WITH
+#   leading zero.
+# - {# util_persistent_data_path_local_mode #}
+# - {# util_persistent_data_path_local_owner #}
+# - {# util_persistent_data_path_local_group #}
+
+# Control where to upload persistent data to managed nodes.
+util_persistent_data_path_remote: /usr/local/src/ansible/data
+# The following vars may be used to configure the file module
+#   for local_action when creating {# util_persistent_data_path_remote #}.
+#   These have no default values and are configured to be
+#   omitted in the task.
+#   When configuring values for these variables ensure to have
+#   - util_persistent_data_path_remote_mode
+#   quoted if you want to configure octal access mode WITH
+#   leading zero.
+# - {# util_persistent_data_path_remote_mode #}
+# - {# util_persistent_data_path_remote_owner #}
+# - {# util_persistent_data_path_remote_group #}
+
+
+# Configure various module related settings
+#   configure timeout setting for get_url: module
+util_module_get_url_timeout: 10
+
+#   service module (for handlers and tasks)
+util_module_service_manage: true
+util_module_service_allow_reload: true
+util_module_service_allow_restart: true
+
+
+# Configure package manager states
+util_package_state_archlinux: present # ['present', 'absent']
+util_package_state_redhat: present    # ['present', 'latest', 'absent']
+util_package_state_debian: installed  # ['installed', 'latest', 'absent']
+
+
+#   Allow to configure custom packages to be installed
+util_package_list_custom: []
+
+
+# ansible_os_family == 'Debian'
+util_apt_cache_valid_time: 3600
+
+
+# ansible_os_family == 'RedHat'
+#   when ansible_distribution == 'CentOS'
+util_epel_enable: true
+util_epel_baseurl: https://download.fedoraproject.org/pub/epel

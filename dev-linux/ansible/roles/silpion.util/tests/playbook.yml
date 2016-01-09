@@ -1,0 +1,16 @@
+---
+- name: Test ansible-util role
+  hosts: ansibleutiltest
+  roles:
+    - { role: ansible-util }
+  tasks:
+    - name: test seboolean module
+      tags:
+        - util
+        - test
+      when: ansible_os_family == 'RedHat'
+      become: true
+      seboolean:
+        name: antivirus_can_scan_system
+        state: true
+        persistent: true

@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: Mark Kusch
+  description: Role for base configuration of Ansible roles developed at Silpion.
+  company: http://silpion.de
+  license: Apache 2
+  min_ansible_version: 1.8
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  - name: Fedora
+    versions:
+    - 20
+  - name: Ubuntu
+    versions:
+    - trusty
+  - name: Debian
+    versions:
+    - wheezy
+  - name: Archlinux
+    versions:
+    - all
+  categories:
+  - system
+dependencies: []
