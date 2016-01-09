@@ -8,4 +8,4 @@
     - { role: ansible-screen }
   tasks:
     - name: Installs cryptsetup package
-       apt: pkg=cryptsetup state=installed update_cache=true
+      apt: pkg=cryptsetup state=installed update_cache=true
