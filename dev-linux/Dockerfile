@@ -13,4 +13,5 @@ ADD ansible /opt/ansible
 WORKDIR /opt/ansible
 
 RUN ansible-galaxy install --role-file roles/ansible-java/requirements.yml
+RUN ansible-galaxy install --role-file roles/ansible-maven/requirements.yml
 RUN ansible-playbook playbook.yml -c local
