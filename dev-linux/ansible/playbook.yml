@@ -1,3 +1,4 @@
 - hosts: all
   roles:
+      - docker.ubuntu
       - { role: ansible-java, java_oracle_version: 8u66 }

@@ -14,7 +14,7 @@
 FROM casadocker/ansible
 
 RUN apt-get -y update
-RUN apt-get install -y curl git
+RUN apt-get install -y curl git apt-transport-https
 
 ADD ansible /opt/ansible
 WORKDIR /opt/ansible
