@@ -1,0 +1,96 @@
+---
+# Main list of tasks to be executed.
+#
+#   Fail the play if it runs on an unsupported platform.
+- name: Assert platform is supported
+  tags: maven
+  assert:
+    that:
+      - ansible_os_family in maven_supported_platforms
+
+
+- name: Load version vars
+  tags: maven
+  with_first_found:
+    - ../vars/versions/{{ maven_version }}.yml
+    - ../vars/versions/default.yml
+  include_vars: "{{ item }}"
+
+- name: Assert version vars
+  tags: maven
+  assert:
+    that:
+      - maven_redis_sha256sum not in (None, "")
+
+
+- name: Include util get/put instructions
+  tags: maven
+  include: util.yml
+
+
+- name: Install Maven installation directory
+  tags: maven
+  become: yes
+  file:
+    state=directory
+    owner=0
+    group=0
+    mode=0755
+    dest={{ maven_install_dir }}
+
+
+- name: Install Maven
+  tags: maven
+  become: yes
+  unarchive:
+    src={{ util_persistent_data_path_remote }}/{{ maven_redis_filename }}
+    dest={{ maven_install_dir }}
+    copy=false
+    creates={{ maven_install_dir }}/apache-maven-{{ maven_version }}
+
+
+- name: Install Maven bin directory
+  tags: maven
+  become: yes
+  file:
+    state=directory
+    owner=0
+    group=0
+    mode=0755
+    dest={{ maven_bin_path }}
+
+
+- name: Install Maven binary
+  tags: maven
+  become: yes
+  file:
+    state=link
+    force=true
+    src={{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn
+    dest={{ maven_bin_path }}/mvn
+
+
+- name: Install Ansible facts.d directory
+  tags: maven
+  become: yes
+  file:
+    state=directory
+    dest=/etc/ansible/facts.d
+    owner=0
+    group=0
+    mode=0755
+
+- name: Install Maven facts
+  tags: maven
+  sudo: yes
+  template:
+    src=facts.j2
+    dest=/etc/ansible/facts.d/maven.fact
+    owner=0
+    group=0
+    mode=0644
+
+- name: Re-read facts
+  tags: maven
+  setup:
+    filter=ansible_local
