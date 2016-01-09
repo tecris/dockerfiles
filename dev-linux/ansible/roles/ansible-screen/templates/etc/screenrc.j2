@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+
+startup_message {{ 'on' if screen_startup_message else 'off' }}
+autodetach {{ 'on' if screen_autodetach else 'off' }}
+vbell {{ 'on' if screen_vbell else 'off' }}
+defscrollback {{ screen_defscrollback }}

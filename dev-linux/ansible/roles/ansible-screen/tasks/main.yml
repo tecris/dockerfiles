@@ -1,0 +1,19 @@
+# tasks file for screen
+---
+- name: install
+  apt:
+    name: screen
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  tags: [configuration, screen, screen-install]
+
+- name: create configuration file
+  template:
+    src: etc/screenrc.j2
+    dest: "{{ item.value.dest }}/.screenrc"
+    owner: "{{ item.value.owner | default('root') }}"
+    group: "{{ item.value.group | default(item.value.owner) | default('root') }}"
+    mode: "{{ item.value.mode | default('0644') }}"
+  with_dict: screen_screenrc_destinations
+  tags: [configuration, screen, screen-configuration]
