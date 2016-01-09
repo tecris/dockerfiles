@@ -1,0 +1,3 @@
+- hosts: all
+  roles:
+      - { role: ansible-java, java_oracle_version: 8u66 }
