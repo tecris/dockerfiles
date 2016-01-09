@@ -1,6 +1,0 @@
-# test file for screen
----
-- hosts: localhost
-  remote_user: root
-  roles:
-    - ../../
