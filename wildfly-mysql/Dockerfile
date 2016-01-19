@@ -1,4 +1,6 @@
-# Wildfly image with parameterized (system properies) datasource 
+################################################################################
+#
+# Wildfly image with parameterized (system properties) datasource 
 #
 # mysql.ipaddress - mysql database ip address
 # mysql.port      - mysql port
@@ -6,7 +8,7 @@
 # mysql.username  - database user
 # mysql.password  - database password
 # Usage: -Dmysql.ipaddress=10.1.1.4
-
+#
 # .) Build
 # docker build --no-cache -t casadocker/wildfly-mysql:9.0.2 .
 # .) Run
@@ -18,6 +20,8 @@
 #	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysql.username=root -Dmysql.password=mysql
 # .) Connect
 # docker exec -it web bash
+#
+################################################################################
 
 
 FROM casadocker/wildfly:9.0.2
@@ -45,4 +49,3 @@ RUN rm -rf /opt/jboss/wildfly-$WILDFLY_VERSION.Final/standalone/configuration/st
 USER root
 
 ENTRYPOINT ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-
