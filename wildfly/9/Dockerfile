@@ -1,6 +1,7 @@
+################################################################################
 # based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
-
-
+#
+#
 # .) Build
 # docker build --no-cache -t casadocker/wildfly:9.0.2 .
 # .) Run
@@ -9,6 +10,8 @@
 # docker exec -it wildfly9 bash
 # .) Remove
 # docker rmi casadocker/wildfly:9.0.2
+#
+################################################################################
 
 
 FROM casadocker/jdk:8
