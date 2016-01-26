@@ -26,7 +26,6 @@
 
 FROM casadocker/wildfly:9.0.2
 
-USER jboss
 
 ENV WILDFLY_VERSION 9.0.2
 ENV MYSQL_CONNECTOR_VERSION 5.1.38
@@ -46,6 +45,5 @@ RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/datasource.cli
 # Fix for WFLYCTL0056: Could not rename /opt/jboss/wildfly/standalone/configuration/standalone_xml_history/current to ... 
 RUN rm -rf /opt/jboss/wildfly-$WILDFLY_VERSION.Final/standalone/configuration/standalone_xml_history
 
-USER root
 
 ENTRYPOINT ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
