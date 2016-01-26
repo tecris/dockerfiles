@@ -5,7 +5,7 @@
 # docker build --no-cache -t casadocker/nexus:2.12.0-01 .
 # .) Run with volumes (survive image updates, or container removals)
 # create directory and set permissions
-# mkdir /opt/docker_volumes/nexus-data && chown -R 200 /opt/docker_volumes/nexus-data
+# sudo mkdir -p /opt/docker_volumes/nexus-data && sudo chown -R 200 /opt/docker_volumes/nexus-data
 # -p 172.17.0.1:8081:8081 ugly hack, TODO, find elegant solution, dns ...
 # docker run --name nexus --restart=always -d -p 172.17.0.1:8081:8081 -v /opt/docker_volumes/nexus-data:/sonatype-work casadocker/nexus:2.12.0-01
 # .) Connect
