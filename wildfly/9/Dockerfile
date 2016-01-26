@@ -37,14 +37,12 @@ RUN tar -xf wildfly-$WILDFLY_VERSION.tar.gz
 RUN rm wildfly-$WILDFLY_VERSION.tar.gz
 RUN ln -s wildfly-$WILDFLY_VERSION wildfly
 
-EXPOSE 8080 9990
-
 # Set the JBOSS_HOME env variable
 ENV JBOSS_HOME /opt/jboss/wildfly
 
-USER root
-
 # add management user (username: admin, passwd: 1admin!)
 RUN /opt/jboss/wildfly/bin/add-user.sh admin 1admin! --silent
+
+EXPOSE 8080 9990
 
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
