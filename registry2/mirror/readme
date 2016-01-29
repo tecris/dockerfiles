@@ -1,11 +1,11 @@
-
- Registry as a pull through cache / Mirror registry
-
-Registry registry.mirror is configured as a pull through cache registry
+Pull through cache (aka mirror) registry
 
 https://github.com/docker/distribution/blob/master/docs/deploying.md
 https://github.com/docker/distribution/blob/master/docs/mirror.md
 
+-) add " --registry-mirror=https://registry.mirror:5000" to DOCKER_OPTS (/etc/default/docker)
+   DOCKER_OPTS='... --registry-mirror=https://registry.mirror:5000'
+   
 -) Create self-signed certificate
   mkdir -p certs && openssl req \
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
@@ -13,17 +13,10 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 
   FQDN: registry.mirror
 
--) Deploy certiifcates, edit (set FQDN) and execute script
-  ./deployMirrorCertificates.sh
+-) $ ./deployMirrorCertificates.sh                  # deploy certificates
+-) $ sudo service docker restart                    # restart docker daemon
+-) $ docker-compose -f registry-mirror.yml up -d    # start mirror registry
 
--) Start mirror registry:
-  $ docker-compose -f registry-mirror.yml up -d
-
--) Proxy
-   https://blog.docker.com/2015/10/registry-proxy-cache-docker-open-source/
-   Edit /etc/default/docker, add argument --registry-mirror=https://cache.registry for DOCKER_OPTS
- 
-   DOCKER_OPTS='... --registry-mirror=https://registry.mirror:5000'
 
 -) Util
   .) show images
