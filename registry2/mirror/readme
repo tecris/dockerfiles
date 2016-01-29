@@ -8,13 +8,6 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 
 -) add '127.0.1.1       registry.mirror'   to /etc/hosts
 
--) Create self-signed certificate
-  mkdir -p certs && openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-    -x509 -days 365 -out certs/domain.crt
-
-  FQDN: registry.mirror
-
 -) $ ./deployMirrorCertificates.sh                  # deploy certificates
 -) $ sudo service docker restart                    # restart docker daemon
 -) $ docker-compose -f registry-mirror.yml up -d    # start mirror registry
@@ -27,3 +20,9 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
       https://registry.mirror:5000/v2/bookstore/tags/list
 
 
+-) How to create new self-signed certificates
+     $ mkdir -p certs && openssl req \
+       -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+       -x509 -days 365 -out certs/domain.crt
+       
+     FQDN: registry.mirror
