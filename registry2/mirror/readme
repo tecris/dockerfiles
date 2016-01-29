@@ -5,7 +5,9 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 
 -) add " --registry-mirror=https://registry.mirror:5000" to DOCKER_OPTS (/etc/default/docker)
    DOCKER_OPTS='... --registry-mirror=https://registry.mirror:5000'
-   
+
+-) add '127.0.1.1       registry.mirror'   to /etc/hosts
+
 -) Create self-signed certificate
   mkdir -p certs && openssl req \
     -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
