@@ -12,13 +12,9 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 -) $ sudo service docker restart                    # restart docker daemon
 -) $ docker-compose -f registry-mirror.yml up -d    # start mirror registry
 
-
--) Util
-  .) show images
-      https://registry.mirror:5000/v2/_catalog
-  .) show tags for a given image
-      https://registry.mirror:5000/v2/bookstore/tags/list
-
+-) Browse registry:
+  .) https://registry.mirror:5000/v2/_catalog               # show images
+  .) https://registry.mirror:5000/v2/bookstore/tags/list    # show tags for a given image
 
 -) How to create new self-signed certificates
      $ mkdir -p certs && openssl req \
