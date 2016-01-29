@@ -1,14 +1,8 @@
 
 
-
 Why two separate registries and not one?
 It seems that it's not possible to configure a registry to:
  1) store private images, and,
  2) cache dockerhub. 
-- REF: https://github.com/docker/distribution/issues/1218
 
--) Util
-  .) show images
-      https://localhost:5000/v2/_catalog
-  .) show tags for a given image
-      https://localhost:5000/v2/bookstore/tags/list
+- REF: https://github.com/docker/distribution/issues/1218
