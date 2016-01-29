@@ -1,33 +1,22 @@
-
  Private registry
 
-Registry blue.sky is configured as a local private registry(TLS & basic auth).
+Registry blue.sky is configured as a local private registry(TLS).
 TLS: self-signed certificates
-Basic authentication: test/test
 
 https://github.com/docker/distribution/blob/v2.2.1/docs/deploying.md
 
--) Create self-signed certificate
-  # mkdir -p certs && openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-    -x509 -days 365 -out certs/domain.crt
+-) add '172.17.0.1       registry.mirror'   to /etc/hosts
+
+-) $ ./deployBlueskyCertificates.sh.sh                # deploy certiifcates
+-) $ docker-compose -f bluesky-registry.yml up -d     # Start private registry
+
+-) Browse registry:
+  .) https://blue.sky/v2/_catalog               # show images
+  .) https://blue.sky/v2/bookstore/tags/list    # show tags for a given image
+
+-) How to create new self-signed certificates
+     $ mkdir -p certs && openssl req \
+       -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+       -x509 -days 365 -out certs/domain.crt
 
   FQDN: blue.sky
-  
--) Create password file:
- # mkdir auth
- # docker run --entrypoint htpasswd registry:2 -Bbn test test > auth/htpasswd
-
--) Deploy certiifcates, edit (set FQDN) and execute script
-  # ./deployBlueskyCertificates.sh.sh
-
--) Start bluesky/private registry:
-  # docker-compose -f bluesky-registry.yml up -d
-
--) Util
-  .) show images
-      https://blue.sky/v2/_catalog
-  .) show tags for a given image
-      https://blue.sky/v2/bookstore/tags/list
-
-
