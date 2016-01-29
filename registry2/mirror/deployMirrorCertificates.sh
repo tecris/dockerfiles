@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 FQDN=registry.mirror
 
