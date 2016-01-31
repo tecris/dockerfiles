@@ -1,34 +1,24 @@
-
- Registry as a pull through cache / Mirror registry
-
-Registry registry.mirror is configured as a pull through cache registry
+Pull through cache (aka mirror) registry
 
 https://github.com/docker/distribution/blob/master/docs/deploying.md
 https://github.com/docker/distribution/blob/master/docs/mirror.md
 
--) Create self-signed certificate
-  mkdir -p certs && openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-    -x509 -days 365 -out certs/domain.crt
-
-  FQDN: registry.mirror
-
--) Deploy certiifcates, edit (set FQDN) and execute script
-  ./deployMirrorCertificates.sh
-
--) Start mirror registry:
-  $ docker-compose -f registry-mirror.yml up -d
-
--) Proxy
-   https://blog.docker.com/2015/10/registry-proxy-cache-docker-open-source/
-   Edit /etc/default/docker, add argument --registry-mirror=https://cache.registry for DOCKER_OPTS
- 
+-) add " --registry-mirror=https://registry.mirror:5000" to DOCKER_OPTS (/etc/default/docker)
    DOCKER_OPTS='... --registry-mirror=https://registry.mirror:5000'
 
--) Util
-  .) show images
-      https://registry.mirror:5000/v2/_catalog
-  .) show tags for a given image
-      https://registry.mirror:5000/v2/bookstore/tags/list
+-) add '127.0.1.1       registry.mirror'   to /etc/hosts
 
+-) $ ./deployMirrorCertificates.sh                  # deploy certificates
+-) $ sudo service docker restart                    # restart docker daemon
+-) $ docker-compose -f registry-mirror.yml up -d    # start mirror registry
 
+-) Browse registry:
+  .) https://registry.mirror:5000/v2/_catalog               # show images
+  .) https://registry.mirror:5000/v2/bookstore/tags/list    # show tags for a given image
+
+-) How to create new self-signed certificates
+     $ mkdir -p certs && openssl req \
+       -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+       -x509 -days 365 -out certs/domain.crt
+       
+     FQDN: registry.mirror
