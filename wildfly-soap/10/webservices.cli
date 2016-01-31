@@ -1,0 +1,9 @@
+# $WILDFLY_HOME/bin/jboss-cli.sh --file=/path/to/this/file.
+embed-server
+batch
+
+/subsystem=webservices/:write-attribute(name=wsdl-host,value=jbossws.undefined.host)
+#/subsystem=webservices/:write-attribute(name=wsdl-host,value=localhost)
+:reload
+
+run-batch
