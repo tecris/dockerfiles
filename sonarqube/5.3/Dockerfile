@@ -52,10 +52,18 @@ RUN set -x \
 
 
 # Installing Plugins
+
+# http://docs.sonarqube.org/display/PLUG/Java+Plugin
+ENV JAVA_PLUGIN_VERSION 3.9
+# http://docs.sonarqube.org/display/PLUG/Web+Plugin
+ENV WEB_PLUGIN_VERSION 2.4
+# http://docs.sonarqube.org/display/PLUG/Git+Plugin
+ENV GIT_PLUGIN_VERSION 1.1
+
 RUN cd /opt/sonarqube/extensions/plugins/ \
-  && curl -o sonar-java-plugin-3.5.jar -fSL $SONAR_DOWNLOAD_URL/sonar-java-plugin/sonar-java-plugin-3.5.jar \
-  && curl -o sonar-web-plugin-2.4.jar -fSL $SONAR_DOWNLOAD_URL/sonar-web-plugin/sonar-web-plugin-2.4.jar \
-  && curl -o sonar-scm-git-plugin-1.1.jar -fSL http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-scm-git-plugin/1.1/sonar-scm-git-plugin-1.1.jar
+  && curl -o sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar -fSL $SONAR_DOWNLOAD_URL/sonar-java-plugin/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar \
+  && curl -o sonar-web-plugin-${WEB_PLUGIN_VERSION}.jar -fSL $SONAR_DOWNLOAD_URL/sonar-web-plugin/sonar-web-plugin-${WEB_PLUGIN_VERSION}.jar \
+  && curl -o sonar-scm-git-plugin-${GIT_PLUGIN_VERSION}.jar -fSL http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-scm-git-plugin/${GIT_PLUGIN_VERSION}/sonar-scm-git-plugin-1.1.jar
 
 
 VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/extensions"]
