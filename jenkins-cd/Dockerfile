@@ -1,11 +1,15 @@
-
+################################################################################
+#
 # .) Build
-# docker build --no-cache -t casadocker/jenkins-cd:1.625.3 .
+# docker build --no-cache -t casadocker/jenkins-cd:1.642.1 .
 # .) Run
-# docker run --name jenkins-cd --add-host docker.host:192.168.1.68 --restart=always -d -p 8088:8080 casadocker/jenkins-cd:1.625.3
+# docker run --name jenkins-cd --add-host docker.host:192.168.1.68 \
+#    --restart=always -d -p 8088:8080 casadocker/jenkins-cd:1.642.1
+#
+################################################################################
 
 
-FROM casadocker/jenkins-base:1.625.3
+FROM casadocker/jenkins-base:1.642.1
 
 
 ENV MAVEN_VERSION 3.3.9
