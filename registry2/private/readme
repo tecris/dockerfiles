@@ -7,7 +7,7 @@ https://github.com/docker/distribution/blob/v2.2.1/docs/deploying.md
 
 -) add '172.17.0.1       registry.mirror'   to /etc/hosts
 
--) $ ./deployBlueskyCertificates.sh.sh                # deploy certiifcates
+-) $ ./deployBlueskyCertificates.sh                   # deploy certiifcates
 -) $ docker-compose -f bluesky-registry.yml up -d     # Start private registry
 
 -) Browse registry:
