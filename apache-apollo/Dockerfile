@@ -1,21 +1,25 @@
+################################################################################
+#
+# based on https://github.com/tech-sketch/docker-apache-apollo
+#
 # .) Build
 # docker build -t casadocker/apollo .
 # docker build --no-cache -t casadocker/apollo .
+#
 # .) Run (non-secure ports)
 # docker run --name apollo -p=61613:61613 -p=61623:61623 -p=61680:61680 -d -t casadocker/apollo
 # .) Run (secure ports)
 # docker run --name apollo -p=61614:61614 -p=61624:61624 -p=61681:61681 -d -t casadocker/apollo
+#
 # .) Connect
 # docker exec -it apollo bash
+#
 # Web Admin console
 # http://ip_address:61680
 # login: admin
 # passcode: password
-
-
-
-# based on
-# https://github.com/tech-sketch/docker-apache-apollo
+#
+################################################################################
 
 
 FROM casadocker/jdk:8
@@ -57,4 +61,3 @@ EXPOSE 61623
 EXPOSE 61624
 
 ENTRYPOINT ["/var/lib/broker/bin/apollo-broker", "run"]
-
