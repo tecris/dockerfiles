@@ -1,7 +1,5 @@
 # Dockerize Nexus
 
-============================================
-
 1. Nexus available at http://172.17.0.1:8081 
  * `user/password: admin/admin123`
 2. Step-by-step
