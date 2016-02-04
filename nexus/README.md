@@ -4,7 +4,7 @@
 
 1. Nexus available at http://172.17.0.1:8081 
  * `user/password: admin/admin123`
-2. Step-by-step  [Configure-Maven-to-Deploy-to-Nexus][1]
+2. Step-by-step
  * Configure project, add distribution management in pom:
  ```
     <distributionManagement>
@@ -30,7 +30,7 @@
     </server>
   </servers>
  ```
-3. [Repository Management with Nexus][2]
+3. [Repository Management with Nexus][1]
  * Add following snippet in ~/.m2/settings.xml
  ```
   <mirrors>
@@ -81,9 +81,6 @@
 5. Misc Repositories
   * JBoss
     * https://repository.jboss.org/nexus/content/repositories/public/
-  * tomp2p
-    * http://tomp2p.net/dev/mvn/
 
-[1]:https://support.sonatype.com/entries/21283268-Configure-Maven-to-Deploy-to-Nexus
-[2]:http://books.sonatype.com/nexus-book/reference/config-maven.html
+[1]:http://books.sonatype.com/nexus-book/reference/config-maven.html
 
