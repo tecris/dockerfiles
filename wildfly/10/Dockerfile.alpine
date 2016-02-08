@@ -1,17 +1,19 @@
+################################################################################
 # based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
-
-
+#
 # .) Build
-# docker build --no-cache -f Dockerfile.alpine -t casadocker/wildfly:10.0.0 .
+# docker build --no-cache -f Dockerfile.alpine -t casadocker/wildfly-xs:10.0.0 .
 # .) Run
-# docker run -d --name wildfly10 -p 8080:8080 -p 9990:9990 casadocker/wildfly:10.0.0
+# docker run -d --name wildfly-xs10 -p 8080:8080 -p 9990:9990 casadocker/wildfly-xs:10.0.0
 # .) Connect
-# docker exec -it wildfly10 bash
+# docker exec -it wildfly-xs10 bash
 # .) Remove
-# docker rmi casadocker/wildfly:10.0.0
+# docker rmi casadocker/wildfly-xs:10.0.0
+#
+################################################################################
 
 
-FROM casadocker/alpine_jdk:8
+FROM casadocker/jdk-xs:8
 
 RUN adduser -D -h /opt/jboss jboss 
 
@@ -21,13 +23,13 @@ WORKDIR /opt/jboss
 # Specify the user which should be used to execute all commands below
 USER jboss
 
-ENV REPO_URL 192.168.1.69:88
+# ENV REPO_URL 192.168.1.69:88
 
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 10.0.0.Final
 
-# ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
-ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
+ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
+# ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
 
 RUN wget ${DOWNLOAD_URL}/wildfly-$WILDFLY_VERSION.tar.gz
 RUN tar -xf wildfly-$WILDFLY_VERSION.tar.gz
