@@ -1,11 +1,15 @@
+################################################################################
+#
 # https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
 # https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
-
+#
 # .) Build
-# docker build -f Dockerfile.alpine -t casadocker/alpine_jdk:8 .
-# docker build -f Dockerfile.alpine --no-cache -t casadocker/alpine_jdk:8 .
+# docker build -f Dockerfile.alpine -t casadocker/jdk-xs:8 .
+# docker build -f Dockerfile.alpine --no-cache -t casadocker/jdk-xs:8 .
 # .) Run
-# docker run --name jdk8 -it casadocker/alpine_jdk:8 bash
+# docker run --name jdk-xs8 -it casadocker/jdk-xs:8 bash
+#
+################################################################################
 
 FROM alpine
 
@@ -18,8 +22,8 @@ RUN apk --update add curl ca-certificates tar && \
 
 # Java Version
 ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 45
-ENV JAVA_VERSION_BUILD 14
+ENV JAVA_VERSION_MINOR 72
+ENV JAVA_VERSION_BUILD 15
 ENV JAVA_PACKAGE       jdk
 
 # Download and unarchive Java
