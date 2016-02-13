@@ -30,7 +30,6 @@ RUN sed -i 's/.*\/tomcat-users.*/  <role rolename="manager-gui"\/>\n&/' ${TOMCAT
 RUN sed -i 's/.*\/tomcat-users.*/  <role rolename="manager-script"\/>\n&/' ${TOMCAT_USERS_FILE}
 RUN sed -i 's/.*\/tomcat-users.*/  <role rolename="manager-jmx"\/>\n&/' ${TOMCAT_USERS_FILE}
 RUN sed -i 's/.*\/tomcat-users.*/  <role rolename="manager-status"\/>\n&/' ${TOMCAT_USERS_FILE}
-RUN sed -i 's/.*\/tomcat-users.*/  <role rolename="manager-status"\/>\n&/' ${TOMCAT_USERS_FILE}
 RUN sed -i 's/.*\/tomcat-users.*/  <user username="admin" password="1admin!" roles="manager-gui"\/>\n&/' ${TOMCAT_USERS_FILE}
 
 EXPOSE 8080
