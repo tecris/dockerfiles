@@ -1,0 +1,9 @@
+# $WILDFLY_HOME/bin/jboss-cli.sh --file=/path/to/this/file.
+embed-server
+batch
+
+deploy /opt/jboss/mysql-connector-java-MYSQL-CONNECTOR-VERSION-bin.jar
+
+data-source add --name=MySqlDS --driver-name=mysql-connector-java-MYSQL-CONNECTOR-VERSION-bin.jar --jndi-name=java:/datasources/MySqlDS --connection-url="jdbc:mysql://${mysql.ipaddress}:${mysql.port}/${mysql.database}?useUnicode=true&amp;characterEncoding=UTF-8" --user-name=${mysql.username} --password=${mysql.password} --use-ccm=false --max-pool-size=25 --blocking-timeout-wait-millis=5000 --enabled=true
+
+run-batch
