@@ -6,6 +6,9 @@
 # .) Build
 # docker build --no-cache -t casadocker/wildfly-soap:10.0.0 .
 #
+# .) Run
+# docker run -d --name wildfly-soap10 -p 8080:8080 -p 9990:9990 casadocker/wildfly-soap:10.0.0
+#
 # .) Connect
 # docker exec -it web bash
 #
