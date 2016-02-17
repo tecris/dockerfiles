@@ -1,16 +1,18 @@
-bluesky-registry:
-  container_name: bluesky-registry
-  restart: always
-  image: registry:2
-  ports:
-    - 172.17.0.1:443:5000
-  environment:
-    # how to override configuration
-    # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
-    # https://github.com/docker/distribution/blob/master/docs/configuration.md
-    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
-    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
-  volumes:
-    - /opt/docker_volumes/registry/blue.sky/data:/var/lib/registry
-    - /opt/docker_volumes/registry/blue.sky/certs:/certs
+version: '2'
+services:
+  bluesky-registry:
+    container_name: bluesky-registry
+    restart: always
+    image: registry:2
+    ports:
+      - 172.17.0.1:443:5000
+    environment:
+      # how to override configuration
+      # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
+      # https://github.com/docker/distribution/blob/master/docs/configuration.md
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+    volumes:
+      - /opt/docker_volumes/registry/blue.sky/data:/var/lib/registry
+      - /opt/docker_volumes/registry/blue.sky/certs:/certs
