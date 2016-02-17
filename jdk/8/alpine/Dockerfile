@@ -4,10 +4,10 @@
 # https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
 #
 # .) Build
-# docker build -f Dockerfile.alpine -t casadocker/jdk-xs:8u72 .
-# docker build -f Dockerfile.alpine --no-cache -t casadocker/jdk-xs:8u72 .
+# docker build -t casadocker/alpine-jdk:8u72 .
+# docker build --no-cache -t casadocker/alpine-jdk:8u72 .
 # .) Run
-# docker run --name jdk-xs8 -it casadocker/jdk-xs:8u72 bash
+# docker run --name alpine-jdk8 -it casadocker/alpine-jdk:8u72 bash
 #
 ################################################################################
 
