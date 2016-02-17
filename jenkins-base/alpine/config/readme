@@ -1,0 +1,23 @@
+
+ How to 'generate' files
+ - hudson.tasks.Maven.xml
+ - jenkins.mvn.GlobalMavenConfig.xml
+ - org.jenkinsci.plugins.dockerbuildstep.DockerBuilder.xml
+
+Start clean jenkins container
+.) http://localhost:8088 -> Manage Jenkins > Configure System 
+    - Maven Configuration > Default settings provider >  Settings file on filesystem
+     .) File path: /opt/maven_config/.m2/settings.xml
+    - Maven > Maven installations > Add Maven
+     .) Deselect 'Install automatically', 
+     .) Name: maven3
+     .) MAVEN_HOME: /opt/apache-maven-3.3.9
+    - Docker Builder 
+     .) Docker URL: http://docker.host:4243
+     .) Apply > Test connection
+   .) Save
+
+files can be found @ /var/jenkins_home/
+
+
+

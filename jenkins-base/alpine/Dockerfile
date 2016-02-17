@@ -2,9 +2,9 @@
 # fork from https://github.com/HearstAT/docker-alpinejenkins
 #
 # .) Build
-# docker build --no-cache -t casadocker/jenkins:1.642.1 .
+# docker build --no-cache -t casadocker/alpine-jenkins:1.642.1 .
 # .) Run
-# docker run --name jenkins -d -p 8080:8080 casadocker/jenkins:1.642.1
+# docker run --name jenkins -d -p 8080:8080 casadocker/alpine-jenkins:1.642.1
 #
 ################################################################################
 
@@ -20,6 +20,9 @@ ENV JENKINS_SHARE /usr/share/jenkins
 ENV JENKINS_SLAVE_AGENT_PORT 50000
 ENV JENKINS_UC https://updates.jenkins-ci.org
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
+
+ENV MAVEN_VERSION 3.3.9
+ENV MAVEN_HOME /opt/apache-maven-${MAVEN_VERSION}
 
 RUN apk update
 RUN apk add \
@@ -39,6 +42,14 @@ RUN addgroup jenkins && \
 # Setup directories and rights so Jenkins user can do things without sudo
 COPY systemconfig.sh /tmp/systemconfig.sh
 RUN bash -c /tmp/systemconfig.sh
+
+ADD files/settings.xml /opt/maven_config/.m2/settings.xml
+COPY config/hudson.tasks.Maven.xml /usr/share/jenkins/ref/hudson.tasks.Maven.xml
+COPY config/jenkins.mvn.GlobalMavenConfig.xml  /usr/share/jenkins/ref/jenkins.mvn.GlobalMavenConfig.xml
+COPY config/org.jenkinsci.plugins.dockerbuildstep.DockerBuilder.xml /usr/share/jenkins/ref/org.jenkinsci.plugins.dockerbuildstep.DockerBuilder.xml
+
+RUN wget -qO- http://www.eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xvz -C /opt
+
 
 # Pull LTS version of Jenkins listed above
 RUN curl -fL http://mirrors.jenkins-ci.org/war-stable/$JENKINS_VERSION/jenkins.war -o $JENKINS_SHARE/jenkins.war

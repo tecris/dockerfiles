@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIRECTORYLIST="/usr/share/jenkins /usr/share/jenkins/ref ${JENKINS_SHARE} ${JENKINS_HOME} /usr/local/bin /usr/bin "
+DIRECTORYLIST="/usr/share/jenkins /usr/share/jenkins/ref ${JENKINS_SHARE} ${JENKINS_HOME} /usr/local/bin /usr/bin /opt/maven_config"
 
 for dir in ${DIRECTORYLIST}; do
     mkdir -p ${dir}
