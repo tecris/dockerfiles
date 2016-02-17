@@ -10,13 +10,13 @@
 # Usage: -Dmysql.ipaddress=10.1.1.4
 #
 # .) Build
-# docker build --no-cache -t casadocker/wildfly-xs-mysql:10.0.0 .
+# docker build --no-cache -t casadocker/alpine-wildfly-mysql:10.0.0 .
 # .) Run
 # link to container named mysqldb
 # docker run -d --name web \
 #	--link mysqldb:mysql \
 #	-p 8080:8080 -p 9990:9990 \
-#	casadocker/wildfly-xs-mysql:10.0.0 \
+#	casadocker/alpine-wildfly-mysql:10.0.0 \
 #	-Dmysql.ipaddress=mysqldb -Dmysql.port=3306 -Dmysql.database=db_name -Dmysql.root_password=mysql -Dmysql.username=root -Dmysql.password=mysql
 # .) Connect
 # docker exec -it web bash
@@ -24,7 +24,7 @@
 ################################################################################
 
 
-FROM casadocker/wildfly-xs:10.0.0
+FROM casadocker/alpine-wildfly:10.0.0
 
 
 ENV WILDFLY_VERSION 10.0.0
