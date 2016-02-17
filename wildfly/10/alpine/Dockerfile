@@ -2,18 +2,18 @@
 # based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
 #
 # .) Build
-# docker build --no-cache -t casadocker/wildfly-xs:10.0.0 .
+# docker build --no-cache -t casadocker/alpine-wildfly:10.0.0 .
 # .) Run
-# docker run -d --name wildfly-xs10 -p 8080:8080 -p 9990:9990 casadocker/wildfly-xs:10.0.0
+# docker run -d --name alpine-wildfly10 -p 8080:8080 -p 9990:9990 casadocker/alpine-wildfly:10.0.0
 # .) Connect
 # docker exec -it wildflyxs-10 bash
 # .) Remove
-# docker rmi casadocker/wildfly-xs:10.0.0
+# docker rmi casadocker/alpine-wildfly:10.0.0
 #
 ################################################################################
 
 
-FROM casadocker/jdk-xs:8u72
+FROM casadocker/alpine-jdk:8u72
 
 RUN mkdir -p /opt/jboss
 
