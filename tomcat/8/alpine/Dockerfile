@@ -3,16 +3,16 @@
 # based on https://registry.hub.docker.com/_/tomcat/
 #
 # .) Build
-# docker build -t casadocker/tomcat-xs:8.0.32 .
-# docker build --no-cache -t casadocker/tomcat-xs:8.0.32 .
+# docker build -t casadocker/alpine-tomcat:8.0.32 .
+# docker build --no-cache -t casadocker/alpine-tomcat:8.0.32 .
 #
 # .) Run
-# docker run -d --name tomcat-xs8 -p 8080:8080 casadocker/tomcat-xs:8.0.32
+# docker run -d --name alpine-tomcat -p 8080:8080 casadocker/alpine-tomcat:8.0.32
 #
 ################################################################################
 
 
-FROM casadocker/jdk-xs:8u72
+FROM casadocker/alpine-jdk:8u72
 
 
 ENV CATALINA_HOME /usr/local/tomcat
