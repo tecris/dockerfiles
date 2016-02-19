@@ -24,6 +24,7 @@ RUN repositories="\
 RUN packages=' \
     bash \
     tar \
+    wget \
   ' \
   set -x \
   && apk --update add $packages \
