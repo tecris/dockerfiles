@@ -23,6 +23,8 @@ RUN repositories="\
 # install default packages
 RUN packages=' \
     bash \
+    ca-certificates \
+    sed \
     tar \
     wget \
   ' \
