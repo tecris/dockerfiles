@@ -1,1 +1,1 @@
-IMAGE_NAME=casadocker/postgres:9.5
+IMAGE_NAME=casadocker/postgresql:9.5
