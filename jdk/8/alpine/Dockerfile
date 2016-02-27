@@ -4,10 +4,10 @@
 # https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
 #
 # .) Build
-# docker build -t casadocker/alpine-jdk:8u72 .
-# docker build --no-cache -t casadocker/alpine-jdk:8u72 .
+# docker build -t casadocker/alpine-jdk:8u74 .
+# docker build --no-cache -t casadocker/alpine-jdk:8u74 .
 # .) Run
-# docker run --name alpine-jdk8 -it casadocker/alpine-jdk:8u72 bash
+# docker run --name alpine-jdk8 -it casadocker/alpine-jdk:8u74 bash
 #
 ################################################################################
 
@@ -53,8 +53,8 @@ RUN apk add --no-cache --virtual=build-dependencies curl tar wget ca-certificate
 # https://github.com/frol/docker-alpine-oraclejdk8.git
 # Java Version
 ENV JAVA_VERSION=8 \
-    JAVA_UPDATE=72 \
-    JAVA_BUILD=15 \
+    JAVA_UPDATE=74 \
+    JAVA_BUILD=02 \
     JAVA_HOME="/usr/lib/jvm/default-jvm"
 
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
