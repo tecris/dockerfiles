@@ -16,6 +16,7 @@ FROM alpine:3.3
 # install default packages
 RUN packages=' \
     bash \
+    curl \
     ca-certificates \
     sed \
     tar \
