@@ -13,6 +13,18 @@
 
 FROM alpine:3.3
 
+# install default packages
+RUN packages=' \
+    bash \
+    ca-certificates \
+    sed \
+    tar \
+    wget \
+  ' \
+  set -x \
+  && apk --update add $packages \
+  && rm -rf /var/cache/apk/*
+
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 
 RUN apk add --no-cache openjdk8 && \
