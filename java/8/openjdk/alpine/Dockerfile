@@ -1,7 +1,6 @@
 ################################################################################
 #
-# https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
-# https://hub.docker.com/r/anapsix/alpine-java/~/dockerfile/
+# https://github.com/frol/docker-alpine-openjdk7
 #
 # .) Build
 # docker build -t casadocker/alpine-openjdk:8u72 .
