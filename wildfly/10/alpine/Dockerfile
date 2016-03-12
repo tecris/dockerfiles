@@ -13,7 +13,7 @@
 ################################################################################
 
 
-FROM casadocker/alpine-jdk:8u74
+FROM casadocker/alpine-openjdk:8u72
 
 RUN mkdir -p /opt/jboss
 
@@ -32,10 +32,8 @@ ENV WILDFLY_VERSION 10.0.0.Final
 ENV WILDFLY_SHA1 c0dd7552c5207b0d116a9c25eb94d10b4f375549
 
 ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
-# ENV DOWNLOAD_URL=http://$REPO_URL/repo/packages
 
-RUN apk add --no-cache --virtual=build-dependencies curl tar ca-certificates && \
-       curl -O https://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz \
+RUN curl -O https://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz \
        && sha1sum wildfly-$WILDFLY_VERSION.tar.gz | grep $WILDFLY_SHA1 \
        && tar xz -f wildfly-$WILDFLY_VERSION.tar.gz \
        && rm wildfly-$WILDFLY_VERSION.tar.gz
