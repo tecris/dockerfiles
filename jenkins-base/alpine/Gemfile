@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-gem 'chef'
-gem 'rubocop'
-gem 'test-kitchen'
-gem 'foodcritic'
-gem 'thor-foodcritic'
-gem 'berkshelf'
