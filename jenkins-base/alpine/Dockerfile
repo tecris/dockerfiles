@@ -9,7 +9,7 @@
 ################################################################################
 
 
-FROM casadocker/alpine-jdk:8u74
+FROM casadocker/alpine-openjdk:8u72
 
 MAINTAINER Hearst Automation Team "atat@hearst.com"
 
