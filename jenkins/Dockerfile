@@ -1,10 +1,10 @@
 ################################################################################
 #
 # .) Build
-# docker build --no-cache -t casadocker/jenkins-cd:1.642.2 .
+# docker build --no-cache -t casadocker/jenkins:1.642.2 .
 # .) Run
 # docker run --name jenkins-cd --add-host docker.host:192.168.1.68 \
-#    --restart=always -d -p 8088:8080 casadocker/jenkins-cd:1.642.1
+#    --restart=always -d -p 8088:8080 casadocker/jenkins:1.642.1
 #
 ################################################################################
 
