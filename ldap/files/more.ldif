@@ -1,9 +1,0 @@
-dn: cn=Test User,ou=Users,dc=atlas,dc=org
-objectclass: inetOrgPerson
-objectclass: top
-cn: Test User 
-sn: User
-uid: test
-userpassword: test
-description: test user
-ou: Development Department
