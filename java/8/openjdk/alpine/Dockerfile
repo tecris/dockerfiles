@@ -3,10 +3,10 @@
 # https://github.com/frol/docker-alpine-openjdk7
 #
 # .) Build
-# docker build -t casadocker/alpine-openjdk:8u72 .
-# docker build --no-cache -t casadocker/alpine-openjdk:8u72 .
+# docker build -t casadocker/alpine-openjdk:8u77 .
+# docker build --no-cache -t casadocker/alpine-openjdk:8u77 .
 # .) Run
-# docker run --name alpine-openjdk8 -it casadocker/alpine-openjdk:8u72 bash
+# docker run --name alpine-openjdk8 -it casadocker/alpine-openjdk:8u77 bash
 #
 ################################################################################
 
