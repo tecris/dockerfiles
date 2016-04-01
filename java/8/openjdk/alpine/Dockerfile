@@ -28,5 +28,5 @@ RUN packages=' \
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 
-RUN apk add --no-cache openjdk8 && \
+RUN apk add --no-cache openjdk8=8.77.03-r0 && \
             ln -sf "${JAVA_HOME}/bin/"* "/usr/bin/"
