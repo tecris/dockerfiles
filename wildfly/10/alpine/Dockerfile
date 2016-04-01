@@ -13,7 +13,7 @@
 ################################################################################
 
 
-FROM casadocker/alpine-openjdk:8u77
+FROM casadocker/alpine-openjdk:8
 
 RUN mkdir -p /opt/jboss
 

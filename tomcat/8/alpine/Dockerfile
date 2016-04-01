@@ -12,7 +12,7 @@
 ################################################################################
 
 
-FROM casadocker/alpine-openjdk:8u77
+FROM casadocker/alpine-openjdk:8
 
 
 ENV CATALINA_HOME /usr/local/tomcat
