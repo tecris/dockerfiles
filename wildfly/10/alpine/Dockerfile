@@ -13,11 +13,11 @@
 ################################################################################
 
 
-FROM casadocker/alpine-openjdk:8u72
+FROM casadocker/alpine-openjdk:8u77
 
 RUN mkdir -p /opt/jboss
 
-RUN adduser -D -h /opt/jboss jboss 
+RUN adduser -D -h /opt/jboss jboss
 
 # Set the working directory to jboss' user home directory
 WORKDIR /opt/jboss
