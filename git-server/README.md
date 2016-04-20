@@ -28,5 +28,5 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
  * `$ cat user_id_rsa.pub >> /home/git/.ssh/authorized_keys`
 
 A. Keys outside container
- .) append public key to /opt/docker_volumes/git/.ssh/authorized_keys, and run
- .) setPermissions.sh
+ * append public key to `/opt/docker_volumes/git/.ssh/authorized_keys`, and run
+ * `$ ./setPermissions.sh`
