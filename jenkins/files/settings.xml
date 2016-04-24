@@ -20,7 +20,7 @@
         <sonar.jdbc.password>sonar</sonar.jdbc.password>
         <sonar.jdbc.driverClassName>org.postgresql.Driver</sonar.jdbc.driverClassName>
         <!-- Optional URL to server. Default value is http://localhost:9000 -->
-        <sonar.host.url>http://sonar:19000</sonar.host.url>
+        <sonar.host.url>http://sonar:9000</sonar.host.url>
       </properties>
     </profile>
     <profile>
