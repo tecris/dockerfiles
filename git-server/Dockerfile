@@ -16,7 +16,7 @@
 ################################################################################
 
 
-FROM casadocker/ansible
+FROM casadocker/ansible:2.0.2
 
 RUN echo 'root:root' |chpasswd
 
