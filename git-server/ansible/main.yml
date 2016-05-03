@@ -9,5 +9,3 @@
       file: path={{repo_path}} owner=git group=git mode=0775 state=directory
     - name: ensure repositories permisions
       file: path={{ repo_path }} owner=git group=git recurse=yes
-    - name: Copy key
-      copy: src=files/authorized_keys dest=/home/git/.ssh/authorized_keys owner=git group=git mode=0700
