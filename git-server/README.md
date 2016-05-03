@@ -13,10 +13,20 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
   * On docker host, if /opt/docker_volumes/git/repositories directory does not exist will be created.
 
 #### Add repository to git server
+1. Create bare repository. A bare repository can be initiated as an empty repo or from an existing repo.
+
   ```
-  $ git init --bare ionradan.git                                          # create empty bare repository
-  $ git clone --bare repo_to_bare_clone ionradan.git                      # create bare repository from an existing repository
-  $ scp -r ionradan.git git@localhost:/opt/git/repositories               # move bare repository to git server
+  $ git init --bare ionradan.git                        # create empty bare repository
+  $ git clone --bare repo_to_bare_clone ionradan.git    # create bare repository from an existing repository
+  ```
+1. Copy repository to git server
+
+  ```
+  $ scp -r ionradan.git git@localhost:/opt/git/repositories    # move bare repository to git server
+  ```
+1. Clone repository
+
+  ```
   $ git clone git@localhost:/opt/git/repositories/ionradan.git
   $ git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git    # non-standard ssh port
    ```
