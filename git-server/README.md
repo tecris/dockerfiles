@@ -1,7 +1,6 @@
 # Git server on Docker
-============================================
-
-Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-a-Server)
+</br>
+Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-a-Server)
 
 #### Run docker git-server container
   ```
