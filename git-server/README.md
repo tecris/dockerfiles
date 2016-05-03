@@ -28,7 +28,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
 
   ```
   $ git clone git@localhost:/opt/git/repositories/ionradan.git
-  $ git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git    # non-standard ssh port
+  $ git clone ssh://git@localhost:2224/opt/git/repositories/ionradan.git    # non-standard ssh port
    ```
 
 ##### Add key
