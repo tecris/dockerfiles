@@ -16,12 +16,13 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-the-Server-Getting-Git-on-
 5. How to create bare repository out of an existing repository
   * `git clone --bare repo_to_bare_clone ionradan.git`
 6. How to add a repository to git server:
-  * `$ scp -r ionradan.git git@10.1.1.8:/opt/git/repositories`
+  * `$ scp -r ionradan.git git@localhost:/opt/git/repositories`
 7. Clone repository:
   * Standard ssh port
-    * `$ git clone git@10.1.1.8:/opt/git/repositories/ionradan.git`
-  * Non-standard ssh port
-    * `git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git`
+    ```
+      $ git clone git@localhost:/opt/git/repositories/ionradan.git
+      $ git clone ssh://git@localhost:24/opt/git/repositories/ionradan.git    # non-standard ssh port
+    ```
 8. How to add new keys:
  * `$ scp user_id_rsa.pub git@10.1.1.8:/home/git`
  * `$ ssh git@10.1.1.8`
