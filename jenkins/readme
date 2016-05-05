@@ -4,3 +4,16 @@
      
 2. Hack
  - docker.host entry in /etc/hosts
+
+3. Enable basic security 
+Manage Jenkins > Setup Security >
+Security Realm
+  Select:
+    - "Enable Security"
+    - "Jenkins’ own user database" -> De-select "Allow users to sign up"
+  Authorization:
+    - "Logged-in users can do anything"
+  Save
+  Sign up form should show up
+ Once logged in select user at top right > Configure > Show API Token...
+ to see ... token
