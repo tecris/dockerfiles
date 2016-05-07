@@ -1,7 +1,7 @@
 ################################################################################
 #
 # .) Build
-# docker build --no-cache -t casadocker/git-server:16.05.03 .
+# docker build --no-cache -t casadocker/git-server:16.05.07 .
 # .) Run
 # ./startGitServer.sh
 #
