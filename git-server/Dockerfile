@@ -21,7 +21,8 @@ RUN sed -ri 's/#UseLogin no/UseLogin no/g' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 ENV USER git
-RUN adduser --disabled-password --gecos "" $USER
+RUN adduser --disabled-password --shell /usr/bin/git-shell --gecos "" $USER
+
 RUN adduser $USER sudo
 
 RUN mkdir -p /home/$USER/.ssh
