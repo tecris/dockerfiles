@@ -4,10 +4,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
 
 #### Run docker git-server container
   ```
-  $ docker run --name git-server -d -p 2224:22 \
-        -v /opt/docker_volumes/git/.ssh:/home/git/.ssh \
-        -v /opt/docker_volumes/git/repositories:/opt/git/repositories \
-        casadocker/git-server
+  $ ./startGitServer.sh
   $ sudo chmod -R o+w /opt/docker_volumes/git
   ```
   * On docker host, if /opt/docker_volumes/git/repositories directory does not exist will be created.
