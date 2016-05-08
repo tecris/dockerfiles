@@ -12,7 +12,7 @@
 #
 ################################################################################
 
-FROM casadocker/ansible
+FROM casadocker/ansible:2.0.0
 
 # Add playbooks to the Docker image
 ADD ansible /srv/example/
