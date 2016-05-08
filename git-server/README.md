@@ -1,13 +1,10 @@
 # Git server on Docker
 </br>
-Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-a-Server)
+Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-a-Server) (ssh & git protocols)
 
 #### Run docker git-server container
   ```
-  $ docker run --name git-server -d -p 2224:22 \
-        -v /opt/docker_volumes/git/.ssh:/home/git/.ssh \
-        -v /opt/docker_volumes/git/repositories:/opt/git/repositories \
-        casadocker/git-server
+  $ ./startGitServer.sh
   $ sudo chmod -R o+w /opt/docker_volumes/git
   ```
   * On docker host, if /opt/docker_volumes/git/repositories directory does not exist will be created.
@@ -26,10 +23,18 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
   ```
 1. Clone repository
 
-  ```
-  $ git clone git@localhost:/opt/git/repositories/ionradan.git
-  $ git clone ssh://git@localhost:2224/opt/git/repositories/ionradan.git    # non-standard ssh port
-   ```
+ * ssh protocol
+
+    ```
+    $ git clone git@localhost:/opt/git/repositories/ionradan.git
+    $ git clone ssh://git@localhost:2224/opt/git/repositories/ionradan.git    # non-standard ssh port
+    ```
+
+ * git protocol (read only)
+
+    ```
+    $ git clone git://localhost/ionradan.git
+    ```
 
 ##### Add key
  * `echo public_key.pub >> /opt/docker_volumes/git/.ssh/authorized_keys`, and run
