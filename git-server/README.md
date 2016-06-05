@@ -3,11 +3,7 @@
 Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-a-Server) (ssh & git protocols)
 
 #### Run docker git-server container
-  ```
-  $ ./startGitServer.sh
-  $ sudo chmod -R o+w /opt/docker_volumes/git
-  ```
-  * On docker host, if /opt/docker_volumes/git/repositories directory does not exist will be created.
+  `$ docker-compose up -d`
 
 #### Add repository to git server
 1. Create bare repository, either initiated as an empty repository or cloned from an existing repository.
@@ -19,7 +15,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
 1. Copy repository to git server
 
   ```
-  $ scp -r ionradan.git git@localhost:/opt/git/repositories    # move bare repository to git server
+  $ docker cp ionradan.git git-server:/opt/git/repositories    # move bare repository to git server
   ```
 1. Clone repository
 
@@ -37,8 +33,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
     ```
 
 ##### Add key
- * `echo public_key.pub >> /opt/docker_volumes/git/.ssh/authorized_keys`, and run
- * `$ ./setPermissions.sh`
+ * Add key to files/authorized_keys and rebuild image. Compromise to achieve the immutable environment principle.
 
 ##### Generate keys
   * `$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
