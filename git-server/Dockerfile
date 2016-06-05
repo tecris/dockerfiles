@@ -1,9 +1,9 @@
 ################################################################################
 #
 # .) Build
-# docker build --no-cache -t casadocker/git-server:16.05.08 .
+# docker build --no-cache -t casadocker/git-server:16.06.05 .
 # .) Run
-# ./startGitServer.sh
+# docker-compose up -d
 #
 #
 # https://github.com/bankiru/docker-git-daemon
@@ -33,10 +33,14 @@ RUN chown root /var/run && chown root /var/run/sshd
 
 ENV USER git
 RUN adduser --disabled-password --shell /usr/bin/git-shell --gecos "" $USER
-
 RUN adduser $USER sudo
 
+
 RUN mkdir -p /home/$USER/.ssh
+RUN chmod 700 /home/$USER/.ssh
+ADD files/authorized_keys /home/$USER/.ssh/authorized_keys
+RUN chmod 600 /home/$USER/.ssh/authorized_keys
+RUN chown -R $USER:$USER /home/$USER/.ssh
 RUN mkdir -p /opt/$USER/repositories
 RUN chmod 0775 /opt/$USER/repositories
 RUN chown -R $USER:$USER /opt/$USER/repositories
