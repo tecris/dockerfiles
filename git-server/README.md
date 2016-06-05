@@ -31,6 +31,10 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
     ```
     $ git clone git://localhost/ionradan.git
     ```
+1. Backup
+
+ * `$ docker run --rm --volumes-from git-server -v $(pwd):/backup ubuntu tar cvf /backup/git-repositories.tar /opt/git/repositories`
+ * When the command completes and the container stops we’ll be left with a backup of /opt/git/repositories directory (from git-server container)
 
 ##### Add key
  * Add key to `files/authorized_keys` and rebuild image. Compromise to achieve the immutable environment principle.
