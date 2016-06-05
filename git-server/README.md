@@ -33,7 +33,7 @@ Raw [Git Server](http://git-scm.com/book/en/v1/Git-on-t<e-Server-Getting-Git-on-
     ```
 
 ##### Add key
- * Add key to files/authorized_keys and rebuild image. Compromise to achieve the immutable environment principle.
+ * Add key to `files/authorized_keys` and rebuild image. Compromise to achieve the immutable environment principle.
 
 ##### Generate keys
   * `$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
