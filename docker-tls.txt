@@ -1,0 +1,49 @@
+https://docs.docker.com/engine/security/https/
+/etc/systemd/system/docker.service.d/docker.conf
+/etc/systemd/system/docker.service.d/env.conf
+
+# generate CA private and public keys:
+$ openssl genrsa -aes256 -out ca-key.pem 4096
+$ openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
+
+# create a server key and certificate signing request (CSR
+$ openssl genrsa -out server-key.pem 4096
+$ openssl req -subj "/CN=cloud.atlas" -sha256 -new -key server-key.pem -out server.csr
+
+# sign the public key with our CA
+$ echo subjectAltName = IP:192.168.1.2,IP:127.0.0.1,IP:cloud.atlas > extfile.cnf
+$ openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem \
+  -CAcreateserial -out server-cert.pem -extfile extfile.cnf
+
+# For client authentication, create a client key and certificate signing request:
+$ openssl genrsa -out key.pem 4096
+$ openssl req -subj '/CN=client' -new -key key.pem -out client.csr
+## To make the key suitable for client authentication, create an extensions config file:
+$ echo extendedKeyUsage = clientAuth > extfile.cnf
+## sign public key
+$ openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem \
+  -CAcreateserial -out cert.pem -extfile extfile.cnf
+
+$ rm -v client.csr server.csr
+$ chmod -v 0444 ca.pem server-cert.pem cert.pem
+
+Configure the Docker daemon only accept connections from clients providing a certificate trusted by our CA:
+
+$ docker daemon --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem \
+  -H=0.0.0.0:2376
+
+To be able to connect to Docker and validate its certificate, you now need to provide your client keys, certificates and trusted CA:
+
+$ docker --tlsverify --tlscacert=ca.pem --tlscert=cert.pem --tlskey=key.pem \
+    -H=cloud.atlas:2376 version
+
+cat /etc/systemd/system/docker.service.d/env.conf
+[Service]
+Environment="DOCKER_OPTS=--tlsverify --tlscacert=/etc/docker/certs.d/cloud.atlas/ca.pem \
+                 --tlscert=/etc/docker/certs.d/cloud.atlas/server-cert.pem \
+                 --tlskey=/etc/docker/certs.d/cloud.atlas/server-key.pem \
+                 -H=0.0.0.0:2376 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
+
+$ mkdir -pv ~/.docker
+$ cp -v {ca,cert,key}.pem ~/.docker
+$ export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
