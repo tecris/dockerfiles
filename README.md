@@ -15,3 +15,5 @@
    $ docker network create --subnet 203.0.113.0/24 bluesky
    $ docker run -d --name wildfly10 --net=bluesky --ip=203.0.113.20 -p 8080:8080 -p 9990:9990 casadocker/wildfly:10.0.0
    ```
+ 1. [Docker compose configuration](https://docs.docker.com/compose/env-file/)
+ 
