@@ -1,0 +1,50 @@
+Docker Remote API
+
+http://blog.trifork.com/2013/12/24/docker-from-a-distance-the-remote-api
+http://blog.flux7.com/blogs/docker/docker-tutorial-series-part-8-docker-remote-api
+http://blog.flux7.com/blogs/docker/docker-tutorial-series-part-9-10-docker-remote-api-commands-for-images
+
+
+create & start container
+http://stackoverflow.com/questions/31381978/how-to-use-docker-remote-api-to-create-container
+
+
+stop container
+ - curl -X POST http://localhost:4243/containers/planets-mysql-db/stop
+
+docker rm planets-mysql-db
+ - curl -X DELETE http://localhost:4243/containers/planets-mysql-db
+
+create container
+curl -X POST -H "Content-Type: application/json" -d '{
+  "Hostname": "planets.db",
+  "Image": "mysql:5.7",
+  "Env": [
+    "MYSQL_ROOT_PASSWORD=mysql",
+    "MYSQL_USER=bookstore",
+    "MYSQL_PASSWORD=1bookstore!",
+    "MYSQL_DATABASE=bookstoredb"
+  ],
+  "ExposedPorts": {
+    "3306/tcp": {}
+  }
+}' http://localhost:4243/containers/create?name=planets-mysql-db
+
+start container
+curl -v -X POST -H "Content-Type: application/json" -d '{
+  "PortBindings": {
+    "3306/tcp": [{
+      "HostPort": "3306"
+    }]
+  },
+  "RestartPolicy": {
+    "Name": "always"
+  }
+}' http://localhost:4243/containers/planets-mysql-db/start
+
+
+tar zcf Dockerfile.tar.gz Dockerfile
+curl -X POST -H "Content-Type: application/tar" --data-binary '@Dockerfile.tar.gz' http://localhost:4243/build?t=planets-web:1
+
+curl -X POST -H "Content-Type: application/tar" --data-binary '@jenkins/Dockerfile.tar.gz' http://localhost:4243/build?t=planets-web:1
+curl -X POST -H "Content-Type: application/tar" --data-binary '@$WORKSPACE/continuous-delivery/jenkins/docker/Dockerfile.tar.gz' http://docker.host:4243/build?t=planets-web:1
