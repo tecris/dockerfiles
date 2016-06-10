@@ -1,19 +1,20 @@
 1. Enable Docker Remote API
    Modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`
    - `DOCKER_OPTS="-H tcp://0.0.0.0:4243"`
-     
+
 2. Hack
  - docker.host entry in /etc/hosts
 
-3. Enable basic security 
+3. Enable basic security
 Manage Jenkins > Setup Security >
 Security Realm
   Select:
     - "Enable Security"
     - "Jenkins’ own user database" -> De-select "Allow users to sign up"
   Authorization:
-    - "Logged-in users can do anything"
+    - "Matrix-based security"
+    - 0 access for user Anonymous
   Save
-  Sign up form should show up
- Once logged in select user at top right > Configure > Show API Token...
- to see ... token
+  Sign up form should show up, create user
+How to find token:
+Login > select user at top right > Configure > Show API Token...
