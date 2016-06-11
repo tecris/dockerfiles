@@ -11,7 +11,7 @@ http://stackoverflow.com/questions/31381978/how-to-use-docker-remote-api-to-crea
 
 .) Remove container_
      - docker rm planets-mysql-db
-     - $ curl -X DELETE http://localhost:4243/containers/planets-mysql-db
+     - $ curl -X DELETE http://localhost:4243/containers/planets-mysql-db?force=1
 
 .) Create container
      - $ curl -X POST -H "Content-Type: application/json" -d '{
@@ -47,6 +47,11 @@ curl -X POST -H "Content-Type: application/tar" --data-binary '@Dockerfile.tar.g
 curl -X POST -H "Content-Type: application/tar" --data-binary '@jenkins/Dockerfile.tar.gz' http://localhost:4243/build?t=planets-web:1
 curl -X POST -H "Content-Type: application/tar" --data-binary '@$WORKSPACE/continuous-delivery/jenkins/docker/Dockerfile.tar.gz' http://docker.host:4243/build?t=planets-web:1
 
+.) Remove image
+     - $ curl -X DELETE -H "X-Registry-Auth: empty" http://localhost:4243/images/blue.sky\/iv-ui:test?force=1
 
 .) Push image to private registry
      - $ curl -X POST -H "X-Registry-Auth: empty" http://localhost:4243/images/blue.sky\/iv-ui/push?tag=test
+
+.) Tag an image into a repository
+     - $ curl -X POST -H "X-Registry-Auth: empty" http://localhost:4243/images/blue.sky\/iv-ui:latest/tag?repo=blue.sky\/iv-ui\&force=0\&tag=atest
