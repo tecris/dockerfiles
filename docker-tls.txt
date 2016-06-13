@@ -47,3 +47,16 @@ Environment="DOCKER_OPTS=--tlsverify --tlscacert=/etc/docker/certs.d/cloud.atlas
 $ mkdir -pv ~/.docker
 $ cp -v {ca,cert,key}.pem ~/.docker
 $ export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
+
+
+
+
+=== docker-compose ===
+$ cp -v {ca,cert,key}.pem ~/.docker
+$ DOCKER_HOST=https://192.168.1.2:2376 DOCKER_TLS_VERIFY=1 docker-compose ps
+
+=== curl ===
+$ curl https://cloud.atlas:2376/images/json \
+   --cert ~/.docker/cert.pem \
+   --key ~/.docker/key.pem \
+   --cacert ~/.docker/ca.pem
