@@ -1,11 +1,7 @@
-1. Enable Docker Remote API
-   Modify /etc/default/docker file to include parameter `-H tcp://0.0.0.0:4243`
-   - `DOCKER_OPTS="-H tcp://0.0.0.0:4243"`
-
-2. Hack
+1. Hack
  - docker.host entry in /etc/hosts
 
-3. Enable basic security
+2. Enable basic security
 Manage Jenkins > Setup Security >
 Security Realm
   Select:
