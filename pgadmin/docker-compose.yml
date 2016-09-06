@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+
+  postgres:
+    image: postgres:9.5
+    container_name: postgres-demo
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: demodb
