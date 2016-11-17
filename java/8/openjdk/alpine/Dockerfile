@@ -29,5 +29,5 @@ RUN packages=' \
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 
 # https://pkgs.alpinelinux.org/package/v3.4/community/x86_64/openjdk8
-RUN apk add --no-cache openjdk8=8.92.14-r1 && \
+RUN apk add --no-cache openjdk8=8.111.14-r0 && \
             ln -sf "${JAVA_HOME}/bin/"* "/usr/bin/"
