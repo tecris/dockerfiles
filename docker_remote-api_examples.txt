@@ -9,7 +9,7 @@ http://stackoverflow.com/questions/31381978/how-to-use-docker-remote-api-to-crea
 .) Stop container
     $ curl -X POST http://localhost:4243/containers/planets-mysql-db/stop
 
-.) Remove container_
+.) Remove container
      - docker rm planets-mysql-db
      - $ curl -X DELETE http://localhost:4243/containers/planets-mysql-db?force=1
 
