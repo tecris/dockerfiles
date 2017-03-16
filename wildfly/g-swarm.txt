@@ -1,8 +1,0 @@
-
-docker tag casadocker/wildfly:9.0.1 registry.giantswarm.io/tecris/wildfly:9.0.1
-
-docker push registry.giantswarm.io/tecris/wildfly:9.0.1
-
-swarm up --var=domain=wildfly-$(swarm user).gigantic.io
-
-http://wildfly-tecris.gigantic.io/
