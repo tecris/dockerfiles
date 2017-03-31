@@ -1,14 +1,14 @@
 ################################################################################
-# based on https://github.com/jboss-dockerfiles/wildfly/blob/8.2.0.Final/Dockerfile
+# based on https://github.com/jboss-dockerfiles/wildfly/blob/10.1.0.Final/Dockerfile
 #
 # .) Build
-# docker build --no-cache -t casadocker/alpine-wildfly:10.0.0 .
+# docker build --no-cache -t casadocker/alpine-wildfly:10.1.0 .
 # .) Run
-# docker run -d --name alpine-wildfly10 -p 8080:8080 -p 9990:9990 casadocker/alpine-wildfly:10.0.0
+# docker run -d --name alpine-wildfly10 -p 8080:8080 -p 9990:9990 casadocker/alpine-wildfly:10.1.0
 # .) Connect
-# docker exec -it wildflyxs-10 bash
+# docker exec -it wildfly-10 bash
 # .) Remove
-# docker rmi casadocker/alpine-wildfly:10.0.0
+# docker rmi casadocker/alpine-wildfly:10.1.0
 #
 ################################################################################
 
@@ -28,8 +28,8 @@ WORKDIR /opt/jboss
 # ENV REPO_URL 192.168.1.69:88
 
 # Set the WILDFLY_VERSION env variable
-ENV WILDFLY_VERSION 10.0.0.Final
-ENV WILDFLY_SHA1 c0dd7552c5207b0d116a9c25eb94d10b4f375549
+ENV WILDFLY_VERSION 10.1.0.Final
+ENV WILDFLY_SHA1 9ee3c0255e2e6007d502223916cefad2a1a5e333
 
 ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
 
