@@ -1,3 +1,6 @@
+# 31-Mar-2017
+# To be discontinued in favour of: https://github.com/docker-library/openjdk/blob/master/8-jdk/alpine/Dockerfile
+
 ################################################################################
 #
 # https://github.com/frol/docker-alpine-openjdk7
