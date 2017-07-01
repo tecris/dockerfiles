@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS `pet`;
 CREATE TABLE pet (
   name VARCHAR(20),
   owner VARCHAR(20),
@@ -9,6 +8,7 @@ CREATE TABLE pet (
 
 BEGIN;
 INSERT INTO `pet` VALUES
-('Puffball','Diane','hamster','f','2015-03-30',NULL),
-('Roxy','Indie','cat','f','2013-03-30',NULL);
+    ('Puffball','Diane','hamster','f','2015-03-30',NULL),
+    ('Roxy','Indie','cat','f','2013-03-30',NULL),
+    ('Ronnie','Val','dog','f','2013-03-30',NULL);
 COMMIT;
