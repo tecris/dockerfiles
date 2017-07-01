@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+    db:
+        build: .
+        image: mf/maindb
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+            MYSQL_DATABASE: db
+            MYSQL_USER: panda
+            MYSQL_PASSWORD: p
+        ports:
+          - 3306:3306
+
