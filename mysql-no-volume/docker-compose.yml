@@ -3,7 +3,7 @@ services:
 
     db:
         build: .
-        image: mf/maindb
+        image: casadocker/mysql-test:5.7
         ports:
           - 3306:3306
 
