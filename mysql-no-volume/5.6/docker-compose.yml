@@ -1,0 +1,10 @@
+version: '2'
+services:
+
+    db:
+        build: .
+        image: casadocker/mysql-test:5.7
+        container_name: mysql-test57
+        ports:
+          - 3306:3306
+
