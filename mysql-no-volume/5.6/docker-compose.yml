@@ -3,8 +3,8 @@ services:
 
     db:
         build: .
-        image: casadocker/mysql-test:5.7
-        container_name: mysql-test57
+        image: casadocker/mysql-test:5.6
+        container_name: mysql-test56
         ports:
           - 3306:3306
 
