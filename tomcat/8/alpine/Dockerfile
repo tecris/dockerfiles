@@ -3,11 +3,11 @@
 # based on https://registry.hub.docker.com/_/tomcat/
 #
 # .) Build
-# docker build -t casadocker/alpine-tomcat:8.0.42 .
-# docker build --no-cache -t casadocker/alpine-tomcat:8.0.42 .
+# docker build -t casadocker/alpine-tomcat:8.0.45 .
+# docker build --no-cache -t casadocker/alpine-tomcat:8.0.45 .
 #
 # .) Run
-# docker run -d --name alpine-tomcat -p 8080:8080 casadocker/alpine-tomcat:8.0.42
+# docker run -d --name alpine-tomcat -p 8080:8080 casadocker/alpine-tomcat:8.0.45
 #
 ################################################################################
 
@@ -19,7 +19,7 @@ ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.0.42
+ENV TOMCAT_VERSION 8.0.45
 ENV TOMCAT_USERS_FILE /usr/local/apache-tomcat-${TOMCAT_VERSION}/conf/tomcat-users.xml
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin
 
