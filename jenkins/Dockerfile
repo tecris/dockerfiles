@@ -1,19 +1,19 @@
 ################################################################################
 #
 # .) Build
-# docker build --no-cache -t casadocker/jenkins:1.651.2-1 .
+# docker build --no-cache -t casadocker/jenkins:2.60.2 .
 # .) Run
 # docker run --name jenkins-cd --add-host docker.host:192.168.1.68 \
-#    --restart=always -d -p 8088:8080 casadocker/jenkins:1.651.2
+#    --restart=always -d -p 8088:8080 casadocker/jenkins:2.60.2
 #
 ################################################################################
 
 
-FROM jenkins:1.651.2
+FROM jenkins/jenkins:2.60.2
 
 ENV MAVEN_VERSION 3.3.9
 ENV MAVEN_HOME /opt/apache-maven-${MAVEN_VERSION}
-ENV DOCKER_COMPOSE_VERSION 1.7.1
+ENV DOCKER_COMPOSE_VERSION 1.14.0
 
 USER root
 RUN curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
