@@ -31,5 +31,5 @@ COPY config/org.jenkinsci.plugins.dockerbuildstep.DockerBuilder.xml /usr/share/j
 
 RUN wget -qO- http://www.eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xvz -C /opt
 
-COPY plugins.txt /plugins.txt
+# COPY plugins.txt /plugins.txt
 RUN /usr/local/bin/plugins.sh /plugins.txt
