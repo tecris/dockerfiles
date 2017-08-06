@@ -6,7 +6,7 @@ services:
     restart: always
     image: registry:2
     ports:
-      - 5000:5000
+      - 5555:5000
     environment:
       # how to override configuration
       # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
@@ -24,7 +24,7 @@ services:
     restart: always
     image: registry:2
     ports:
-      - 443:5001
+      - 5000:5000
     environment:
       # how to override configuration
       # https://docs.docker.com/registry/configuration/#override-specific-configuration-options
