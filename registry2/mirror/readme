@@ -19,6 +19,6 @@ https://github.com/docker/distribution/blob/master/docs/mirror.md
 -) How to create new self-signed certificates
      $ mkdir -p certs && openssl req \
        -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
-       -x509 -days 365 -out certs/domain.crt
+       -x509 -days 3650 -out certs/domain.crt
        
-     FQDN: registry.mirror
+     FQDN: mirror.registry
