@@ -19,7 +19,8 @@ FROM ubuntu:16.04
 #apt-get install -y ansible=2.0.2.0-1ppa~trusty
 
 RUN apt-get update
-RUN apt-get install -y ansible=2.0.0.2-2
+# RUN apt-get install -y ansible=2.0.0.2-2
+RUN apt-get install -y ansible
 
 
 RUN echo '[local]\nlocalhost\n' > /etc/ansible/hosts
