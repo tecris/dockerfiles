@@ -1,7 +1,8 @@
 version: '2'
 services:
-  registry-mirror:
-    container_name: registry-mirror
+
+  mirror-registry:
+    container_name: mirror-registry
     restart: always
     image: registry:2
     ports:
@@ -15,5 +16,5 @@ services:
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
       REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
     volumes:
-      - /opt/docker_volumes/registry/registry.mirror/data:/var/lib/registry
-      - /opt/docker_volumes/registry/registry.mirror/certs:/certs
+      - /opt/docker_volumes/registry/mirror.registry/data:/var/lib/registry
+      - /opt/docker_volumes/registry/mirror.registry/certs:/certs
