@@ -34,6 +34,9 @@ ENV WILDFLY_SHA1 0e89fe0860a87bfd6b09379ee38d743642edfcfb
 
 ENV DOWNLOAD_URL=http://download.jboss.org/wildfly/$WILDFLY_VERSION
 
+RUN apk add --update curl && \
+            rm -rf /var/cache/apk/*
+
 RUN curl -O https://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz \
        && sha1sum wildfly-$WILDFLY_VERSION.tar.gz | grep $WILDFLY_SHA1 \
        && tar xz -f wildfly-$WILDFLY_VERSION.tar.gz \
