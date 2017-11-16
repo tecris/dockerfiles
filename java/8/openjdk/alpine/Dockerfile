@@ -14,7 +14,7 @@
 ################################################################################
 
 
-FROM alpine:3.5
+FROM alpine:3.6
 
 # install default packages
 RUN packages=' \
@@ -32,5 +32,5 @@ RUN packages=' \
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 
 # https://pkgs.alpinelinux.org/package/v3.5/community/x86_64/openjdk8
-RUN apk add --no-cache openjdk8=8.121.13-r0 && \
+RUN apk add --no-cache openjdk8=8.131.11-r2 && \
             ln -sf "${JAVA_HOME}/bin/"* "/usr/bin/"
