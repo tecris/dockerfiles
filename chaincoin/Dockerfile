@@ -1,7 +1,12 @@
 # docker build --no-cache -t casadocker/chc-mn:17.12.09 .
-# chaincoind -daemon
+# docker run --name chc-exec -d casadocker/chc-exec:17.12.03 
 
 FROM ubuntu:16.04
+
+# supervisor
+RUN apt-get update && apt-get install -y supervisor
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get update && \
     apt-get install -y automake libdb++-dev build-essential libtool \
@@ -23,3 +28,5 @@ RUN cd chaincoin && \
 RUN mkdir /root/.chaincoin/
 RUN echo rpcuser=chaincoinrpc >> /root/.chaincoin/chaincoin.conf
 RUN echo rpcpassword=GpqCe3D8MBub8HNANVrqprfAMFBkmYW35t2faExoj16o >> /root/.chaincoin/chaincoin.conf
+
+CMD ["/usr/bin/supervisord"]
