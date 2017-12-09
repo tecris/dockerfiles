@@ -1,5 +1,5 @@
-# docker build --no-cache -t casadocker/chc-mn:17.12.09 .
-# docker run --name chc-exec -d casadocker/chc-exec:17.12.03 
+# docker build --no-cache -t casadocker/chc:17.12.10 .
+# docker run --name chc -d casadocker/chc:17.12.10
 
 FROM ubuntu:16.04
 
