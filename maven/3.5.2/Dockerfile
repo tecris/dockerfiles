@@ -9,7 +9,7 @@
 FROM casadocker/xenial-ansible
 
 
-RUN ansible-galaxy install -f tecris.maven,17.10.28 ansiblebit.oracle-java
+RUN ansible-galaxy install -f tecris.maven,17.10.28 ansiblebit.oracle-java geerlingguy.git
 
 ADD playbook.yaml playbook.yaml
 RUN ansible-playbook playbook.yaml -c local
