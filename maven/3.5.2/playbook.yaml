@@ -1,0 +1,4 @@
+- hosts: all
+  roles:
+    - { role: ansiblebit.oracle-java, oracle_java_version: 8 }
+    - { role: tecris.maven, maven_major: 3, maven_release: 3.5.2, maven_home_parent_directory: /opt }
