@@ -7,3 +7,7 @@ services:
     command: litecoind -rpcpassword=bar -rpcuser=foo
     volumes:
       - ./ltc-wlt:/root/.litecoin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'

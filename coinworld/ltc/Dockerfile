@@ -2,6 +2,7 @@
 # docker run --name ltc -d casadocker/ltc:18.01.06
 # docker run -d --name ltc --rm casadocker/ltc:18.01.06 litecoind -rpcpassword=bar -rpcuser=foo
 # docker run -d --name ltc --rm casadocker/ltc:18.01.06 litecoind -regtest=1 -rpcpassword=bar -rpcuser=foo
+# docker deploy --compose-file docker-compose.yml
 
 
 FROM ubuntu:16.04
