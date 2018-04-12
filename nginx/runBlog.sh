@@ -6,6 +6,6 @@ docker run -d --name trivialis-blog \
     -v `pwd`/nginx.conf:/etc/nginx/conf.d/default.conf:ro \
     -v /etc/letsencrypt/live/domain.org/fullchain.pem:/etc/letsencrypt/fullchain.pem:ro \
     -v /etc/letsencrypt/live/domain.org/privkey.pem:/etc/letsencrypt/privkey.pem:ro \
-    -v /some/content:/etc/nginx/html:ro \
+    -v /opt/blog:/etc/nginx/html:ro \
     -p 443:443 \
     nginx
