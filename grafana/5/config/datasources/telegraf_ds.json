@@ -1,0 +1,10 @@
+{
+    "Name":"influx",
+    "type":"influxdb",
+    "access":"proxy",
+    "url":"http://influxdb.trivialis.eu:45386",
+    "password":"",
+    "user":"",
+    "database":"telegraf",
+    "basicAuth":false
+}

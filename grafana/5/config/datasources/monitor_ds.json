@@ -1,0 +1,10 @@
+{
+    "Name":"influxdb-dcts-monitoring",
+    "type":"influxdb",
+    "access":"proxy",
+    "url": "$INFLUXDB_URL",
+    "password":"",
+    "user":"",
+    "database":"dcts-monitoring",
+    "basicAuth":false
+}
