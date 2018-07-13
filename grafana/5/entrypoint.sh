@@ -2,10 +2,11 @@
 
 # set -x
 
-url="https://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000"
+url="https://localhost:3000"
 
 post() {
-    curl -k -s -X POST -d "$1" \
+    curl -u $GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD \
+        -s -X POST -d "$1" \
         -H 'Content-Type: application/json;charset=UTF-8' \
         "$url$2" 2> /dev/null
 }
@@ -13,10 +14,7 @@ post() {
 if [ ! -f "/var/lib/grafana/.init" ]; then
     exec /run.sh $@ &
 
-    until curl -s "$url/api/datasources" 2> /dev/null; do
-      echo "Waiting for the URL to be available: $url"
-      sleep 1
-    done
+    sleep 5
 
     for datasource in /etc/grafana/datasources/*; do
       echo installed $datasource;

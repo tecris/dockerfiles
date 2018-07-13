@@ -2,7 +2,7 @@
     "Name":"influx",
     "type":"influxdb",
     "access":"proxy",
-    "url":"http://influxdb.trivialis.eu:45386",
+    "url": "$INFLUXDB_URL",
     "password":"",
     "user":"",
     "database":"telegraf",
