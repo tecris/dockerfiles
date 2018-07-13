@@ -2,10 +2,10 @@
 
 # set -x
 
-url="http://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000"
+url="https://$GF_SECURITY_ADMIN_USER:$GF_SECURITY_ADMIN_PASSWORD@localhost:3000"
 
 post() {
-    curl -s -X POST -d "$1" \
+    curl -k -s -X POST -d "$1" \
         -H 'Content-Type: application/json;charset=UTF-8' \
         "$url$2" 2> /dev/null
 }
