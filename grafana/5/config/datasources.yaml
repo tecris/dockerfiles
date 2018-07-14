@@ -1,0 +1,25 @@
+# config file version
+apiVersion: 1
+
+# list of datasources to insert/update depending
+# whats available in the database
+datasources:
+  # <string, required> name of the datasource. Required
+- name: influxdb-dcts-monitoring
+  # <string, required> datasource type. Required
+  type: influxdb
+  # <string, required> access mode. direct or proxy. Required
+  access: proxy
+  # <int> org id. will default to orgId 1 if not specified
+  orgId: 1
+  # <string> url
+  url:
+  # <string> database password, if used
+  password:
+  # <string> database user, if used
+  user:
+  # <string> database name, if used
+  database: dcts-monitoring
+  # <bool> enable/disable basic auth
+  basicAuth: false
+  editable: true

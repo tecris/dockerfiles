@@ -9,9 +9,9 @@ COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
 COPY config/grafana.ini /etc/grafana/grafana.ini
-COPY config/dashboards /etc/grafana/dashboards
-COPY config/datasources /etc/grafana/datasources
-
+#COPY config/dashboards /etc/grafana/dashboards
+#COPY config/datasources /etc/grafana/datasources
+COPY config/datasources.yaml /etc/grafana/provisioning/datasources/datasources.yaml
 USER grafana
 
 ENTRYPOINT ["./entrypoint.sh"]
