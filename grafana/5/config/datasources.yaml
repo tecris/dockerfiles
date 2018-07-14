@@ -1,25 +1,26 @@
 # config file version
+# http://docs.grafana.org/administration/provisioning/#datasources
 apiVersion: 1
 
-# list of datasources to insert/update depending
-# whats available in the database
 datasources:
-  # <string, required> name of the datasource. Required
 - name: influxdb-dcts-monitoring
-  # <string, required> datasource type. Required
   type: influxdb
-  # <string, required> access mode. direct or proxy. Required
   access: proxy
-  # <int> org id. will default to orgId 1 if not specified
   orgId: 1
-  # <string> url
-  url:
-  # <string> database password, if used
+  url: $INFLUXDB_URL
   password:
-  # <string> database user, if used
   user:
-  # <string> database name, if used
   database: dcts-monitoring
-  # <bool> enable/disable basic auth
+  basicAuth: false
+  editable: true
+
+- name: influx
+  type: influxdb
+  access: proxy
+  orgId: 1
+  url: $INFLUXDB_URL
+  password:
+  user:
+  database: telegraf
   basicAuth: false
   editable: true
