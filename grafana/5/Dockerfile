@@ -7,12 +7,11 @@ RUN apt-get update && \
 
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
+RUN chown -R grafana:grafana /etc/grafana/provisioning
 
 COPY config/grafana.ini /etc/grafana/grafana.ini
 COPY config/datasources_template.yaml /tmp/datasources_template.yaml
-#COPY config/dashboards /etc/grafana/dashboards
-#COPY config/datasources /etc/grafana/datasources
-#COPY config/datasources_template.yaml /etc/grafana/provisioning/datasources/datasources.yaml
+COPY config/dashboards /etc/grafana/provisioning/dashboards
 USER grafana
 
 ENTRYPOINT ["./entrypoint.sh"]
