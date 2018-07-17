@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1531558814123,
+  "iteration": 1531805118741,
   "links": [],
   "panels": [
     {
@@ -159,6 +159,22 @@
           "dateFormat": "MMM-DD HH:mm",
           "pattern": "Time",
           "type": "date"
+        },
+        {
+          "alias": "Ticker topic name",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "ticker_topic_name",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
         },
         {
           "alias": "",
@@ -322,7 +338,7 @@
       "gridPos": {
         "h": 7,
         "w": 12,
-        "x": 12,
+        "x": 0,
         "y": 14
       },
       "id": 4,
@@ -366,6 +382,12 @@
                 "$var_interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "tradingsignal_topic_name"
+              ],
+              "type": "tag"
             }
           ],
           "measurement": "messages",
@@ -396,7 +418,98 @@
           ]
         }
       ],
-      "title": "Trading signal messages",
+      "title": "System trading signal messages",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "influxdb-dcts-monitoring",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "id": 5,
+      "interval": "",
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "MMM-DD HH:mm",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$var_interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "eh7.ob.signals_topic_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "messages",
+          "orderByTime": "ASC",
+          "policy": "dcts-monitoring-retention",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "no_of_messages"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "eh7.ob.signals_topic_name",
+              "operator": "=",
+              "value": "eh7.ob.signals"
+            }
+          ]
+        }
+      ],
+      "title": "Client trading signal messages",
       "transform": "table",
       "type": "table"
     }
@@ -514,5 +627,5 @@
   "timezone": "utc",
   "title": "Monitoring",
   "uid": "rqZ8_Ymiz",
-  "version": 1
+  "version": 3
 }
