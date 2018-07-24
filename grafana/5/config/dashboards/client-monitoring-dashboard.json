@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 5,
-  "iteration": 1532460272923,
+  "iteration": 1532461804218,
   "links": [],
   "panels": [
     {
@@ -220,10 +220,9 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "candle + signals",
+          "text": "All",
           "value": [
-            "candle",
-            "signals"
+            "$__all"
           ]
         },
         "datasource": "influxdb-dcts-monitoring",
@@ -234,17 +233,17 @@
         "name": "type",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "All",
             "value": "$__all"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "candle",
             "value": "candle"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "signals",
             "value": "signals"
           },
@@ -298,5 +297,5 @@
   "timezone": "",
   "title": "Client Monitoring",
   "uid": "YCSZfDFik",
-  "version": 8
+  "version": 9
 }
