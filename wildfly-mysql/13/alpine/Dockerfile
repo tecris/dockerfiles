@@ -28,7 +28,7 @@ FROM casadocker/alpine-wildfly:13.0.0
 
 
 ENV WILDFLY_VERSION 13.0.0
-ENV MYSQL_CONNECTOR_VERSION 6.0.3
+ENV MYSQL_CONNECTOR_VERSION 8.0.11
 
 RUN wget "http://central.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar" -O /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar
 
