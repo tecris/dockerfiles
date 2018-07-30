@@ -10,7 +10,7 @@
 # Usage: -Dmysql.ipaddress=10.1.1.4
 #
 # .) Build
-# docker build --no-cache -t casadocker/alpine-wildfly-mysql:13.0.0 .
+# docker build --no-cache -t casadocker/alpine-wildfly-mysql:13.0.0 ./
 # .) Run
 # link to container named mysqldb
 # docker run -d --name web \
@@ -38,13 +38,15 @@ RUN echo "com.mysql.jdbc.Driver" > META-INF/services/java.sql.Driver
 RUN jar uf /opt/jboss/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar META-INF
 
 ADD datasource.cli /opt/jboss/datasource.cli
-RUN apk add --no-cache --virtual=build-dependencies sed && \
-        sed -i -e s/MYSQL-CONNECTOR-VERSION/${MYSQL_CONNECTOR_VERSION}/g /opt/jboss/datasource.cli
+
+RUN apk add --no-cache --virtual=build-dependencies bash sed mysql-client \
+  && sed -i -e s/MYSQL-CONNECTOR-VERSION/${MYSQL_CONNECTOR_VERSION}/g /opt/jboss/datasource.cli
 
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/datasource.cli
 
 # Fix for WFLYCTL0056: Could not rename /opt/jboss/wildfly/standalone/configuration/standalone_xml_history/current to ...
 RUN rm -rf /opt/jboss/wildfly-$WILDFLY_VERSION.Final/standalone/configuration/standalone_xml_history
 
+COPY wait-for-mysql.sh ./
 
 ENTRYPOINT ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
