@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -ex
+
+# Usage:
+#  docker run jenkinsci/ssh-slave <public key>
+# or
+#  docker run -e "JENKINS_AGENT_SSH_PUBKEY=<public key>" jenkinsci/ssh-slave
+
+ssh-keygen -b 4096 -t rsa -f /root/ssh-ca -C "CA key for cristea.org" -q -N ""
+cp /root/ssh-ca.pub /etc/ssh/
+ls -l . 
+cat /root/ssh-ca.pub
+cat /root/ssh-ca
+
+ssh-keygen -s /root/ssh-ca \
+    -h -n jenkins \
+    -V +52w \
+    -I jenkins-key \
+    /etc/ssh/ssh_host_rsa_key.pub
+
+echo "HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub" | tee -a /etc/ssh/sshd_config
+echo "TrustedUserCAKeys /etc/ssh/ssh-ca.pub" | tee -a /etc/ssh/sshd_config
+
+# Generate jenkins key:
+ssh-keygen -f jenkins -C jenkins -N ""
+
+# Sign jenkins's key so it can log in as both root and jenkins:
+ssh-keygen -s /root/ssh-ca -V +52w -n root,jenkins -I jenkins-key1 -z 1 jenkins.pub
+
+echo "@cert-authority *.shoepping.lab,*.shoepping.at $(cat /etc/ssh/shoepping-lab-ca.pub)" >> /home/jenkins/.ssh/known_hosts
+
+# do not detach (-D), log to stderr (-e), passthrough other arguments
+exec /usr/sbin/sshd -D -e "${@}"
