@@ -1,3 +1,27 @@
+
+
+./build_ssh_base_image.sh
+
+docker volume create --name volume_zero
+docker run -v volume_zero:/keys org.tecris/ssh:23.05.15 rm -rf /keys/*
+
+docker run -v volume_zero:/keys org.tecris/ssh:23.05.15 ssh-keygen -b 4096 -t rsa -f /keys/user_ca -C "CA key for user" -q -N ""
+docker run -v volume_zero:/keys org.tecris/ssh:23.05.15 ssh-keygen -b 4096 -t rsa -f /keys/host_ca -C "CA key for host" -q -N ""
+docker run -v volume_zero:/keys org.tecris/ssh:23.05.15 ls -l /keys
+
+docker run --name volume_helper -d -v volume_zero:/keys busybox true
+docker cp volume_helper:/keys .
+
+./build_host_image.sh
+./build_user_image.sh
+
+docker compose up -d
+docker exec -it -u django sevilla bash
+docker exec -it -u django sevilla ssh rango@alhambra
+
+
+
+Reference:
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-creating_ssh_ca_certificate_signing-keys
 https://dev.to/gvelrajan/how-to-configure-and-setup-ssh-certificates-for-ssh-authentication-b52
 https://engineering.fb.com/2016/09/12/security/scalable-and-secure-access-with-ssh/

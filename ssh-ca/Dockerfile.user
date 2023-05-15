@@ -1,0 +1,20 @@
+FROM org.tecris/ssh:23.05.15
+
+RUN adduser --disabled-password --gecos "" django
+WORKDIR /home/django
+ADD keys/host_ca.pub .
+ADD keys/user_ca .
+RUN chown django user_ca
+RUN ls -l /home/django
+
+USER django
+RUN ssh-keygen -f /home/django/.ssh/id_rsa -N ""
+RUN echo "@cert-authority alhambra,*.shoepping.lab,*.shoepping.at $(cat /home/django/host_ca.pub)" >> /home/django/.ssh/known_hosts
+WORKDIR /home/django/.ssh
+
+# Sign django's key so it can log in as both root and rango:
+RUN ssh-keygen -s /home/django/user_ca -V +52w -n root,rango -I rango-key1 -z 1 id_rsa.pub
+
+RUN ls -l /etc/ssh/
+USER root
+ENTRYPOINT ["/usr/sbin/sshd","-D","-e"]

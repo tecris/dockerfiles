@@ -1,0 +1,12 @@
+FROM ubuntu:22.04
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y openssh-server \
+    && rm -rf /var/lib/apt/lists/*
+RUN sed -i /etc/ssh/sshd_config \
+        -e 's/#PermitRootLogin.*/PermitRootLogin no/' \
+        -e 's/#RSAAuthentication.*/RSAAuthentication yes/'  \
+        -e 's/#PasswordAuthentication.*/PasswordAuthentication no/' \
+        -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
+        -e 's/#LogLevel.*/LogLevel INFO/' && \
+    mkdir /var/run/sshd
