@@ -10,3 +10,7 @@ RUN sed -i /etc/ssh/sshd_config \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' && \
     mkdir /var/run/sshd
+
+RUN adduser --disabled-password --gecos "" rango
+RUN adduser --disabled-password --gecos "" django
+RUN adduser --disabled-password --gecos "" pegasus
