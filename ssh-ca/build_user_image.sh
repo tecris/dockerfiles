@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG=23.05.16
+TAG=${1}
 docker buildx build \
     --build-arg TAG=${TAG} \
     --no-cache \
