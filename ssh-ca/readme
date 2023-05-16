@@ -16,12 +16,19 @@ docker cp volume_helper:/keys .
 ./build_user_image.sh
 
 docker compose up -d
-docker exec -it -u django sevilla bash
+# following should work
 docker exec -it -u django sevilla ssh rango@alhambra
 docker exec -it -u django sevilla ssh rango@cordoba
+docker exec -it -u django sevilla ssh django@alhambra
+docker exec -it -u django sevilla ssh django@cordoba
 
 # this one should prompt The authenticity of host 'toledo' can't be established.
+# following should not work (result in either prompt for accepting fingerprint or Permission denied)
 docker exec -it -u django sevilla ssh rango@toledo
+docker exec -it -u django sevilla ssh django@toledo
+docker exec -it -u django sevilla ssh pegasus@alhambra
+docker exec -it -u django sevilla ssh pegasus@cordoba
+docker exec -it -u django sevilla ssh pegasus@toledo
 
 
 
