@@ -4,7 +4,6 @@ COPY --from=docker:dind /usr/local/bin/docker /usr/local/bin/
 
 RUN echo "===> Adding Python runtime..."  && \
     apk --update add \
-        ansible-lint \
         curl \
         gcc \
         libc-dev \
@@ -14,7 +13,7 @@ RUN echo "===> Adding Python runtime..."  && \
         python3-dev \
         sshpass
 
-RUN python3 -m pip install molecule==5.0.0 ansible-core pytest-testinfra[ansible] molecule-plugins[docker,lint]
+RUN python3 -m pip install molecule==5.1.0 ansible-core pytest-testinfra[ansible] molecule-plugins[docker]
 RUN python3 -m pip install --upgrade --user setuptools
 
 RUN ansible-galaxy collection install \
