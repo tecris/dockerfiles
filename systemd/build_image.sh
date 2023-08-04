@@ -14,6 +14,6 @@ os_version=${2}
 docker buildx build \
     --no-cache \
     --progress=plain \
-    -t org.tecris/${os}_${os_version}-systemd:23.06.28 \
+    -t org.tecris/${os}_${os_version}-systemd:23.08.04 \
     -f ${os}-${os_version}/Dockerfile \
     .
