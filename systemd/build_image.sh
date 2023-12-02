@@ -14,14 +14,11 @@ function build_image() {
   docker buildx build \
     --no-cache \
     --progress=plain \
+    --load \
     -t ${IMAGE_NAME} \
     -f ${os}-${os_version}/Dockerfile \
     ./
 
-  docker buildx build \
-    --load \
-    -t ${IMAGE_NAME} \
-    ./${os}-${os_version}
 }
 
 declare -A distrubution_array
