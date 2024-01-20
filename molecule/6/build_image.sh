@@ -1,16 +1,12 @@
 #!/bin/bash
 
-IMAGE_NAME=org.tecris/molecule6:23.11.04
+IMAGE_TAG=$(date +"%y.%m.%d")
+IMAGE_NAME=org.tecris/molecule6:${IMAGE_TAG}
 
 docker buildx build \
     --no-cache \
     --progress=plain \
+    --load \
     -t ${IMAGE_NAME} \
     -f Dockerfile \
     ./
-
-docker buildx build \
-    --load \
-    -t ${IMAGE_NAME} \
-    ./
-
