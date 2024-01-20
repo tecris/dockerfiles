@@ -3,10 +3,12 @@
 # set -x
 
 
+IMAGE_TAG=$(date +"%y.%m.%d")
+
 function build_image() {
   os=${1}
   os_version=${2}
-  IMAGE_NAME=org.tecris/${os}_${os_version}-systemd:23.12.02
+  IMAGE_NAME=org.tecris/${os}_${os_version}-systemd:${IMAGE_TAG}
   echo "=================================================="
   echo "building: ${IMAGE_NAME}"
   echo "=================================================="
