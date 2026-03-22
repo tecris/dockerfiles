@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
     && apt-get install -y \
-        software-properties-common \
         python3 \
         systemd \
         systemd-sysv \
